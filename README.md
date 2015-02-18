@@ -1,3 +1,5 @@
+Jason Syrotuck, Evan Hildebrandt, Keith, Rollans
+
 # SENG 371 Group Project 1 
 
 Project Question: How does the groupings of file types vs groupings of functionality affect the ability for the project to evolve?
