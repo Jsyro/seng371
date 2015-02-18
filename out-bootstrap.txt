@@ -1,0 +1,57 @@
+This commit might be a refactor: Added 23, Deleted 30, Modified 0, Diff 7
+96c3e709963516a06ad6e723a7bba3fbf5fc1ba2 cleanup old stuff
+
+This commit might be a refactor: Added 6, Deleted 9, Modified 2, Diff 3
+fb8987148aeae4b9aa2b4c28fa3ad5346b8c56b1 move javascript from examples into docs
+
+This commit might be a refactor: Added 15, Deleted 7, Modified 7, Diff 8
+5f4e30ed1d33f83b0fad3afc9174e193e6c3fdf4 move js plugins to root dir, begin writing tests, and change modal plugin to be more boss like
+
+This commit might be a refactor: Added 39, Deleted 39, Modified 8, Diff 0
+dc2deb9a1b1995bbabee91bfd579d9b466fe78f2 moving structure around + more work on builder...
+
+This commit might be a refactor: Added 12, Deleted 9, Modified 8, Diff 3
+fb1db88256d94bf1844c2fcdb34fc98a76c313fb Update homepage examples, add hella new sites to gallery
+
+This commit might be a refactor: Added 195, Deleted 232, Modified 2, Diff 37
+e45f12ad427fddc9d9859fe86423bd49795d4f43 rearrange jekyll and docs
+
+This commit might be a refactor: Added 114, Deleted 27, Modified 22, Diff 87
+14651035deda4d02a1ca02c6088c34f770f897f6 a bunch javascript junk
+
+This commit might be a refactor: Added 26, Deleted 13, Modified 0, Diff 13
+8e50e7a8f264c65b453a9b7133c7532c439730f5 Update remaining templates to match starter template
+
+This commit might be a refactor: Added 33, Deleted 33, Modified 1, Diff 0
+a8005b3d0b8599611e8bfc864e704b50411fcb69 flatten docs dir back into root
+
+This commit might be a refactor: Added 14, Deleted 14, Modified 13, Diff 0
+bf51e24700627b17df5041f3a369f6f6b4a4bfbb change file names to example names
+
+This commit might be a refactor: Added 40, Deleted 40, Modified 0, Diff 0
+3d99a4c15e0661df630dbaf7dddb5228cf044fe6 move to examples dir
+
+This commit might be a refactor: Added 12, Deleted 13, Modified 2, Diff 1
+7960845f50b8dcdc5b4fce29e6075f447e04318a new screenshot images and docs section
+
+This commit might be a refactor: Added 8, Deleted 10, Modified 5, Diff 2
+e13ca6d38494e69ed1faeddbb12b469a778ade06 Upgrade to latest glyphicons
+
+This commit might be a refactor: Added 15, Deleted 15, Modified 19, Diff 0
+8aa5181126d9480eef502403aa98e469a3597826 move /assets/ to /docs-assets/ ; fixes #10715
+
+This commit might be a refactor: Added 104, Deleted 92, Modified 2, Diff 12
+a9c829bc0c75dd7723e6c74e1defaab5dbb4c00b Rearrange repository contents because muahahahahahaha
+
+This commit might be a refactor: Added 6, Deleted 6, Modified 2, Diff 0
+4bca3c79b36a621bfd6ccc258fbb9cb6de19e958 Move docs third-party libraries to a separate folder.
+
+This commit might be a refactor: Added 8, Deleted 8, Modified 2, Diff 0
+b004c9ac393671489720be06739f01e5c1bec7fe Rename and organize nav partials for cleaner file structure
+
+This commit might be a refactor: Added 12, Deleted 12, Modified 2, Diff 0
+8ae48183b236d4db104fa165b8aea762d70b9d67 Fix #13138: use underscore prefix to ignore directories
+
+This commit might be a refactor: Added 7, Deleted 7, Modified 2, Diff 0
+1dc54dc160d4352d894550c7c5d3f68c475ba2cf use non-minified Bootstrap JS when on non-gh-pages
+
