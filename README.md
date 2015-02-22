@@ -8,6 +8,12 @@ Methodology: Anaylze release and tag them based on, Security Update, Bug fixes, 
 
 Codebases/Systems: JQuery Mobile, JQuery, Bootstrap, Angular. 
 
+Directions for use:
+	1) Run "git -log"
+	2)
+	3)
+
+
 Project Milestones: 
   1) Inspecting Release notes and tagging by category
   2) Summarizing the nature of the releases

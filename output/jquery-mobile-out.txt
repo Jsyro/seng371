@@ -1,47 +1,282 @@
-This commit might be a refactor: Added 15, Deleted 15, Modified 1, Diff 06fa401276a953ce195dadcfc1f7f17654915f8d3 renamed files with jQuery.mobile. prefixes
-This commit might be a refactor: Added 132, Deleted 132, Modified 0, Diff 04a02d3a5ea218cf6bd13d2841e56b2a1d4fcfa10 moved to experiements folder
-This commit might be a refactor: Added 135, Deleted 135, Modified 4, Diff 0b5eca5bd2a9dcc5449bc74fa645cd8a8ad1ab7e7 Renamed Globalnav  "Navlist". Fixed #95
-This commit might be a refactor: Added 41, Deleted 41, Modified 0, Diff 03888ff81b6bd862f76e0bc0759441338e5a7e543 Renamed files so case changing will hold.
-This commit might be a refactor: Added 41, Deleted 41, Modified 0, Diff 05c3d35574f5414e6a1d33ddb401f90531d9506f8 Renamed files.
-This commit might be a refactor: Added 131, Deleted 132, Modified 0, Diff 1137193640d042013e9148030137505834dd8da98 renamed folder to "navbar"
-This commit might be a refactor: Added 72, Deleted 8, Modified 7, Diff 64e42130efe042c1d030e53e175f6009a48675cf2b big updates and additions to docs by Todd
-This commit might be a refactor: Added 23, Deleted 22, Modified 1, Diff 16cc749023ebaf3943141f2443e198baf2684b0ae renamed Dobson theme "Valencia"
-This commit might be a refactor: Added 7, Deleted 6, Modified 2, Diff 1264e71522d284ec2a693396225c779a98b8c5ced Re-vamp of pages docs section to add new features, better organization
-This commit might be a refactor: Added 32, Deleted 32, Modified 0, Diff 02c59250fe3b56bd7733dfe01bc38a4c758577916 2700: Step 1: Rename Themes folder
-This commit might be a refactor: Added 20, Deleted 20, Modified 0, Diff 09af1d4c966a90b371f962d962fa3158a9d03eed1 2700: Step 2: Separate out core styles from the theme styles
-This commit might be a refactor: Added 17, Deleted 17, Modified 0, Diff 010c6ca2922c4f38309114d4e129079e454d25fc9 2700: Step 3 Move the themes into a themes folder
-This commit might be a refactor: Added 16, Deleted 16, Modified 4, Diff 0bcbaa38854cb24133094b5f7205b8e146d427668 2700: Step 7 Silly me kept putting  instead of . Fixed that typo
-This commit might be a refactor: Added 12, Deleted 12, Modified 1, Diff 0125680bdcf6b6dc6faabde28ceed91a793f0a328 Use same namespace as js for transitions
-This commit might be a refactor: Added 9, Deleted 8, Modified 2, Diff 1161c7ad40cf711bc4c228a77b2fdd80c9b8b2220 Moved transition fallback modules into transitions folder Created meta-module jquery.mobile.transitions.js
-This commit might be a refactor: Added 8, Deleted 8, Modified 2, Diff 02363f47c9508b33c0d1a49446d182b08cacc2f38 Renamed transition fallback modules into shorter filenames
-This commit might be a refactor: Added 18, Deleted 18, Modified 6, Diff 0e4453b3e6c8dca3d7e8d70b9e86d04ec0a6b27b3 Move:   - widgets into widgets directory   - form widgets into widgets/forms directory
-This commit might be a refactor: Added 18, Deleted 18, Modified 24, Diff 0a8c5facba9675132f7d2cd83ae060e01a3e9a8a6 Dropped "jquery.mobile" namespace in files that are in subdirs of js/
-This commit might be a refactor: Added 12, Deleted 8, Modified 5, Diff 446055a5d391b1068e6016c4b791b5fc52715f3ef Tables: Moved custom table examples to /demos/ and added a basic demo for each mode
-This commit might be a refactor: Added 7, Deleted 7, Modified 1, Diff 0e3809f2476b257a26c99995437d17525646a47f3 Demos: consistent file names.
-This commit might be a refactor: Added 6, Deleted 6, Modified 1, Diff 035477b6181f48e15f5ef91518512d12f2662d4cb Demos: Swipe page demo - full city names for id's and file names to make it easier to read.
-This commit might be a refactor: Added 11, Deleted 11, Modified 0, Diff 077b8304b270f93c50d2471eae6b87515231254b8 sequence tests follow subdirectory and test file name conventions
-This commit might be a refactor: Added 63, Deleted 61, Modified 0, Diff 2919548248585f9947cc0fa034a393d813a3b2f3d Demos: reorganized folders.
-This commit might be a refactor: Added 7, Deleted 7, Modified 0, Diff 026dd721c991d03c3b72496ec82c3997acbc2ccd7 Moved old tasks to tasks.old
-This commit might be a refactor: Added 32, Deleted 32, Modified 2, Diff 001397e6d14baa2fd180f9e68be24b0833141c82d Demos: renamed subfolder /demos/ to /examples/
-This commit might be a refactor: Added 217, Deleted 681, Modified 2, Diff 4644d149f808f64dbee2ecdd675cda6f2cb9e088ad2 Demos: moved all files from demos to docs folder
-This commit might be a refactor: Added 337, Deleted 337, Modified 0, Diff 095e9adf3f7e52a52055a4704ceaeed3527637093 Docs: html -> php
-This commit might be a refactor: Added 19, Deleted 19, Modified 26, Diff 0160c9eb16ef6b0b3aef5c1d580787d2b2149dd14 Demos: fixing extentions and broken links
-This commit might be a refactor: Added 205, Deleted 205, Modified 0, Diff 0f12c159cae338b5a246a4fefd4db6b2c3fda54c7 Demos: fixing the redirects for old docs by changing .php back to .html
-This commit might be a refactor: Added 214, Deleted 214, Modified 1, Diff 0fdb1838512f466b6c76d122e6b209d3e6ff0dca8 Demos: Renamed docs to demos
-This commit might be a refactor: Added 7, Deleted 11, Modified 5, Diff 479b6df8728415d933ff735429f8751f62ed53dea Demos: improvements to fixed toolbar demo pages.
-This commit might be a refactor: Added 28, Deleted 25, Modified 5, Diff 3eda8efe08aced41b734dc5a161c01e97f6b82e81 Tests: split unit and integration tests (WIP)
-This commit might be a refactor: Added 70, Deleted 67, Modified 44, Diff 3b4460e126aa66bb663f09b2e741152ea8ba47067 move navigation tests to integration, make sure the whole suite passes
-This commit might be a refactor: Added 13, Deleted 10, Modified 3, Diff 3a1988121d4f1394200078fb69f0348cda326aaf4 move transition modules into subdirectory
-This commit might be a refactor: Added 16, Deleted 8, Modified 1, Diff 831c4b01b74f105847a10fa50d10f4e46d5415437 Added swatch "b" test pages.
-This commit might be a refactor: Added 105, Deleted 105, Modified 0, Diff 0b30c4e533444fe4e70cc3802a4044d23dcb8250d Icons: Removed icon CSS files from icons-png folder.
-This commit might be a refactor: Added 120, Deleted 120, Modified 5, Diff 0e1c7ca93878bbc7490a5d8c19c374b9447cf9b5a Renamed icon classes and files.
-This commit might be a refactor: Added 6, Deleted 6, Modified 2, Diff 0e352665e7ad097fc12032ef73e05931d6ef93783 Refactored CSS file according to #6167
-This commit might be a refactor: Added 6, Deleted 6, Modified 0, Diff 0079d4bffb7c53dfe8ff97074acc16712b00f7e7f Merged demos test pages in widget reference directories.
-This commit might be a refactor: Added 175, Deleted 177, Modified 4, Diff 2a0a1763174f81b909e190797acb35eca86be0d29 First pass on updating demos for 1.4.
-This commit might be a refactor: Added 26, Deleted 23, Modified 95, Diff 3ac201afc88218d62fcea52593f083eea93a5b35d Removed "jquery.mobile" prefix from filenames
-This commit might be a refactor: Added 23, Deleted 26, Modified 95, Diff 3e0f5b27764fb8a7cf843fa49e3dbd202879bbac9 Revert "Removed "jquery.mobile" prefix from filenames"
-This commit might be a refactor: Added 44, Deleted 49, Modified 108, Diff 5e291d2dff491c4dacbb6b918b855f00767f91232 Second pass on updating the demos for 1.4.
-This commit might be a refactor: Added 10, Deleted 14, Modified 6, Diff 4b8e6a5da97de4ea50d7b0a2171ceac73b283539d Demos: Updated all toolbar demo pages.
-This commit might be a refactor: Added 24, Deleted 24, Modified 0, Diff 0a6d9ce1787f7b9317e7981e3f3ce036734ff9f2a Demos: added note to FAQ pages that they are not updated.
-This commit might be a refactor: Added 7, Deleted 7, Modified 123, Diff 0abc97542dd55aef1c906d6cb3be07bc9c1720fce Source tree: Moved third party code to external directory
-This commit might be a refactor: Added 26, Deleted 23, Modified 107, Diff 318f872d0174e418c0ac1433267a1e9ea13a4263a Build: Removed jquery.mobile prefix from filenames
+This commit might be a refactor: Added 26, Deleted 23, Modified 107, Diff 3
+commit 18f872d0174e418c0ac1433267a1e9ea13a4263a
+Date:   Tue Feb 11 09:30:40 2014 -0800
+    Fixes gh-6465
+
+
+This commit might be a refactor: Added 7, Deleted 7, Modified 123, Diff 0
+commit abc97542dd55aef1c906d6cb3be07bc9c1720fce
+Date:   Fri Jan 10 12:21:13 2014 -0700
+    Fixes gh-6871
+
+
+This commit might be a refactor: Added 24, Deleted 24, Modified 0, Diff 0
+commit a6d9ce1787f7b9317e7981e3f3ce036734ff9f2a
+Date:   Thu Oct 3 13:39:21 2013 +0200
+    Demos: added note to FAQ pages that they are not updated.
+
+
+This commit might be a refactor: Added 10, Deleted 14, Modified 6, Diff 4
+commit b8e6a5da97de4ea50d7b0a2171ceac73b283539d
+Date:   Thu Oct 3 13:33:32 2013 +0200
+    Demos: Updated all toolbar demo pages.
+
+
+This commit might be a refactor: Added 44, Deleted 49, Modified 108, Diff 5
+commit e291d2dff491c4dacbb6b918b855f00767f91232
+Date:   Thu Sep 19 18:24:28 2013 +0200
+    Second pass on updating the demos for 1.4.
+
+
+This commit might be a refactor: Added 23, Deleted 26, Modified 95, Diff 3
+commit e0f5b27764fb8a7cf843fa49e3dbd202879bbac9
+Date:   Thu Sep 12 23:01:29 2013 -0500
+    This reverts commit ac201afc88218d62fcea52593f083eea93a5b35d.
+
+
+This commit might be a refactor: Added 26, Deleted 23, Modified 95, Diff 3
+commit ac201afc88218d62fcea52593f083eea93a5b35d
+Date:   Tue Aug 6 17:18:37 2013 -0600
+    Removed "jquery.mobile" prefix from filenames
+
+
+This commit might be a refactor: Added 175, Deleted 177, Modified 4, Diff 2
+commit a0a1763174f81b909e190797acb35eca86be0d29
+Date:   Wed Aug 28 17:51:27 2013 +0200
+    First pass on updating demos for 1.4.
+
+
+This commit might be a refactor: Added 6, Deleted 6, Modified 0, Diff 0
+commit 079d4bffb7c53dfe8ff97074acc16712b00f7e7f
+Date:   Mon Aug 26 14:18:29 2013 +0200
+    Merged demos test pages in widget reference directories.
+
+
+This commit might be a refactor: Added 6, Deleted 6, Modified 2, Diff 0
+commit e352665e7ad097fc12032ef73e05931d6ef93783
+Date:   Sun Aug 25 15:26:09 2013 -0600
+    Refactored CSS file according to #6167
+
+
+This commit might be a refactor: Added 120, Deleted 120, Modified 5, Diff 0
+commit e1c7ca93878bbc7490a5d8c19c374b9447cf9b5a
+Date:   Sun Jun 30 11:07:37 2013 +0200
+    Renamed icon classes and files.
+
+
+This commit might be a refactor: Added 105, Deleted 105, Modified 0, Diff 0
+commit b30c4e533444fe4e70cc3802a4044d23dcb8250d
+Date:   Fri Jun 28 21:53:52 2013 +0200
+    Icons: Removed icon CSS files from icons-png folder.
+
+
+This commit might be a refactor: Added 16, Deleted 8, Modified 1, Diff 8
+commit 31c4b01b74f105847a10fa50d10f4e46d5415437
+Date:   Mon Apr 15 21:33:31 2013 +0200
+    Added swatch "b" test pages.
+
+
+This commit might be a refactor: Added 13, Deleted 10, Modified 3, Diff 3
+commit a1988121d4f1394200078fb69f0348cda326aaf4
+Date:   Thu Mar 28 14:46:45 2013 -0700
+    move transition modules into subdirectory
+
+
+This commit might be a refactor: Added 70, Deleted 67, Modified 44, Diff 3
+commit b4460e126aa66bb663f09b2e741152ea8ba47067
+Date:   Wed Mar 27 12:57:05 2013 -0700
+    move navigation tests to integration, make sure the whole suite passes
+
+
+This commit might be a refactor: Added 28, Deleted 25, Modified 5, Diff 3
+commit eda8efe08aced41b734dc5a161c01e97f6b82e81
+Date:   Wed Mar 27 09:39:29 2013 -0600
+    Tests: split unit and integration tests (WIP)
+
+
+This commit might be a refactor: Added 7, Deleted 11, Modified 5, Diff 4
+commit 79b6df8728415d933ff735429f8751f62ed53dea
+Date:   Mon Mar 11 17:21:35 2013 +0100
+    Demos: improvements to fixed toolbar demo pages.
+
+
+This commit might be a refactor: Added 214, Deleted 214, Modified 1, Diff 0
+commit fdb1838512f466b6c76d122e6b209d3e6ff0dca8
+Date:   Fri Mar 1 16:18:00 2013 -0700
+    Demos: Renamed docs to demos
+
+
+This commit might be a refactor: Added 205, Deleted 205, Modified 0, Diff 0
+commit f12c159cae338b5a246a4fefd4db6b2c3fda54c7
+Date:   Mon Feb 18 03:01:51 2013 +0100
+    Demos: fixing the redirects for old docs by changing .php back to .html
+
+
+This commit might be a refactor: Added 19, Deleted 19, Modified 26, Diff 0
+commit 160c9eb16ef6b0b3aef5c1d580787d2b2149dd14
+Date:   Mon Feb 18 02:43:07 2013 +0100
+    Demos: fixing extentions and broken links
+
+
+This commit might be a refactor: Added 337, Deleted 337, Modified 0, Diff 0
+commit 95e9adf3f7e52a52055a4704ceaeed3527637093
+Date:   Mon Feb 18 01:06:18 2013 +0200
+    Docs: html -> php
+
+
+This commit might be a refactor: Added 217, Deleted 681, Modified 2, Diff 464
+commit 4d149f808f64dbee2ecdd675cda6f2cb9e088ad2
+Date:   Sun Feb 17 15:23:27 2013 +0100
+    Demos: moved all files from demos to docs folder
+
+
+This commit might be a refactor: Added 32, Deleted 32, Modified 2, Diff 0
+commit 01397e6d14baa2fd180f9e68be24b0833141c82d
+Date:   Fri Feb 15 01:03:26 2013 +0100
+    Demos: renamed subfolder /demos/ to /examples/
+
+
+This commit might be a refactor: Added 7, Deleted 7, Modified 0, Diff 0
+commit 26dd721c991d03c3b72496ec82c3997acbc2ccd7
+Date:   Fri Jan 25 22:26:21 2013 -0800
+    Moved old tasks to tasks.old
+
+
+This commit might be a refactor: Added 63, Deleted 61, Modified 0, Diff 2
+commit 919548248585f9947cc0fa034a393d813a3b2f3d
+Date:   Sat Jan 26 00:00:24 2013 +0100
+    Demos: reorganized folders.
+
+
+This commit might be a refactor: Added 11, Deleted 11, Modified 0, Diff 0
+commit 77b8304b270f93c50d2471eae6b87515231254b8
+Date:   Tue Dec 18 09:36:29 2012 -0800
+    sequence tests follow subdirectory and test file name conventions
+
+
+This commit might be a refactor: Added 6, Deleted 6, Modified 1, Diff 0
+commit 35477b6181f48e15f5ef91518512d12f2662d4cb
+Date:   Sat Dec 15 11:24:40 2012 +0100
+    Demos: Swipe page demo - full city names for id's and file names to make it easier to read.
+
+
+This commit might be a refactor: Added 7, Deleted 7, Modified 1, Diff 0
+commit e3809f2476b257a26c99995437d17525646a47f3
+Date:   Wed Dec 5 20:56:39 2012 +0100
+    Demos: consistent file names.
+
+
+This commit might be a refactor: Added 12, Deleted 8, Modified 5, Diff 4
+commit 46055a5d391b1068e6016c4b791b5fc52715f3ef
+Date:   Tue Nov 20 17:31:53 2012 -0500
+    Tables: Moved custom table examples to /demos/ and added a basic demo for each mode
+
+
+This commit might be a refactor: Added 18, Deleted 18, Modified 24, Diff 0
+commit a8c5facba9675132f7d2cd83ae060e01a3e9a8a6
+Date:   Thu Jun 14 15:15:32 2012 -0700
+    Dropped "jquery.mobile" namespace in files that are in subdirs of js/
+
+
+This commit might be a refactor: Added 18, Deleted 18, Modified 6, Diff 0
+commit e4453b3e6c8dca3d7e8d70b9e86d04ec0a6b27b3
+Date:   Thu Jun 14 14:08:21 2012 -0700
+      - form widgets into widgets/forms directory
+
+
+This commit might be a refactor: Added 8, Deleted 8, Modified 2, Diff 0
+commit 2363f47c9508b33c0d1a49446d182b08cacc2f38
+Date:   Thu Jun 7 15:03:22 2012 -0700
+    Renamed transition fallback modules into shorter filenames
+
+
+This commit might be a refactor: Added 9, Deleted 8, Modified 2, Diff 1
+commit 161c7ad40cf711bc4c228a77b2fdd80c9b8b2220
+Date:   Thu Jun 7 14:54:38 2012 -0700
+    Created meta-module jquery.mobile.transitions.js
+
+
+This commit might be a refactor: Added 12, Deleted 12, Modified 1, Diff 0
+commit 125680bdcf6b6dc6faabde28ceed91a793f0a328
+Date:   Wed Apr 11 15:07:35 2012 -0700
+    Use same namespace as js for transitions
+
+
+This commit might be a refactor: Added 16, Deleted 16, Modified 4, Diff 0
+commit bcbaa38854cb24133094b5f7205b8e146d427668
+Date:   Mon Oct 17 14:36:50 2011 -0700
+    2700: Step 7 Silly me kept putting  instead of . Fixed that typo
+
+
+This commit might be a refactor: Added 17, Deleted 17, Modified 0, Diff 0
+commit 10c6ca2922c4f38309114d4e129079e454d25fc9
+Date:   Mon Oct 17 13:25:54 2011 -0700
+    2700: Step 3 Move the themes into a themes folder
+
+
+This commit might be a refactor: Added 20, Deleted 20, Modified 0, Diff 0
+commit 9af1d4c966a90b371f962d962fa3158a9d03eed1
+Date:   Mon Oct 17 13:23:48 2011 -0700
+    2700: Step 2: Separate out core styles from the theme styles
+
+
+This commit might be a refactor: Added 32, Deleted 32, Modified 0, Diff 0
+commit 2c59250fe3b56bd7733dfe01bc38a4c758577916
+Date:   Mon Oct 17 12:50:53 2011 -0700
+    2700: Step 1: Rename Themes folder
+
+
+This commit might be a refactor: Added 7, Deleted 6, Modified 2, Diff 1
+commit 264e71522d284ec2a693396225c779a98b8c5ced
+Date:   Fri Jul 29 17:29:31 2011 -0400
+    Re-vamp of pages docs section to add new features, better organization
+
+
+This commit might be a refactor: Added 23, Deleted 22, Modified 1, Diff 1
+commit 6cc749023ebaf3943141f2443e198baf2684b0ae
+Date:   Fri Oct 15 17:09:53 2010 -0400
+    renamed Dobson theme "Valencia"
+
+
+This commit might be a refactor: Added 72, Deleted 8, Modified 7, Diff 64
+commit e42130efe042c1d030e53e175f6009a48675cf2b
+Date:   Sun Oct 10 10:41:34 2010 -0400
+    big updates and additions to docs by Todd
+
+
+This commit might be a refactor: Added 131, Deleted 132, Modified 0, Diff 1
+commit 137193640d042013e9148030137505834dd8da98
+Date:   Sat Oct 9 08:30:06 2010 -0400
+    renamed folder to "navbar"
+
+
+This commit might be a refactor: Added 41, Deleted 41, Modified 0, Diff 0
+commit 5c3d35574f5414e6a1d33ddb401f90531d9506f8
+Date:   Thu Oct 7 11:30:48 2010 -0400
+    Renamed files.
+
+
+This commit might be a refactor: Added 41, Deleted 41, Modified 0, Diff 0
+commit 3888ff81b6bd862f76e0bc0759441338e5a7e543
+Date:   Thu Oct 7 11:24:44 2010 -0400
+    Renamed files so case changing will hold.
+
+
+This commit might be a refactor: Added 135, Deleted 135, Modified 4, Diff 0
+commit b5eca5bd2a9dcc5449bc74fa645cd8a8ad1ab7e7
+Date:   Tue Oct 5 14:06:28 2010 -0400
+    Renamed Globalnav  "Navlist". Fixed #95
+
+
+This commit might be a refactor: Added 132, Deleted 132, Modified 0, Diff 0
+commit 4a02d3a5ea218cf6bd13d2841e56b2a1d4fcfa10
+Date:   Sun Oct 3 08:34:44 2010 -0400
+    moved to experiements folder
+
+
+This commit might be a refactor: Added 15, Deleted 15, Modified 1, Diff 0
+commit 6fa401276a953ce195dadcfc1f7f17654915f8d3
+Date:   Sat Sep 18 09:59:33 2010 -0400
+    renamed files with jQuery.mobile. prefixes
+
+

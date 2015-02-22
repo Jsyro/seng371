@@ -1,0 +1,89 @@
+commit 71054c53a98019f13be07ecb1c3bfcc5d9b19924
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   Sun Feb 22 11:49:41 2015 -0800
+
+    Redefined input/output for batch work
+
+D	bootstrap-log.txt
+A	input/bootstrap-log.txt
+A	input/jquery-log.txt
+A	input/jquery-mobile-log.txt
+D	jquery-log.txt
+D	jquery-mobile-log.txt
+D	out-bootstrap.txt
+D	out-jquery-mobile.txt
+D	out-jquery.txt
+D	out.txt
+A	output/bootstrap-out.txt
+A	output/jquery-mobile-out.txt
+A	output/jquery-out.txt
+M	parse.py
+
+commit b2cee724fcf7815224a84e628dfc0c3ab9891fd2
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   Wed Feb 18 14:18:19 2015 -0800
+
+    Added parsed outputs
+
+A	.gitignore
+A	out-bootstrap.txt
+A	out-jquery-mobile.txt
+A	out-jquery.txt
+
+commit 2f043eef6269390406b6e7fe49589c0f0cb3ff46
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   Wed Feb 18 14:17:01 2015 -0800
+
+    added names
+
+M	README.md
+
+commit d3a6d084a93aee59681cbb7dad77b33b937062ea
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   Wed Feb 18 14:14:42 2015 -0800
+
+    Edited parse..py
+
+M	parse.py
+
+commit 22b883e2368506cbfd0a6ed50381e26c4a930a3b
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   Wed Feb 18 13:41:52 2015 -0800
+
+    python script for parsing "git log" output.
+
+A	out.txt
+A	parse.py
+
+commit 2f3837fcd1e860ece03af2c4636ab53e99652962
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   Wed Feb 18 13:07:18 2015 -0800
+
+    Added additional logs
+
+A	bootstrap-log.txt
+A	jquery-log.txt
+
+commit 385808364c3693f03f9cc118f434c403234b7c83
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   Wed Feb 18 12:54:39 2015 -0800
+
+    Add JQUERY Mobile commit log
+
+A	jquery-mobile-log.txt
+
+commit bbb5ff3d525d7b1cc307e4d357811e2575aa7aaa
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   Wed Jan 28 13:41:14 2015 -0800
+
+    Update README.md
+
+M	README.md
+
+commit e2ef915c4cf00288d493531769f141cd7cd33b28
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   Wed Jan 28 12:36:56 2015 -0800
+
+    Initial commit
+
+A	README.md
