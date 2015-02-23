@@ -5,6 +5,8 @@ import os
 import time
 
 
+
+
 if __name__ == '__main__':
 
 	#Get da logz
@@ -35,7 +37,6 @@ if __name__ == '__main__':
 			comment = ""
 
 			for line in lines:
-				lastdate= date
 
 				if line.startswith("A	"):
 					added = added + 1 
@@ -50,7 +51,11 @@ if __name__ == '__main__':
 				elif line.startswith("Author:"):
 					pass
 				elif line.startswith("Date:"):
-					date = line[8:-7] + "\n"
+					tempdate = date
+					date = line[8:-3] + "\n"
+					if tempdate[:12] != date[:12]:
+						lastdate = tempdate
+
 				else:
 					
 					diff = abs(added - delete)
@@ -91,7 +96,7 @@ if __name__ == '__main__':
 					date = line[4:]
 				elif line.startswith("3-- "):
 					comment = line[4:]
-					command = 'gource --start-date "'+lastdate.strip()+'" --stop-date "'+date.strip()+'" -s .1'
+					command = 'gource --start-date "'+lastdate.strip()+'" --stop-date "'+date.strip()+'" -s .1 -e 0.00000001 --key --title "' +gitDir + "     " + comment.strip() +'" --highlight-dirs'
 					print command
 					os.system(command)
 			os.chdir(sys.path[0])

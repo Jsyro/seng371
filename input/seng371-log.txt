@@ -106,3 +106,19 @@ M	output/jquery-mobile-out.txt
 M	output/jquery-out.txt
 A	output/seng371-out.txt
 M	parse.py
+
+commit 97b6168c635b07c7ebbae6593a7523fb65578e82
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-22 16:23:31 -0800
+
+    Added Gource
+
+M	input/bootstrap-log.txt
+M	input/jquery-log.txt
+M	input/jquery-mobile-log.txt
+M	input/seng371-log.txt
+M	output/bootstrap-out.txt
+M	output/jquery-mobile-out.txt
+M	output/jquery-out.txt
+M	output/seng371-out.txt
+M	parse.py
