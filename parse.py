@@ -2,14 +2,22 @@
 import sys
 import re
 import os
+import time
 
 
 if __name__ == '__main__':
+
+	#Get da logz
+	print "=====Generating logs from Git Repos====="
 	for item in os.listdir("../"):
 		gitDir = item
-		os.chdir("../"+gitDir)
-		os.system("git --no-pager log --name-status > ../seng371/input/"+gitDir+"-log.txt")
+		print gitDir
 
+		os.chdir("../"+gitDir)
+		os.system("git --no-pager log --name-status --date=iso --reverse> ../seng371/input/"+gitDir+"-log.txt")
+
+	#Parse dem logs
+	print "=====Parse the logs and look for Refactors====="
 	for name in os.listdir("./input"):
 		if name.endswith(".txt"):
 			os.system("echo "+ name)
@@ -27,6 +35,8 @@ if __name__ == '__main__':
 			comment = ""
 
 			for line in lines:
+				lastdate= date
+
 				if line.startswith("A	"):
 					added = added + 1 
 				elif line.startswith("D	"):
@@ -34,13 +44,13 @@ if __name__ == '__main__':
 				elif line.startswith("M	"):
 					modify = modify + 1
 				elif line.startswith("    "):
-					comment = line
+					comment = line[4:]
 				elif line.startswith("commit"):
-					commit = line
+					commit = line[7:]
 				elif line.startswith("Author:"):
 					pass
 				elif line.startswith("Date:"):
-					date = line
+					date = line[8:-7] + "\n"
 				else:
 					
 					diff = abs(added - delete)
@@ -50,13 +60,38 @@ if __name__ == '__main__':
 		
 						#outputfile.write("This commit was an update: " + str(stats)
 					if (added > 5 and delete > 5):
-						outputfile.write("This commit might be a refactor: Added " + str(stats[0]) + ", Deleted " + str(stats[1]) + ", Modified " + str(stats[2]) + ", Diff " + str(stats[3])+ "\n")
-						outputfile.write(commit)
-						outputfile.write(date)
-						outputfile.write(comment)
+						outputfile.write("0-- This commit might be a refactor: Added " + str(stats[0]) + ", Deleted " + str(stats[1]) + ", Modified " + str(stats[2]) + ", Diff " + str(stats[3])+ "\n")
+						outputfile.write("1-- " + lastdate)
+						outputfile.write("2-- " + date)
+						outputfile.write("3-- " + comment)
 						outputfile.write("\n\n")
 
 					added = 0
 					delete = 0
 					modify = 0
-					diff = 0		
+					diff = 0
+
+	print "=====Grab the refactors and them through gource====="
+	for name in os.listdir("./output"):
+		if name.endswith(".txt"):
+			os.system("echo "+ name)
+			inputfile = open("./output/"+name, 'r')
+			lines = inputfile.readlines()
+
+			gitDir = name[:-8]
+			print gitDir
+			os.chdir("../"+gitDir)
+
+			for line in lines:
+				if line.startswith("0-- "):
+					pass
+				elif line.startswith("1-- "):
+					lastdate = line[4:]
+				elif line.startswith("2-- "):
+					date = line[4:]
+				elif line.startswith("3-- "):
+					comment = line[4:]
+					command = 'gource --start-date "'+lastdate.strip()+'" --stop-date "'+date.strip()+'" -s .1'
+					print command
+					os.system(command)
+			os.chdir(sys.path[0])

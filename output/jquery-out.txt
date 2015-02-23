@@ -1,36 +1,36 @@
-This commit might be a refactor: Added 9, Deleted 7, Modified 7, Diff 2
-commit c5d9d88dce65b89a1d7d12b41ad254d5017a92a8
-Date:   Tue Jun 10 15:32:25 2014 -0400
-    Closes gh-1593
+0-- This commit might be a refactor: Added 13, Deleted 14, Modified 0, Diff 1
+1-- 2006-08-13 03:05:31
+2-- 2006-08-13 03:05:31
+3-- First commit of the new doc system.
 
 
-This commit might be a refactor: Added 9, Deleted 8, Modified 21, Diff 1
-commit bbbdd947256a3fcd788fb9d4f306046082a1ef1f
-Date:   Tue Aug 27 00:54:13 2013 +0200
-    Fix #10814. Make support tests lazy and broken out to components.
+0-- This commit might be a refactor: Added 17, Deleted 17, Modified 1, Diff 0
+1-- 2006-08-13 20:01:26
+2-- 2006-08-13 20:01:26
+3-- Moved the test directory.
 
 
-This commit might be a refactor: Added 6, Deleted 6, Modified 1, Diff 0
-commit 6728e3cf74d02794113deb0af70a5f9a7caa2241
-Date:   Sat Sep 8 12:46:01 2007 +0000
-    Finished up some of the reorganization.
+0-- This commit might be a refactor: Added 28, Deleted 28, Modified 1, Diff 0
+1-- 2007-09-08 12:42:32
+2-- 2007-09-08 12:42:32
+3-- Reorganzing the jQuery source (first phase).
 
 
-This commit might be a refactor: Added 28, Deleted 28, Modified 1, Diff 0
-commit b4e23b5af0820a66c2e275051f613f3df9a4444d
-Date:   Sat Sep 8 12:42:32 2007 +0000
-    Reorganzing the jQuery source (first phase).
+0-- This commit might be a refactor: Added 6, Deleted 6, Modified 1, Diff 0
+1-- 2007-09-08 12:46:01
+2-- 2007-09-08 12:46:01
+3-- Finished up some of the reorganization.
 
 
-This commit might be a refactor: Added 17, Deleted 17, Modified 1, Diff 0
-commit e943090a72fada9068705a701e2f37ca2907d310
-Date:   Sun Aug 13 20:01:26 2006 +0000
-    Moved the test directory.
+0-- This commit might be a refactor: Added 9, Deleted 8, Modified 21, Diff 1
+1-- 2013-08-27 00:54:13
+2-- 2013-08-27 00:54:13
+3-- Fix #10814. Make support tests lazy and broken out to components.
 
 
-This commit might be a refactor: Added 13, Deleted 14, Modified 0, Diff 1
-commit 8cef646d1726729671b1889928a29ac416753236
-Date:   Sun Aug 13 03:05:31 2006 +0000
-    First commit of the new doc system.
+0-- This commit might be a refactor: Added 9, Deleted 7, Modified 7, Diff 2
+1-- 2014-06-10 15:32:25
+2-- 2014-06-10 15:32:25
+3-- Closes gh-1593
 
 

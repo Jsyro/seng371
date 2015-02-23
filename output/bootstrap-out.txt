@@ -1,114 +1,114 @@
-This commit might be a refactor: Added 7, Deleted 7, Modified 2, Diff 0
-commit 1dc54dc160d4352d894550c7c5d3f68c475ba2cf
-Date:   Thu Jul 3 13:28:30 2014 -0700
-    use non-minified Bootstrap JS when on non-gh-pages
+0-- This commit might be a refactor: Added 23, Deleted 30, Modified 0, Diff 7
+1-- 2011-05-03 18:12:43
+2-- 2011-05-03 18:12:43
+3-- cleanup old stuff
 
 
-This commit might be a refactor: Added 12, Deleted 12, Modified 2, Diff 0
-commit 8ae48183b236d4db104fa165b8aea762d70b9d67
-Date:   Mon Mar 24 21:47:59 2014 +0100
-    Fix #13138: use underscore prefix to ignore directories
+0-- This commit might be a refactor: Added 6, Deleted 9, Modified 2, Diff 3
+1-- 2011-09-06 23:20:56
+2-- 2011-09-06 23:20:56
+3-- move javascript from examples into docs
 
 
-This commit might be a refactor: Added 8, Deleted 8, Modified 2, Diff 0
-commit b004c9ac393671489720be06739f01e5c1bec7fe
-Date:   Sun Mar 16 19:32:08 2014 -0700
-    Rename and organize nav partials for cleaner file structure
+0-- This commit might be a refactor: Added 15, Deleted 7, Modified 7, Diff 8
+1-- 2011-09-09 22:47:49
+2-- 2011-09-09 22:47:49
+3-- move js plugins to root dir, begin writing tests, and change modal plugin to be more boss like
 
 
-This commit might be a refactor: Added 6, Deleted 6, Modified 2, Diff 0
-commit 4bca3c79b36a621bfd6ccc258fbb9cb6de19e958
-Date:   Fri Jan 17 11:48:19 2014 +0200
-    Move docs third-party libraries to a separate folder.
+0-- This commit might be a refactor: Added 39, Deleted 39, Modified 8, Diff 0
+1-- 2012-01-26 21:48:46
+2-- 2012-01-26 21:48:46
+3-- moving structure around + more work on builder...
 
 
-This commit might be a refactor: Added 104, Deleted 92, Modified 2, Diff 12
-commit a9c829bc0c75dd7723e6c74e1defaab5dbb4c00b
-Date:   Sat Dec 28 22:47:03 2013 -0800
-    Rearrange repository contents because muahahahahahaha
+0-- This commit might be a refactor: Added 12, Deleted 9, Modified 8, Diff 3
+1-- 2013-02-05 21:04:46
+2-- 2013-02-05 21:04:46
+3-- Update homepage examples, add hella new sites to gallery
 
 
-This commit might be a refactor: Added 15, Deleted 15, Modified 19, Diff 0
-commit 8aa5181126d9480eef502403aa98e469a3597826
-Date:   Mon Sep 23 13:00:43 2013 -0700
-    move /assets/ to /docs-assets/ ; fixes #10715
+0-- This commit might be a refactor: Added 195, Deleted 232, Modified 2, Diff 37
+1-- 2013-02-12 12:44:41
+2-- 2013-02-12 12:44:41
+3-- rearrange jekyll and docs
 
 
-This commit might be a refactor: Added 8, Deleted 10, Modified 5, Diff 2
-commit e13ca6d38494e69ed1faeddbb12b469a778ade06
-Date:   Sun Aug 18 01:46:26 2013 -0700
-    Upgrade to latest glyphicons
+0-- This commit might be a refactor: Added 114, Deleted 27, Modified 22, Diff 87
+1-- 2013-05-16 11:06:30
+2-- 2013-05-16 11:06:30
+3-- a bunch javascript junk
 
 
-This commit might be a refactor: Added 12, Deleted 13, Modified 2, Diff 1
-commit 7960845f50b8dcdc5b4fce29e6075f447e04318a
-Date:   Thu Aug 15 18:55:20 2013 -0700
-    new screenshot images and docs section
+0-- This commit might be a refactor: Added 26, Deleted 13, Modified 0, Diff 13
+1-- 2013-06-23 17:17:08
+2-- 2013-06-23 17:17:08
+3-- Update remaining templates to match starter template
 
 
-This commit might be a refactor: Added 40, Deleted 40, Modified 0, Diff 0
-commit 3d99a4c15e0661df630dbaf7dddb5228cf044fe6
-Date:   Thu Aug 15 16:40:39 2013 -0700
-    move to examples dir
+0-- This commit might be a refactor: Added 33, Deleted 33, Modified 1, Diff 0
+1-- 2013-07-18 17:41:30
+2-- 2013-07-18 17:41:30
+3-- flatten docs dir back into root
 
 
-This commit might be a refactor: Added 14, Deleted 14, Modified 13, Diff 0
-commit bf51e24700627b17df5041f3a369f6f6b4a4bfbb
-Date:   Sat Jul 20 23:17:01 2013 -0700
-    change file names to example names
+0-- This commit might be a refactor: Added 14, Deleted 14, Modified 13, Diff 0
+1-- 2013-07-20 23:17:01
+2-- 2013-07-20 23:17:01
+3-- change file names to example names
 
 
-This commit might be a refactor: Added 33, Deleted 33, Modified 1, Diff 0
-commit a8005b3d0b8599611e8bfc864e704b50411fcb69
-Date:   Thu Jul 18 17:41:30 2013 -0700
-    flatten docs dir back into root
+0-- This commit might be a refactor: Added 40, Deleted 40, Modified 0, Diff 0
+1-- 2013-08-15 16:40:39
+2-- 2013-08-15 16:40:39
+3-- move to examples dir
 
 
-This commit might be a refactor: Added 26, Deleted 13, Modified 0, Diff 13
-commit 8e50e7a8f264c65b453a9b7133c7532c439730f5
-Date:   Sun Jun 23 17:17:08 2013 -0700
-    Update remaining templates to match starter template
+0-- This commit might be a refactor: Added 12, Deleted 13, Modified 2, Diff 1
+1-- 2013-08-15 18:55:20
+2-- 2013-08-15 18:55:20
+3-- new screenshot images and docs section
 
 
-This commit might be a refactor: Added 114, Deleted 27, Modified 22, Diff 87
-commit 14651035deda4d02a1ca02c6088c34f770f897f6
-Date:   Thu May 16 11:06:30 2013 -0700
-    a bunch javascript junk
+0-- This commit might be a refactor: Added 8, Deleted 10, Modified 5, Diff 2
+1-- 2013-08-18 01:46:26
+2-- 2013-08-18 01:46:26
+3-- Upgrade to latest glyphicons
 
 
-This commit might be a refactor: Added 195, Deleted 232, Modified 2, Diff 37
-commit e45f12ad427fddc9d9859fe86423bd49795d4f43
-Date:   Tue Feb 12 12:44:41 2013 -0800
-    rearrange jekyll and docs
+0-- This commit might be a refactor: Added 15, Deleted 15, Modified 19, Diff 0
+1-- 2013-09-23 13:00:43
+2-- 2013-09-23 13:00:43
+3-- move /assets/ to /docs-assets/ ; fixes #10715
 
 
-This commit might be a refactor: Added 12, Deleted 9, Modified 8, Diff 3
-commit fb1db88256d94bf1844c2fcdb34fc98a76c313fb
-Date:   Tue Feb 5 21:04:46 2013 -0800
-    Update homepage examples, add hella new sites to gallery
+0-- This commit might be a refactor: Added 104, Deleted 92, Modified 2, Diff 12
+1-- 2013-12-28 22:47:03
+2-- 2013-12-28 22:47:03
+3-- Rearrange repository contents because muahahahahahaha
 
 
-This commit might be a refactor: Added 39, Deleted 39, Modified 8, Diff 0
-commit dc2deb9a1b1995bbabee91bfd579d9b466fe78f2
-Date:   Thu Jan 26 21:48:46 2012 -0800
-    moving structure around + more work on builder...
+0-- This commit might be a refactor: Added 6, Deleted 6, Modified 2, Diff 0
+1-- 2014-01-17 11:48:19
+2-- 2014-01-17 11:48:19
+3-- Move docs third-party libraries to a separate folder.
 
 
-This commit might be a refactor: Added 15, Deleted 7, Modified 7, Diff 8
-commit 5f4e30ed1d33f83b0fad3afc9174e193e6c3fdf4
-Date:   Fri Sep 9 22:47:49 2011 -0700
-    move js plugins to root dir, begin writing tests, and change modal plugin to be more boss like
+0-- This commit might be a refactor: Added 8, Deleted 8, Modified 2, Diff 0
+1-- 2014-03-16 19:32:08
+2-- 2014-03-16 19:32:08
+3-- Rename and organize nav partials for cleaner file structure
 
 
-This commit might be a refactor: Added 6, Deleted 9, Modified 2, Diff 3
-commit fb8987148aeae4b9aa2b4c28fa3ad5346b8c56b1
-Date:   Tue Sep 6 23:20:56 2011 -0700
-    move javascript from examples into docs
+0-- This commit might be a refactor: Added 12, Deleted 12, Modified 2, Diff 0
+1-- 2014-03-24 21:47:59
+2-- 2014-03-24 21:47:59
+3-- Fix #13138: use underscore prefix to ignore directories
 
 
-This commit might be a refactor: Added 23, Deleted 30, Modified 0, Diff 7
-commit 96c3e709963516a06ad6e723a7bba3fbf5fc1ba2
-Date:   Tue May 3 18:12:43 2011 -0700
-    cleanup old stuff
+0-- This commit might be a refactor: Added 7, Deleted 7, Modified 2, Diff 0
+1-- 2014-07-03 13:28:30
+2-- 2014-07-03 13:28:30
+3-- use non-minified Bootstrap JS when on non-gh-pages
 
 
