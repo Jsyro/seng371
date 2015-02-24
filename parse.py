@@ -96,7 +96,7 @@ if __name__ == '__main__':
 					date = line[4:]
 				elif line.startswith("3-- "):
 					comment = line[4:]
-					command = 'gource --start-date "'+lastdate.strip()+'" --stop-date "'+date.strip()+'" -s .1 -e 0.00000001 --key --title "' +gitDir + "     " + comment.strip() +'" --highlight-dirs'
+					command = 'gource --start-date "'+lastdate.strip()+'" --stop-date "'+date.strip()+'" -s 1 --key --title "' +gitDir + "     " + comment.strip() +'" --highlight-dirs'
 					print command
 					os.system(command)
 			os.chdir(sys.path[0])

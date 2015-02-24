@@ -1,4 +1,4 @@
-Jason Syrotuck, Evan Hildebrandt, Keith, Rollans
+Jason Syrotuck, Evan Hildebrandt, Keith Rollans
 
 # SENG 371 Group Project 1 
 
