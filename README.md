@@ -6,7 +6,7 @@ Jason Syrotuck, Evan Hildebrandt, Keith Rollans
 	Does the file structure of the source code affect the ability for the project to evolve? 
 	
 ##2 The methodology you are using to answer the question
-	Anaylze release and tag them based on, Security Update, Bug fixes, feature releases, preformance improvements, refactors.
+	Anaylze release and tag them based on, Security Update, Bug fixes, feature releases, performance improvements, refactors.
 	Use some statistics on these to understand the frequency of these types of updates. Visually inspect the codebase using
 	dependancy visualization tools (Gource) to gain details of the nature of these changes. 
 
@@ -42,7 +42,7 @@ Projects in early life tend to end up with ring formations, and as the project e
 ####4.2 Threats to validity
 Because the observations are qualitative rather than quantitative there could be some discrepency between how people chose to interpret the outputs.
 ####4.3 Future work
-Change gource to show only the changes of the committer or the refactor and change the start-end date to be their last commit (if available)
+Change gource to show only the changes of the user that committed or the refactored, and to change the start-end date to be this users last commit (if available)
 	
 ##5 Project management information
 ####5.1 Milestones and timelines
