@@ -41,7 +41,8 @@ Jason Syrotuck, Evan Hildebrandt, Keith Rollans
 
 ##4 An analysis of these results
 ####4.1 An answer to your original question based on these data sources and your methodology
-Projects in early life tend to end up with ring formations, and as the project evolves, more tree like structures (based around functionality) appear. Rails however, had more refactors early on to maintain a tree structure and not letting large folders (25 source code files in a single folder is usually broken down quickly, (except, asset, testing models,....)) Rails last major refactor is in 2013. 
+####4.1 An answer to your original question based on these data sources and your methodology
+Projects in early life tend to end up with ring formations, and as the project evolves, more tree like structures (based around functionality) appear. Rails however, had more refactors early on to maintain a tree structure and not letting large folders (25 source code files in a single folder is usually broken down quickly, assets folders and testing models tended to stay large but eventaully did get broken down.) Rails last major refactor is in 2013, but has a very active base of collaborators with contiuous commits and additions.   
 ####4.2 Threats to validity
 Because the observations are qualitative rather than quantitative there could be some discrepency between how people chose to interpret the outputs.
 ####4.3 Future work
