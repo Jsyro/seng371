@@ -6,7 +6,7 @@ Jason Syrotuck, Evan Hildebrandt, Keith Rollans
 	Does the file structure of the source code affect the ability for the project to evolve? 
 	
 ##2 The methodology you are using to answer the question
-	Anaylze release and tag them based on, Security Update, Bug fixes, feature releases, performance improvements, refactors.
+	Anaylze release and tag them based on, Security Update, Bug fixes, feature releases, preformance improvements, refactors.
 	Use some statistics on these to understand the frequency of these types of updates. Visually inspect the codebase using
 	dependancy visualization tools (Gource) to gain details of the nature of these changes. 
 
@@ -33,16 +33,19 @@ Jason Syrotuck, Evan Hildebrandt, Keith Rollans
 ##3 The results of your experiment
 		We found that refactors typically show two different results of a refactors
 			1. New divisions by modules <picture> 
-			2. New tree structure to show functionality (more reference errors, bigger follow up fix) <picture>
-			![Ring](https://raw.githubusercontent.com/Jsyro/seng371/master/ring.png)
-			![Tree](https://raw.githubusercontent.com/Jsyro/seng371/master/tree.png)
+			2. New tree structure to show functionality (more reference errors, bigger follow up fix) 
+			
+<picture>![Ring](https://raw.githubusercontent.com/Jsyro/seng371/master/ring.png)
+
+<picture>![Tree](https://raw.githubusercontent.com/Jsyro/seng371/master/tree.png)
+
 ##4 An analysis of these results
 ####4.1 An answer to your original question based on these data sources and your methodology
 Projects in early life tend to end up with ring formations, and as the project evolves, more tree like structures (based around functionality) appear. Rails however, had more refactors early on to maintain a tree structure and not letting large folders (25 source code files in a single folder is usually broken down quickly, (except, asset, testing models,....)) Rails last major refactor is in 2013. 
 ####4.2 Threats to validity
 Because the observations are qualitative rather than quantitative there could be some discrepency between how people chose to interpret the outputs.
 ####4.3 Future work
-Change gource to show only the changes of the user that committed or the refactored, and to change the start-end date to be this users last commit (if available)
+Change gource to show only the changes of the committer or the refactor and change the start-end date to be their last commit (if available)
 	
 ##5 Project management information
 ####5.1 Milestones and timelines
