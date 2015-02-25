@@ -38,24 +38,25 @@ Jason Syrotuck, Evan Hildebrandt, Keith Rollans
 ##4 An analysis of these results
     ####4.1 An answer to your original question based on these data sources and your methodology
 			-	Projects in early life tend to end up with ring formations, and as the project evolves, more tree like structures (based around functionality) appear. Rails however, had more refactors early on to maintain a tree structure and not letting large folders (25 source code files in a single folder is usually broken down quickly, (except, asset, testing models,....)) Rails last major refactor is in 2013. 
-    ####4.2 Threats to validity
+####4.2 Threats to validity
 		
-    ####4.3 Future work
+####4.3 Future work
 	
 ##5 Project management information
-    ####5.1 Milestones and timelines
+####5.1 Milestones and timelines
 		1. Downloading the repositories for inspection.
 		2. Producing a filtered gitlog containing only refactors (Python program).
 		3. Running Gource to get a visual representation of the change to the file structure.
 		
-    ####5.2 Roles of team members
+####5.2 Roles of team members
 		Jason Syrotuck: 
-		
+			Algorithm Writer
 		
 		Evan Hildebrandt: 
-		
+			Programmer
 		
 		Keith Rollans:	
+			Support
 
 	
 	
