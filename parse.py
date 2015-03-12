@@ -2,22 +2,34 @@
 import sys
 import re
 import os
+import os.path
 import time
+import datetime
+import dateutil.parser
+import matplotlib.pyplot as plt
+from numpy.random import rand
 
 
 
 
-if __name__ == '__main__':
+def main():
+	generate()
+	parse()
+	graph()
+	gource()
 
+def generate():
 	#Get da logz
 	print "=====Generating logs from Git Repos====="
 	for item in os.listdir("../"):
 		gitDir = item
 		print gitDir
 
-		os.chdir("../"+gitDir)
-		os.system("git --no-pager log --name-status --date=iso --reverse> ../seng371/input/"+gitDir+"-log.txt")
+		if (os.path.isfile("./input/"+gitDir+"-log.txt") == False): #assume log hasnt changed since last run
+			os.chdir("../"+gitDir)
+			os.system("git --no-pager log --name-status --date=iso --reverse> ../seng371/input/"+gitDir+"-log.txt")
 
+def parse():
 	#Parse dem logs
 	print "=====Parse the logs and look for Refactors====="
 	for name in os.listdir("./input"):
@@ -76,6 +88,7 @@ if __name__ == '__main__':
 					modify = 0
 					diff = 0
 
+def gource():
 	print "=====Grab the refactors and them through gource====="
 	for name in os.listdir("./output"):
 		if name.endswith(".txt"):
@@ -100,3 +113,83 @@ if __name__ == '__main__':
 					print command
 					os.system(command)
 			os.chdir(sys.path[0])
+
+def graph():
+		#Parse dem logs
+	print "=====Parse the logs Graph====="
+	for name in os.listdir("./input"):
+		if name.endswith(".txt"):
+			os.system("echo "+ name)
+			inputfile = open("./input/"+name, 'r')
+			out = name.replace("log", "out")
+			outputfile = open("./output/"+out, 'w')
+			lines = inputfile.readlines()
+			added = 0 
+			delete = 0 
+			modify = 0 
+			diff = 0
+			alpha = 0
+			
+			commit = ""
+			date = ""
+			comment = ""
+
+			for line in lines:
+
+				if line.startswith("A	"):
+					added = added + 1 
+				elif line.startswith("D	"):
+					delete = delete + 1
+				elif line.startswith("M	"):
+					modify = modify + 1
+				elif line.startswith("    "):
+					comment = line[4:]
+				elif line.startswith("commit"):
+					commit = line[7:]
+				elif line.startswith("Author:"):
+					pass
+				elif line.startswith("Date:"):
+					tempdate = date
+					date = line[8:-3] + "\n"
+					
+
+				else:
+					
+					diff = abs(added - delete)
+					stats = [added,delete,modify, diff]
+					if (modify > 3):
+						scale = modify
+						color = "purple"
+						alpha = .3
+		
+						#outputfile.write("This commit was an update: " + str(stats)
+					if (added > 1 and delete > 1):
+						scale = added+delete
+						if (added/delete) < 0.9:
+							color = "red"
+							alpha = .3
+						elif (added/delete) < 1.1:
+							color = "green"
+							alpha = .7
+						else:
+							color = "blue"
+							alpha = .3
+
+					if alpha != 0:
+						date = dateutil.parser.parse(date)
+						plt.scatter(date, scale, c=color, s=scale, label=color,
+                alpha=alpha, edgecolors='none')
+						
+
+					added = 0
+					delete = 0
+					modify = 0
+					diff = 0
+					alpha = 0
+
+
+			plt.grid(True)
+			plt.show()
+
+if __name__ == "__main__":
+    main()
