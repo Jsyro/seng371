@@ -13,10 +13,19 @@ from numpy.random import rand
 
 
 def main():
-	generate()
-	parse()
-	graph()
-	gource()
+	os.system('cls')
+	print "Options:"
+	print "		generate"
+	print "		parse"
+	print "		graph"
+	print "		gource"
+	s = raw_input('Enter an option: ')
+
+	if s in globals():
+		globals()[s]()
+	else:
+		print "Invalid Option"
+	main()
 
 def generate():
 	#Get da logz
