@@ -16,17 +16,46 @@ import numpy as np
 def main():
 	os.system('cls')
 	print "Options:"
-	print "		generate"
-	print "		parse"
-	print "		graph"
-	print "		gource"
-	s = raw_input('Enter an option: ')
+	print "=============================================================="
+	print "	generate"
+	print "		--generates git logs and puts them in the ./input folder"
+	print "	parse"
+	print "		--parses git logs and puts them in the ./output folder"
+	print "	graph"
+	print "		--outputs a scatter plot of the commits"
+	print "	gource"
+	print "		--runs gource on each of the found refactors"
+	print "	lines"
+	print "		--outputs a chart of the added/deleted files against commits"
+	print "	clean"
+	print "		--deletes contents of ./input and ./output folders"
+	s = raw_input('Enter an option: ').lower()
 
 	if s in globals():
 		globals()[s]()
 	else:
 		print "Invalid Option"
 	main()
+
+def clean():
+
+	folder = './input'
+	for the_file in os.listdir(folder):
+		file_path = os.path.join(folder, the_file)
+		try:
+			if os.path.isfile(file_path):
+				os.unlink(file_path)
+		except Exception, e:
+			print e
+
+	folder = './output'
+	for the_file in os.listdir(folder):
+		file_path = os.path.join(folder, the_file)
+		try:
+			if os.path.isfile(file_path):
+				os.unlink(file_path)
+		except Exception, e:
+			print e
 
 def generate():
 	#Get da logz
@@ -204,12 +233,27 @@ def graph():
 def lines():
 		#Parse dem logs
 	print "=====Parse the logs Graph====="
+	s = raw_input('Enter a time delta (days): ')
+	outlier = raw_input('Destroy outliers? (y/n): ').lower()
+	delta = int(float(s))
+
+	if (outlier == "y") or (outlier == "yes"):
+		outlier = True
+		percent = raw_input('What Percentile? (0-100): ')
+		percent = int(float(percent))
+
+	dosum = raw_input('Percentage? (y/n): ').lower()
+	if (dosum == "y" )or (dosum ==  "yes"):
+		dosum = True
+
+	justify = raw_input('Justify by average? (y/n): ').lower()
+	if (justify == "y" )or (justify ==  "yes"):
+		justify = True
+
 	for name in os.listdir("./input"):
 		if name.endswith(".txt"):
 			os.system("echo "+ name)
 			inputfile = open("./input/"+name, 'r')
-			out = name.replace("log", "out")
-			outputfile = open("./output/"+out, 'w')
 
 			x = 0
 			lines = inputfile.readlines()
@@ -251,13 +295,15 @@ def lines():
 					
 
 				else:
-					if (date > olddate + (datetime.timedelta(days=30))):
+					if (date > olddate + (datetime.timedelta(days=delta))):
 						olddate = date
-						x = x + 1
+
+						
+						
 						added = np.append(added, [a])
 						delete = np.append(delete, [d])
 						modify = np.append(modify, [commits])
-						z = np.append(z, [x])
+						z = np.append(z, [date])
 						a = 0
 						d = 0
 						m = 0
@@ -265,15 +311,41 @@ def lines():
 			
 
 			with plt.style.context('fivethirtyeight'):
-				print added
+				print "Commits: "
+				print modify
 				print x
-				avgAdd = np.median(added)
-				avgRem = np.median(delete)
-				avgMod = np.median(modify)
-				plt.plot(z, added - avgAdd)
-				plt.plot(z, delete - avgRem)
-				plt.plot(z, modify - avgMod)
+				if outlier == True:
+					perAdd = np.percentile(added, percent)
+					perRem = np.percentile(delete, percent)
+					perMod = np.percentile(modify, percent)
 
+					added = np.clip(added, 0, perAdd)
+					delete = np.clip(delete, 0, perRem)
+					modify = np.clip(modify, 0, perMod)
+
+				if justify == True:
+					avgAdd = np.average(added)
+					avgRem = np.average(delete)
+					avgMod = np.average(modify)
+
+					added = added - avgAdd
+					delete = delete - avgRem
+					modify = modify - avgMod
+
+				if dosum == True:
+					sumAdd = np.sum(added)
+					sumRem = np.sum(delete)
+					sumMod = np.sum(modify)
+
+					added = added/sumAdd
+					delete = delete/sumRem
+					modify = modify/sumMod
+
+				plt.plot(z, added)
+				plt.plot(z, delete)
+				plt.plot(z, modify)
+
+			plt.title(name)
 			plt.show()
 if __name__ == "__main__":
     main()
