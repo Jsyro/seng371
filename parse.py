@@ -271,7 +271,7 @@ def lines():
 			commit = ""
 			date = ""
 			comment = ""
-
+			first = True
 			for line in lines:
 				if line.startswith("A	"):
 					a = a + 1 
@@ -290,16 +290,13 @@ def lines():
 					tempdate = date
 					date = line[8:30] + "\n"
 					date = dateutil.parser.parse(date)
-
-					
-					
-
-				else:
-					if (date > olddate + (datetime.timedelta(days=delta))):
+					if first:
 						olddate = date
-
-						
-						
+						first = False
+					if (date > olddate + datetime.timedelta(days=delta)):
+						olddate = date
+						print date
+						print olddate
 						added = np.append(added, [a])
 						delete = np.append(delete, [d])
 						modify = np.append(modify, [commits])
