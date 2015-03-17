@@ -173,9 +173,9 @@ def graph():
 						alpha = .3
 		
 						#outputfile.write("This commit was an update: " + str(stats)
-					if (added[x] > 1 and delete > 1):
+					if (added > 1 and delete > 1):
 						scale = added+delete
-						if (added[x]/delete) < 0.9:
+						if (added/delete) < 0.9:
 							color = "red"
 							alpha = .3
 						elif (added/delete) < 1.1:
@@ -220,6 +220,7 @@ def lines():
 			a = 0
 			d = 0
 			m = 0
+			commits = 0
 			olddate = dateutil.parser.parse("1990-01-01 13:53:51 -0700")
 
 			
@@ -233,7 +234,7 @@ def lines():
 				elif line.startswith("D	"):
 					d = d + 1
 				elif line.startswith("M	"):
-					m =m + 1
+					m = m + 1
 				elif line.startswith("    "):
 					comment = line[4:]
 				elif line.startswith("commit"):
@@ -242,26 +243,25 @@ def lines():
 					pass
 				elif line.startswith("Date:"):
 					tempdate = date
-					date = line[8:-3] + "\n"
+					date = line[8:30] + "\n"
 					date = dateutil.parser.parse(date)
 
 					
 					
 
 				else:
-
-					if (date > olddate + (datetime.timedelta(days=365))):
-						print olddate
-						print date
+					commits = commits + 1
+					if (date > olddate + (datetime.timedelta(days=30))):
 						olddate = date
 						x = x + 1
 						added = np.append(added, [a])
 						delete = np.append(delete, [d])
-						modify = np.append(modify, [m])
+						modify = np.append(modify, [commits])
 						z = np.append(z, [x])
 						a = 0
 						d = 0
 						m = 0
+						commits = 0
 			
 
 			with plt.style.context('fivethirtyeight'):
