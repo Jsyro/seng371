@@ -49,7 +49,7 @@ def parse():
 			out = name.replace("log", "out")
 			outputfile = open("./output/"+out, 'w')
 			lines = inputfile.readlines()
-			added[x] = 0 
+			added = 0 
 			delete = 0 
 			modify = 0 
 			diff = 0
@@ -61,7 +61,7 @@ def parse():
 			for line in lines:
 
 				if line.startswith("A	"):
-					added[x] = added[x] + 1 
+					added = added + 1 
 				elif line.startswith("D	"):
 					delete = delete + 1
 				elif line.startswith("M	"):
@@ -80,20 +80,20 @@ def parse():
 
 				else:
 					
-					diff = abs(added[x] - delete)
-					stats = [added[x],delete,modify, diff]
-					if (added[x] == 0 and delete == 0):
+					diff = abs(added - delete)
+					stats = [added,delete,modify, diff]
+					if (added == 0 and delete == 0):
 						pass
 		
 						#outputfile.write("This commit was an update: " + str(stats)
-					if (added[x] > 5 and delete > 5):
-						outputfile.write("0-- This commit might be a refactor: Added[x] " + str(stats[0]) + ", Deleted " + str(stats[1]) + ", Modified " + str(stats[2]) + ", Diff " + str(stats[3])+ "\n")
+					if (added > 5 and delete > 5):
+						outputfile.write("0-- This commit might be a refactor: Added " + str(stats[0]) + ", Deleted " + str(stats[1]) + ", Modified " + str(stats[2]) + ", Diff " + str(stats[3])+ "\n")
 						outputfile.write("1-- " + lastdate)
 						outputfile.write("2-- " + date)
 						outputfile.write("3-- " + comment)
 						outputfile.write("\n\n")
 
-					added[x] = 0
+					added = 0
 					delete = 0
 					modify = 0
 					diff = 0
@@ -134,7 +134,7 @@ def graph():
 			out = name.replace("log", "out")
 			outputfile = open("./output/"+out, 'w')
 			lines = inputfile.readlines()
-			added[x] = 0 
+			added = 0 
 			delete = 0 
 			modify = 0 
 			diff = 0
@@ -147,7 +147,7 @@ def graph():
 			for line in lines:
 
 				if line.startswith("A	"):
-					added[x] = added[x] + 1 
+					added = added + 1 
 				elif line.startswith("D	"):
 					delete = delete + 1
 				elif line.startswith("M	"):
@@ -165,8 +165,8 @@ def graph():
 
 				else:
 					
-					diff = abs(added[x] - delete)
-					stats = [added[x],delete,modify, diff]
+					diff = abs(added - delete)
+					stats = [added,delete,modify, diff]
 					if (modify > 3):
 						scale = modify
 						color = "purple"
@@ -174,11 +174,11 @@ def graph():
 		
 						#outputfile.write("This commit was an update: " + str(stats)
 					if (added[x] > 1 and delete > 1):
-						scale = added[x]+delete
+						scale = added+delete
 						if (added[x]/delete) < 0.9:
 							color = "red"
 							alpha = .3
-						elif (added[x]/delete) < 1.1:
+						elif (added/delete) < 1.1:
 							color = "green"
 							alpha = .7
 						else:
@@ -191,7 +191,7 @@ def graph():
                 alpha=alpha, edgecolors='none')
 						
 
-					added[x] = 0
+					added = 0
 					delete = 0
 					modify = 0
 					diff = 0
@@ -220,6 +220,7 @@ def lines():
 			a = 0
 			d = 0
 			m = 0
+			olddate = dateutil.parser.parse("1990-01-01 13:53:51 -0700")
 
 			
 			commit = ""
@@ -242,19 +243,25 @@ def lines():
 				elif line.startswith("Date:"):
 					tempdate = date
 					date = line[8:-3] + "\n"
+					date = dateutil.parser.parse(date)
+
+					
 					
 
 				else:
 
-					if (a > 10) or (d > 10) or (m > 10):
+					if (date > olddate + (datetime.timedelta(days=365))):
+						print olddate
+						print date
+						olddate = date
 						x = x + 1
 						added = np.append(added, [a])
 						delete = np.append(delete, [d])
 						modify = np.append(modify, [m])
 						z = np.append(z, [x])
-					a = 0
-					d = 0
-					m = 0
+						a = 0
+						d = 0
+						m = 0
 			
 
 			with plt.style.context('fivethirtyeight'):
