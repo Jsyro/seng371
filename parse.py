@@ -242,6 +242,7 @@ def lines():
 				elif line.startswith("Author:"):
 					pass
 				elif line.startswith("Date:"):
+					commits = commits + 1
 					tempdate = date
 					date = line[8:30] + "\n"
 					date = dateutil.parser.parse(date)
@@ -250,7 +251,6 @@ def lines():
 					
 
 				else:
-					commits = commits + 1
 					if (date > olddate + (datetime.timedelta(days=30))):
 						olddate = date
 						x = x + 1
@@ -267,9 +267,12 @@ def lines():
 			with plt.style.context('fivethirtyeight'):
 				print added
 				print x
-				plt.plot(z, added)
-				plt.plot(z, delete)
-				plt.plot(z, modify)
+				avgAdd = np.median(added)
+				avgRem = np.median(delete)
+				avgMod = np.median(modify)
+				plt.plot(z, added - avgAdd)
+				plt.plot(z, delete - avgRem)
+				plt.plot(z, modify - avgMod)
 
 			plt.show()
 if __name__ == "__main__":
