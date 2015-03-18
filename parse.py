@@ -29,6 +29,7 @@ def main():
 	print "		--outputs a chart of the added/deleted files against commits"
 	print "	clean"
 	print "		--deletes contents of ./input and ./output folders"
+
 	s = raw_input('Enter an option: ').lower()
 
 	if s in globals():
@@ -66,7 +67,8 @@ def generate():
 
 		if (os.path.isfile("./input/"+gitDir+"-log.txt") == False): #assume log hasnt changed since last run
 			os.chdir("../"+gitDir)
-			os.system("git --no-pager log --name-status --date=iso --reverse> ../seng371/input/"+gitDir+"-log.txt")
+			os.system("git --no-pager log master --name-status --author-date-order --reverse --date=iso > ../seng371/input/"+gitDir+"-log.txt")
+
 
 def parse():
 	#Parse dem logs
@@ -271,6 +273,7 @@ def lines():
 			commit = ""
 			date = ""
 			comment = ""
+
 			first = True
 			for line in lines:
 				if line.startswith("A	"):
@@ -290,9 +293,11 @@ def lines():
 					tempdate = date
 					date = line[8:30] + "\n"
 					date = dateutil.parser.parse(date)
+
 					if first:
 						olddate = date
 						first = False
+
 					if (date > olddate + datetime.timedelta(days=delta)):
 						olddate = date
 						print date
@@ -311,6 +316,7 @@ def lines():
 				print "Commits: "
 				print modify
 				print x
+
 				if outlier == True:
 					perAdd = np.percentile(added, percent)
 					perRem = np.percentile(delete, percent)
@@ -342,7 +348,7 @@ def lines():
 				plt.plot(z, delete)
 				plt.plot(z, modify)
 
-			plt.title(name)
+			plt.title(name[:-8])
 			plt.show()
 if __name__ == "__main__":
     main()
