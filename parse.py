@@ -257,24 +257,52 @@ def lines():
 			os.system("echo "+ name)
 			inputfile = open("./input/"+name, 'r')
 
-			x = 0
 			lines = inputfile.readlines()
-			added= np.array([])
-			delete = np.array([])
-			modify = np.array([])
-			z = np.array([])
+
+			firstDate = ""
+			lastDate = ""
+			first = True
+			for line in lines:
+				if line.startswith("Date:"):
+					date = line[8:30] + "\n"
+					date = dateutil.parser.parse(date)
+					if first:
+						firstDate = date
+						lastDate = date
+						first = False
+					else:
+						if date < firstDate:
+							firstDate = date
+						if date > lastDate:
+							lastDate = date
+
+			time = np.array([firstDate])
+
+			date = firstDate
+			while date < lastDate:
+				date = date + datetime.timedelta(days=delta)
+				time = np.append(time, [date])
+				
+
+
+			length = time.size
+			print length
+			added= np.zeros(length)
+			delete = np.zeros(length)
+			modify = np.zeros(length)
+
 			a = 0
 			d = 0
 			m = 0
 			commits = 0
-			olddate = dateutil.parser.parse("1990-01-01 13:53:51 -0700")
-
+			position = 0
 			
 			commit = ""
 			date = ""
 			comment = ""
 
 			first = True
+
 			for line in lines:
 				if line.startswith("A	"):
 					a = a + 1 
@@ -294,28 +322,20 @@ def lines():
 					date = line[8:30] + "\n"
 					date = dateutil.parser.parse(date)
 
-					if first:
-						olddate = date
-						first = False
-
-					if (date > olddate + datetime.timedelta(days=delta)):
-						olddate = date
-						print date
-						print olddate
-						added = np.append(added, [a])
-						delete = np.append(delete, [d])
-						modify = np.append(modify, [commits])
-						z = np.append(z, [date])
-						a = 0
-						d = 0
-						m = 0
-						commits = 0
+					position = np.searchsorted(time, date) -1
+					added[position] = added[position] + a
+					delete[position] = delete[position] + d
+					modify[position] = modify[position] + commits
+					a = 0
+					d = 0
+					m = 0
+					commits = 0
+					position = 0
 			
 
 			with plt.style.context('fivethirtyeight'):
 				print "Commits: "
 				print modify
-				print x
 
 				if outlier == True:
 					perAdd = np.percentile(added, percent)
@@ -344,11 +364,12 @@ def lines():
 					delete = delete/sumRem
 					modify = modify/sumMod
 
-				plt.plot(z, added)
-				plt.plot(z, delete)
-				plt.plot(z, modify)
+				plt.plot(time, added)
+				plt.plot(time, delete)
+				plt.plot(time, modify)
 
 			plt.title(name[:-8])
-			plt.show()
+			plt.savefig('./img/' + name[:-8]+"-"+str(delta)+'.png')
+			plt.clf()
 if __name__ == "__main__":
     main()
