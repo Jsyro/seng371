@@ -235,6 +235,10 @@ def graph():
 def lines():
 		#Parse dem logs
 	print "=====Parse the logs Graph====="
+	png = raw_input('Export to png? (y/n): ').lower()
+	if (png == "y" )or (png ==  "yes"):
+		png = True
+
 	s = raw_input('Enter a time delta (days): ')
 	outlier = raw_input('Destroy outliers? (y/n): ').lower()
 	delta = int(float(s))
@@ -276,12 +280,14 @@ def lines():
 						if date > lastDate:
 							lastDate = date
 
-			time = np.array([firstDate])
+			time = np.array([lastDate])
 
-			date = firstDate
-			while date < lastDate:
-				date = date + datetime.timedelta(days=delta)
-				time = np.append(time, [date])
+			date = lastDate
+			while date > firstDate:
+				date = date - datetime.timedelta(days=delta)
+				time = np.append([date], time)
+				
+				
 				
 
 
@@ -322,7 +328,7 @@ def lines():
 					date = line[8:30] + "\n"
 					date = dateutil.parser.parse(date)
 
-					position = np.searchsorted(time, date) -1
+					position = np.searchsorted(time, date)
 					added[position] = added[position] + a
 					delete[position] = delete[position] + d
 					modify[position] = modify[position] + commits
@@ -336,6 +342,7 @@ def lines():
 			with plt.style.context('fivethirtyeight'):
 				print "Commits: "
 				print modify
+				print time
 
 				if outlier == True:
 					perAdd = np.percentile(added, percent)
@@ -369,7 +376,12 @@ def lines():
 				plt.plot(time, modify)
 
 			plt.title(name[:-8])
-			plt.savefig('./img/' + name[:-8]+"-"+str(delta)+'.png')
+			if png == True:
+				plt.savefig('./img/' + name[:-8]+"-"+str(delta)+'.png')
+			else:
+				plt.show()
+			
 			plt.clf()
+
 if __name__ == "__main__":
     main()
