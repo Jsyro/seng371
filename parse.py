@@ -38,6 +38,15 @@ def main():
 		print "Invalid Option"
 	main()
 
+def folders():
+
+	if not os.path.exists('./input'):
+		os.makedirs('./input')
+	if not os.path.exists('./output'):
+		os.makedirs('./output')
+	if not os.path.exists('./img'):
+		os.makedirs('./img')
+
 def clean():
 
 	folder = './input'
@@ -105,7 +114,7 @@ def parse():
 					pass
 				elif line.startswith("Date:"):
 					tempdate = date
-					date = line[8:-3] + "\n"
+					date = line[8:30] + "\n"
 					if tempdate[:12] != date[:12]:
 						lastdate = tempdate
 
@@ -191,31 +200,36 @@ def graph():
 					pass
 				elif line.startswith("Date:"):
 					tempdate = date
-					date = line[8:-3] + "\n"
+					date = line[8:30] + "\n"
 					
 
 				else:
-					
+					r = 0
+					g = 0
+					b = 0
+
 					diff = abs(added - delete)
 					stats = [added,delete,modify, diff]
 					if (modify > 3):
 						scale = modify
-						color = "purple"
+						g = 1- 1/modify
 						alpha = .3
-		
+
 						#outputfile.write("This commit was an update: " + str(stats)
 					if (added > 1 and delete > 1):
 						scale = added+delete
+
+						r = 1 - 1/delete
+						b = 1 - 1/added
+
 						if (added/delete) < 0.9:
-							color = "red"
 							alpha = .3
 						elif (added/delete) < 1.1:
-							color = "green"
 							alpha = .7
 						else:
-							color = "blue"
 							alpha = .3
 
+					color = [r, g, b]
 					if alpha != 0:
 						date = dateutil.parser.parse(date)
 						plt.scatter(date, scale, c=color, s=scale, label=color,
@@ -239,10 +253,8 @@ def lines():
 	if (png == "y" )or (png ==  "yes"):
 		png = True
 
-	s = raw_input('Enter a time delta (days): ')
-	outlier = raw_input('Destroy outliers? (y/n): ').lower()
-	delta = int(float(s))
 
+	outlier = raw_input('Destroy outliers? (y/n): ').lower()
 	if (outlier == "y") or (outlier == "yes"):
 		outlier = True
 		percent = raw_input('What Percentile? (0-100): ')
@@ -251,10 +263,12 @@ def lines():
 	dosum = raw_input('Percentage? (y/n): ').lower()
 	if (dosum == "y" )or (dosum ==  "yes"):
 		dosum = True
+	else:
+		justify = raw_input('Justify by average? (y/n): ').lower()
+		if (justify == "y" )or (justify ==  "yes"):
+			justify = True
 
-	justify = raw_input('Justify by average? (y/n): ').lower()
-	if (justify == "y" )or (justify ==  "yes"):
-		justify = True
+	
 
 	for name in os.listdir("./input"):
 		if name.endswith(".txt"):
@@ -280,108 +294,111 @@ def lines():
 						if date > lastDate:
 							lastDate = date
 
-			time = np.array([lastDate])
+			spans = [1,7,30,180,365]
+			for delta in spans:
+				time = np.array([lastDate])
+				date = lastDate
 
-			date = lastDate
-			while date > firstDate:
-				date = date - datetime.timedelta(days=delta)
-				time = np.append([date], time)
+				while date > firstDate:
+					date = date - datetime.timedelta(days=delta)
+					time = np.append([date], time)
+					
+					
+					
+	
+	
+				length = time.size
+				print length
+				added= np.zeros(length)
+				delete = np.zeros(length)
+				modify = np.zeros(length)
+	
+				a = 0
+				d = 0
+				m = 0
+				commits = 0
+				position = 0
 				
+				commit = ""
+				date = ""
+				comment = ""
+	
+				first = True
+	
+				for line in lines:
+					if line.startswith("A	"):
+						a = a + 1 
+					elif line.startswith("D	"):
+						d = d + 1
+					elif line.startswith("M	"):
+						m = m + 1
+					elif line.startswith("    "):
+						comment = line[4:]
+					elif line.startswith("commit"):
+						commit = line[7:]
+					elif line.startswith("Author:"):
+						pass
+					elif line.startswith("Date:"):
+						commits = commits + 1
+						tempdate = date
+						date = line[8:30] + "\n"
+						date = dateutil.parser.parse(date)
+	
+						position = np.searchsorted(time, date)
+						added[position] = added[position] + a
+						delete[position] = delete[position] + d
+						modify[position] = modify[position] + commits
+						a = 0
+						d = 0
+						m = 0
+						commits = 0
+						position = 0
 				
+	
+				with plt.style.context('fivethirtyeight'):
+					print "Commits: "
+					print modify
+					print time
+	
+					if outlier == True:
+						perAdd = np.percentile(added, percent)
+						perRem = np.percentile(delete, percent)
+						perMod = np.percentile(modify, percent)
+	
+						added = np.clip(added, 0, perAdd)
+						delete = np.clip(delete, 0, perRem)
+						modify = np.clip(modify, 0, perMod)
+	
+					if justify == True:
+						avgAdd = np.average(added)
+						avgRem = np.average(delete)
+						avgMod = np.average(modify)
+	
+						added = added - avgAdd
+						delete = delete - avgRem
+						modify = modify - avgMod
+	
+					if dosum == True:
+						sumAdd = np.sum(added)
+						sumRem = np.sum(delete)
+						sumMod = np.sum(modify)
+	
+						added = added/sumAdd
+						delete = delete/sumRem
+						modify = modify/sumMod
+	
+					plt.plot(time, added)
+					plt.plot(time, delete)
+					plt.plot(time, modify)
+	
+				plt.title(name[:-8])
+				if png == True:
+					plt.savefig('./img/' + name[:-8]+"-"+str(delta)+'.png')
+				else:
+					plt.show()
 				
-
-
-			length = time.size
-			print length
-			added= np.zeros(length)
-			delete = np.zeros(length)
-			modify = np.zeros(length)
-
-			a = 0
-			d = 0
-			m = 0
-			commits = 0
-			position = 0
-			
-			commit = ""
-			date = ""
-			comment = ""
-
-			first = True
-
-			for line in lines:
-				if line.startswith("A	"):
-					a = a + 1 
-				elif line.startswith("D	"):
-					d = d + 1
-				elif line.startswith("M	"):
-					m = m + 1
-				elif line.startswith("    "):
-					comment = line[4:]
-				elif line.startswith("commit"):
-					commit = line[7:]
-				elif line.startswith("Author:"):
-					pass
-				elif line.startswith("Date:"):
-					commits = commits + 1
-					tempdate = date
-					date = line[8:30] + "\n"
-					date = dateutil.parser.parse(date)
-
-					position = np.searchsorted(time, date)
-					added[position] = added[position] + a
-					delete[position] = delete[position] + d
-					modify[position] = modify[position] + commits
-					a = 0
-					d = 0
-					m = 0
-					commits = 0
-					position = 0
-			
-
-			with plt.style.context('fivethirtyeight'):
-				print "Commits: "
-				print modify
-				print time
-
-				if outlier == True:
-					perAdd = np.percentile(added, percent)
-					perRem = np.percentile(delete, percent)
-					perMod = np.percentile(modify, percent)
-
-					added = np.clip(added, 0, perAdd)
-					delete = np.clip(delete, 0, perRem)
-					modify = np.clip(modify, 0, perMod)
-
-				if justify == True:
-					avgAdd = np.average(added)
-					avgRem = np.average(delete)
-					avgMod = np.average(modify)
-
-					added = added - avgAdd
-					delete = delete - avgRem
-					modify = modify - avgMod
-
-				if dosum == True:
-					sumAdd = np.sum(added)
-					sumRem = np.sum(delete)
-					sumMod = np.sum(modify)
-
-					added = added/sumAdd
-					delete = delete/sumRem
-					modify = modify/sumMod
-
-				plt.plot(time, added)
-				plt.plot(time, delete)
-				plt.plot(time, modify)
-
-			plt.title(name[:-8])
-			if png == True:
-				plt.savefig('./img/' + name[:-8]+"-"+str(delta)+'.png')
-			else:
-				plt.show()
-			
-			plt.clf()
+				plt.clf()
 
 if __name__ == "__main__":
-    main()
+	folders()
+	main()
