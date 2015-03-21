@@ -93,7 +93,8 @@ def parse():
 			delete = 0 
 			modify = 0 
 			diff = 0
-			
+			time = {}
+
 			commit = ""
 			date = ""
 			comment = ""
@@ -112,16 +113,20 @@ def parse():
 					commit = line[7:]
 				elif line.startswith("Author:"):
 					author = line[8:]
-					author = author.split("<")[0] + "\n"
-					print author
+					author = author.split("<")[0]
 				elif line.startswith("Date:"):
 					tempdate = date
-					date = line[8:30] + "\n"
-					if tempdate[:12] != date[:12]:
-						lastdate = tempdate
+					date = line[8:31] + "\n"
 
 				else:
-					
+
+					if author in time:
+						lastdate = time[author]
+						time[author] = date
+					else:
+						time.update({author: date})
+						print date
+
 					diff = abs(added - delete)
 					stats = [added,delete,modify, diff]
 					if (added == 0 and delete == 0):
@@ -132,7 +137,7 @@ def parse():
 						outputfile.write("0-- This commit might be a refactor: Added " + str(stats[0]) + ", Deleted " + str(stats[1]) + ", Modified " + str(stats[2]) + ", Diff " + str(stats[3])+ "\n")
 						outputfile.write("1-- " + lastdate)
 						outputfile.write("2-- " + date)
-						outputfile.write("3-- " + author)
+						outputfile.write("3-- " + author  + "\n")
 						outputfile.write("4-- " + comment)
 						outputfile.write("\n\n")
 
