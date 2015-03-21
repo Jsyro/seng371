@@ -111,7 +111,9 @@ def parse():
 				elif line.startswith("commit"):
 					commit = line[7:]
 				elif line.startswith("Author:"):
-					pass
+					author = line[8:]
+					author = author.split("<")[0] + "\n"
+					print author
 				elif line.startswith("Date:"):
 					tempdate = date
 					date = line[8:30] + "\n"
@@ -130,7 +132,8 @@ def parse():
 						outputfile.write("0-- This commit might be a refactor: Added " + str(stats[0]) + ", Deleted " + str(stats[1]) + ", Modified " + str(stats[2]) + ", Diff " + str(stats[3])+ "\n")
 						outputfile.write("1-- " + lastdate)
 						outputfile.write("2-- " + date)
-						outputfile.write("3-- " + comment)
+						outputfile.write("3-- " + author)
+						outputfile.write("4-- " + comment)
 						outputfile.write("\n\n")
 
 					added = 0
@@ -158,8 +161,10 @@ def gource():
 				elif line.startswith("2-- "):
 					date = line[4:]
 				elif line.startswith("3-- "):
+					author = line[4:]
+				elif line.startswith("4-- "):
 					comment = line[4:]
-					command = 'gource --start-date "'+lastdate.strip()+'" --stop-date "'+date.strip()+'" -s 1 --key --title "' +gitDir + "     " + comment.strip() +'" --highlight-dirs'
+					command = 'gource --start-date "'+lastdate.strip()+'" --stop-date "'+date.strip()+'" -s 1 --key --title "' +gitDir + "     " + comment.strip() +'" --highlight-dirs --user-filter "^(?!'+ author[:-2]+')"'
 					print command
 					os.system(command)
 			os.chdir(sys.path[0])
