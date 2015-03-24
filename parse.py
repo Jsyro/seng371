@@ -6,6 +6,7 @@ import os.path
 import time
 import datetime
 import dateutil.parser
+import urllib2
 import matplotlib.pyplot as plt
 from numpy.random import rand
 import numpy as np
