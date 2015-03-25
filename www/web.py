@@ -10,6 +10,7 @@ import dateutil.parser
 import matplotlib.pyplot as plt
 from numpy.random import rand
 import numpy as np
+from random import randint
 
 @bottle.get('<filename:re:.*\.png>')
 def send_image(filename):
@@ -43,15 +44,15 @@ def index():
 @bottle.post('/repo')
 def clone():
 	repo = bottle.request.forms.get("repo")
-	repoDir = repo.split("/")[1]
-	checkout = os.system("git clone --no-checkout https://github.com/" + repo)
+	repoDir = str(randint(1000,9999)) + repo.split("/")[1]
+	checkout = os.system("git clone --no-checkout https://github.com/" + repo + " " + repoDir)
 	if checkout == 0:
 		os.chdir("./"+repoDir)
 		gitlog = os.system("git --no-pager log master --name-status --author-date-order --reverse --date=iso > log.txt")
 		os.chdir("../")
-		return "<a href='/"+ repoDir + "''> Click here to generate Graphs for <strong>" + repo + "</strong></a>"
+		return "<a href='/"+ repoDir + "''> Click here to generate Graphs </a>"
 	else:
-		return "Clone failed"
+		return "<h1>Clone failed	<small>	This could be due to your project being too large. Try running the server locally</small></h1>"
 
 @bottle.get('/<logdir>')
 def lines(logdir):
@@ -138,7 +139,7 @@ def lines(logdir):
 			plt.plot(time, delete)
 			plt.plot(time, modify)
 	
-		plt.title(logdir)
+		plt.title(logdir[4:])
 		plt.savefig('./' + logdir+"/-"+str(delta)+'.png')
 			
 		plt.clf()

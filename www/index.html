@@ -54,12 +54,13 @@
         <!-- Portfolio Item Row -->
         <div class="row">
         <div class="col-md-8">
-             <form action="/repo" method="post">
+             <form action="/repo" method="post" onsubmit="$('#hidden').toggle();">
              <div class="form-group">
     Repo Name:<br>
         <input type="text" class="form-control" name="repo" placeholder="user/project">
         </div>
   </form>
+  <h1 id="hidden" style="display: none">Cloning your repo's .git folder<small>  This will take a while on large projects</small></h1>
             </div>
 
 
