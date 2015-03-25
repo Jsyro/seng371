@@ -23,6 +23,19 @@ def send_image(filename):
 def server_static(filename):
     return static_file(filename, root='./')
 
+
+@bottle.get('/css/<filename:re:.*\.css>')
+def stylesheets(filename):
+    return static_file(filename, root='./css')
+
+@bottle.get('/images/<filename:re:.*\.(jpg|png|gif|ico)>')
+def images(filename):
+    return static_file(filename, root='./images')
+
+@bottle.get('/js/<filename:re:.*\.js>')
+def javascript(filename):
+    return static_file(filename, root='./js')
+
 @bottle.get('/')
 def index():
     return static_file('index.html', root='./')
@@ -129,14 +142,14 @@ def lines(logdir):
 		plt.savefig('./' + logdir+"/-"+str(delta)+'.png')
 			
 		plt.clf()
-	toReturn = "<img src ='" + logdir + "/-1.png'>"
-	toReturn = toReturn + "<img src ='" + logdir + "/-7.png'>"
-	toReturn = toReturn + "<img src ='" + logdir + "/-30.png'>"
-	toReturn = toReturn + "<img src ='" + logdir + "/-180.png'>"
-	toReturn = toReturn + "<img src ='" + logdir + "/-365.png'>"
-	return  toReturn
 
-	static_file('-7.png', root='./'+logdir, mimetype='image/png')
+
+		with open ("display.html", "r") as output:
+			data=output.read().replace('\n', '')
+			data = data.replace("<<--dir-->>", logdir)
+
+	return  data
+
 
 if __name__ == '__main__':
     if 'PORT' in os.environ:
