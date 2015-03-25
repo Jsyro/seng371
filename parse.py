@@ -274,6 +274,7 @@ def lines():
 	dosum = raw_input('Percentage? (y/n): ').lower()
 	if (dosum == "y" )or (dosum ==  "yes"):
 		dosum = True
+		justify = False
 	else:
 		justify = raw_input('Justify by average? (y/n): ').lower()
 		if (justify == "y" )or (justify ==  "yes"):
