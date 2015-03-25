@@ -36,7 +36,7 @@ def clone():
 		os.chdir("./"+repoDir)
 		gitlog = os.system("git --no-pager log master --name-status --author-date-order --reverse --date=iso > log.txt")
 		os.chdir("../")
-		return "<a href='/"+ repoDir + "''> Click here to generate Graphs </a>"
+		return "<a href='/"+ repoDir + "''> Click here to generate Graphs for <strong>" + repo + "</strong></a>"
 	else:
 		return "Clone failed"
 
