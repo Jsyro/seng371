@@ -132,7 +132,7 @@ def lines(logdir):
 				commits = 0
 				position = 0
 		
-	
+	 
 		with plt.style.context('fivethirtyeight'):
 	
 			plt.plot(time, added)
