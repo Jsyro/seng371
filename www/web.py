@@ -128,6 +128,7 @@ def lines(logdir):
 	with open ("display.html", "r") as output:
 		data=output.read().replace('\n', '')
 		data = data.replace("<<--dir-->>", '/temp/'+fileid)
+		data = data.replace("<<--REPO-->>", logdir)
 	return  data
 
 
