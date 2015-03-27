@@ -12,10 +12,10 @@
     <title>Seng 371 Project</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/portfolio-item.css" rel="stylesheet">
+    <link href="/css/portfolio-item.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,7 +32,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Seng 371 Project</a>
+                <a class="navbar-brand" href="/">Seng 371 Project</a>
             </div>
         </div>
         <!-- /.container -->
@@ -44,93 +44,72 @@
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Enter a project link
-                    <small>form should be user/project</small>
-                </h1>
+                <h1 class="page-header">Select your options
+                <small>your repo is <<--REPO-->></small></h1>
             </div>
         </div>
         <!-- /.row -->
 
         <!-- Portfolio Item Row -->
         <div class="row">
-        <div class="col-md-8">
-             <form action="/repo" method="post">
+        <div class="col-md-6">
+        <h3>Select a timespan
+                    <small>or leave it blank to use the life of the project</small></h3>
+             <form action="/loading" method="post">
              <div class="form-group">
-    Repo Name:<br>
-        <input type="text" class="form-control" name="repo" placeholder="user/project">
+            <label>
+                <input value="True" name="commits" type="checkbox" checked onclick="$('#sd').removeAttr('disabled'); $('#ed').removeAttr('disabled'); $(this).attr('disabled', true);"> Use project lifetime?
+            </label>
+             <label for="startDate">Start date</label>
+             <input name="startDate" id="sd" type="date" class="form-control" disabled>
+
+             <label for="endDate">End date</label>
+             <input name="endDate" id="ed" type="date" class="form-control" disabled>
+             </div>
+             <div class="form-group">
+             <label>
+                <input value="True" name="commits" type="checkbox" checked> Commits
+            </label>
+
+            <label>
+                <input value="True" name="additions" type="checkbox" checked> Additions
+            </label>
+
+            <label>
+                <input value="True" name="deletions" type="checkbox" checked> Deletions
+            </label>
+
+            <label>
+                <input value="True" name="modifies" type="checkbox"> Modifies
+            </label>
+            </div>
+
+            <div class="form-group">
+            <label for="spans">Date span(s)</label>
+             <input name="spans" type="text" class="form-control" placeholder="days seperated by ',' eg '1, 7, 30'">
+            </div>
+        <button type="submit" class="form-control">Submit</button>
+        <a href='/options/<<--REPO-->>'>continue</a>
         </div>
   </form>
             </div>
 
-            <div class="col-md-4">
-                <h3>Project Description</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <h3>Project Details</h3>
-                <ul>
-                    <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
-                </ul>
-            </div>
-
         </div>
         <!-- /.row -->
 
-        <!-- Related Projects Row -->
-        <div class="row">
-
-            <div class="col-lg-12">
-                <h3 class="page-header">Related Projects</h3>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
-        </div>
-        <!-- /.row -->
 
         <hr>
 
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
+
 
     </div>
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
 </body>
 

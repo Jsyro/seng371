@@ -5,6 +5,7 @@ import sys
 import re
 import os.path
 import time
+import shutil
 import datetime
 import dateutil.parser
 import matplotlib.pyplot as plt
@@ -12,13 +13,16 @@ from numpy.random import rand
 import numpy as np
 from random import randint
 
+@bottle.get('<imgdir:re:.*>/<filename:re:.*\.png>')
+def send_image(imgdir, filename):
+		print os.getcwd()
+		print  "um"  + "imgdir is 	" + imgdir + " filename is 	" + filename 
+		return static_file(filename, root='./' + imgdir, mimetype='image/png')
+
 @bottle.get('<filename:re:.*\.png>')
 def send_image(filename):
-    return static_file(filename, root='./', mimetype='image/png')
-
-@bottle.get('<imgdir>/<filename:re:.*\.png>')
-def send_image(filename):
-    return static_file(filename, root='./'+imgdir, mimetype='image/png')
+	print "You shouldnt be here"
+	return static_file(filename, root='./', mimetype='image/png')
 
 @bottle.get('<filename>')
 def server_static(filename):
@@ -39,28 +43,67 @@ def javascript(filename):
 
 @bottle.get('/')
 def index():
-    return static_file('index.html', root='./')
+	options = ""
+	for name in os.listdir("./logs"):
+		if name.endswith(".txt"):
+			options = options + "<option value='"+str(name)[:-4]+"''>" + str(name)[:-4] + "</option>\n"
+
+	with open ("index.html", "r") as output:
+		data=output.read().replace('\n', '')
+		data = data.replace("<<--OPTIONS-->>", options)
+
+	return  data
+
 
 @bottle.post('/repo')
 def clone():
 	repo = bottle.request.forms.get("repo")
-	repoDir = str(randint(1000,9999)) + repo.split("/")[1]
-	checkout = os.system("git clone --no-checkout https://github.com/" + repo + " " + repoDir)
-	if checkout == 0:
-		os.chdir("./"+repoDir)
-		gitlog = os.system("git --no-pager log master --name-status --author-date-order --reverse --date=iso > log.txt")
-		os.chdir("../")
-		return "<a href='/"+ repoDir + "''> Click here to generate Graphs </a>"
-	else:
-		return "<h1>Clone failed	<small>	This could be due to your project being too large. Try running the server locally</small></h1>"
 
-@bottle.get('/<logdir>')
+	repoDir = repo.split("/")
+	if len(repoDir) == 2:
+		repoDir = repoDir[1]
+
+	repoDir = str(repoDir[0])
+
+	if os.path.isfile("./logs/"+repoDir+".txt"):
+		pass
+	else:
+		checkout = os.system("git clone --no-checkout https://github.com/" + repo + " tmp_" + repoDir)
+		if checkout != 0:
+			return "<h1>Clone failed	<small>	This could be due to your project being too large. Try running the server locally</small></h1>"
+		else:
+			os.chdir("./"+repoDir)
+			gitlog = os.system("git --no-pager log --name-status --author-date-order --reverse --date=iso > ../logs/"+repoDir+".txt")
+			os.chdir("../")
+	with open ("middle.html", "r") as output:
+		data=output.read().replace('\n', '')
+		data = data.replace("<<--REPO-->>", repoDir)
+
+	return  data
+
+@bottle.post('/loading')
+def graph():
+	startDate	=	bottle.request.forms.get("startDate")
+	endDate		=	bottle.request.forms.get("endDate")
+
+	commits		=	(bottle.request.forms.get("commits") == "True")
+	additions	=	(bottle.request.forms.get("additions") == "True")
+	deletions	=	(bottle.request.forms.get("deletions") == "True")
+	modifies	=	(bottle.request.forms.get("modifies") == "True")
+
+	spans = bottle.request.forms.get("spans")
+
+@bottle.get('/options/<logdir>')
 def lines(logdir):
-	filename = "./"+logdir+"/log.txt"
+	filename = "./logs/"+logdir+".txt"
 	inputfile = open(filename, 'r')
 
 	lines = inputfile.readlines()
 
+	fileid = str(randint(1000, 9999))
+	os.chdir('./temp/')
+	os.mkdir('./'+fileid)
+	os.chdir('../')
 	firstDate = ""
 	lastDate = ""
 	first = True
@@ -80,6 +123,15 @@ def lines(logdir):
 
 	spans = [1,7,30,180,365]
 	for delta in spans:
+		makeGraph(delta, firstDate, lastDate, lines, logdir, fileid)
+
+	with open ("display.html", "r") as output:
+		data=output.read().replace('\n', '')
+		data = data.replace("<<--dir-->>", '/temp/'+fileid)
+	return  data
+
+
+def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 		time = np.array([lastDate])
 		date = lastDate
 
@@ -140,20 +192,12 @@ def lines(logdir):
 			plt.plot(time, modify)
 	
 		plt.title(logdir[4:])
-		plt.savefig('./' + logdir+"/-"+str(delta)+'.png')
+		plt.savefig('./temp/' + fileid+"/-"+str(delta)+'.png')
 			
 		plt.clf()
 
-
-		with open ("display.html", "r") as output:
-			data=output.read().replace('\n', '')
-			data = data.replace("<<--dir-->>", logdir)
-
-	return  data
-
-
 if __name__ == '__main__':
-    if 'PORT' in os.environ:
-        bottle.run(host='0.0.0.0', port=os.environ['PORT'])
-    else:
-        bottle.run(host='localhost', port='8080')
+	if 'PORT' in os.environ:
+		bottle.run(host='0.0.0.0', port=os.environ['PORT'])
+	else:
+		bottle.run(host='localhost', port='8080')

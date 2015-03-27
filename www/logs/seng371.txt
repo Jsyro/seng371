@@ -1,0 +1,552 @@
+commit e2ef915c4cf00288d493531769f141cd7cd33b28
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   2015-01-28 12:36:56 -0800
+
+    Initial commit
+
+A	README.md
+
+commit bbb5ff3d525d7b1cc307e4d357811e2575aa7aaa
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   2015-01-28 13:41:14 -0800
+
+    Update README.md
+
+M	README.md
+
+commit 385808364c3693f03f9cc118f434c403234b7c83
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-18 12:54:39 -0800
+
+    Add JQUERY Mobile commit log
+
+A	jquery-mobile-log.txt
+
+commit 2f3837fcd1e860ece03af2c4636ab53e99652962
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-18 13:07:18 -0800
+
+    Added additional logs
+
+A	bootstrap-log.txt
+A	jquery-log.txt
+
+commit 22b883e2368506cbfd0a6ed50381e26c4a930a3b
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   2015-02-18 13:41:52 -0800
+
+    python script for parsing "git log" output.
+
+A	out.txt
+A	parse.py
+
+commit d3a6d084a93aee59681cbb7dad77b33b937062ea
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-18 14:14:42 -0800
+
+    Edited parse..py
+
+M	parse.py
+
+commit 2f043eef6269390406b6e7fe49589c0f0cb3ff46
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   2015-02-18 14:17:01 -0800
+
+    added names
+
+M	README.md
+
+commit b2cee724fcf7815224a84e628dfc0c3ab9891fd2
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-18 14:18:19 -0800
+
+    Added parsed outputs
+
+A	.gitignore
+A	out-bootstrap.txt
+A	out-jquery-mobile.txt
+A	out-jquery.txt
+
+commit 71054c53a98019f13be07ecb1c3bfcc5d9b19924
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-22 11:49:41 -0800
+
+    Redefined input/output for batch work
+
+D	bootstrap-log.txt
+A	input/bootstrap-log.txt
+A	input/jquery-log.txt
+A	input/jquery-mobile-log.txt
+D	jquery-log.txt
+D	jquery-mobile-log.txt
+D	out-bootstrap.txt
+D	out-jquery-mobile.txt
+D	out-jquery.txt
+D	out.txt
+A	output/bootstrap-out.txt
+A	output/jquery-mobile-out.txt
+A	output/jquery-out.txt
+M	parse.py
+
+commit ceb688c3281f244a2caf0ab5cb12d01295c5bcd5
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-22 12:47:32 -0800
+
+    Added crazyness to automatically get logs
+    
+    Will break everything...
+
+M	README.md
+M	input/bootstrap-log.txt
+M	input/jquery-log.txt
+M	input/jquery-mobile-log.txt
+A	input/seng371-log.txt
+M	output/bootstrap-out.txt
+M	output/jquery-mobile-out.txt
+M	output/jquery-out.txt
+A	output/seng371-out.txt
+M	parse.py
+
+commit 97b6168c635b07c7ebbae6593a7523fb65578e82
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-22 16:23:31 -0800
+
+    Added Gource
+
+M	input/bootstrap-log.txt
+M	input/jquery-log.txt
+M	input/jquery-mobile-log.txt
+M	input/seng371-log.txt
+M	output/bootstrap-out.txt
+M	output/jquery-mobile-out.txt
+M	output/jquery-out.txt
+M	output/seng371-out.txt
+M	parse.py
+
+commit 717da198e578a620c05467e1f94dea4e2361212c
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-22 17:17:53 -0800
+
+    Changed Gource
+
+M	input/seng371-log.txt
+M	output/bootstrap-out.txt
+M	output/jquery-mobile-out.txt
+M	output/jquery-out.txt
+M	output/seng371-out.txt
+M	parse.py
+
+commit 7c2c2cd51530570a328387a7626793ec530d3b31
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-23 18:35:17 -0800
+
+    Edit Readme
+
+M	README.md
+
+commit f2df8bdbada9ab45f6a76238647bf3972dac346d
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-23 23:17:01 -0800
+
+    Fixed Typo
+
+M	README.md
+M	parse.py
+
+commit 61647daf7a50547ba60722849c5957c3259d9555
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   2015-02-25 13:23:30 -0800
+
+    Update README.md
+    
+    updated to include template and partial completion
+
+M	README.md
+
+commit ff289f3f69367b084f01084c74b7a95d79e1b6af
+Author: Evan Hildebrandt <Evanh39@gmail.com>
+Date:   2015-02-25 13:25:31 -0800
+
+    Update README.md
+    
+    update readme
+
+M	README.md
+
+commit 4aebb742d3da9adf1665bd860d113a5059fc2e25
+Author: Evan Hildebrandt <Evanh39@gmail.com>
+Date:   2015-02-25 13:29:25 -0800
+
+    Update README.md
+
+M	README.md
+
+commit f29db1e8829e4d267a16ea37be4a3caa0c334529
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-02-25 13:30:36 -0800
+
+    Add Pictures
+
+A	ring.png
+A	tree.png
+
+commit cf868df532b1fba4ede2a2311f3da83db0cce700
+Author: Evan Hildebrandt <Evanh39@gmail.com>
+Date:   2015-02-25 13:35:57 -0800
+
+    Add Pictures
+
+M	README.md
+
+commit 16a72096f8b6d7614daff0517db099183efcf0eb
+Author: KRollans <KRollans@users.noreply.github.com>
+Date:   2015-02-25 13:38:30 -0800
+
+    Some Grammar
+
+M	README.md
+
+commit 2f3558e6e5fb3910c6dde8e5dec5a6d2bf758197
+Author: Evan Hildebrandt <Evanh39@gmail.com>
+Date:   2015-02-25 13:40:00 -0800
+
+    Update README.md
+
+M	README.md
+
+commit eb53366130e783a61236bd9c02f2864dc8197743
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   2015-02-25 13:43:07 -0800
+
+    Update README.md
+    
+    updated section 4.1
+
+M	README.md
+
+commit ba48d6226ddbd76a11e39b1de5121e57b7fe3262
+Author: Jsyro <jasyrotuck@gmail.com>
+Date:   2015-02-25 13:43:42 -0800
+
+    Update README.md
+    
+    removed duplicate header
+
+M	README.md
+
+commit 23f13e4b020ca11f895f55dc45fb9ad832e9a3ed
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-11 13:23:54 -0700
+
+    Added Graph Functionality
+
+A	graph.py
+
+commit e139d77a31786c3792bf3e4b804a7288e3f810b7
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-11 13:24:33 -0700
+
+    Deleted Input/Output files
+
+D	input/bootstrap-log.txt
+D	input/jquery-log.txt
+D	input/jquery-mobile-log.txt
+D	input/seng371-log.txt
+D	output/bootstrap-out.txt
+D	output/jquery-mobile-out.txt
+D	output/jquery-out.txt
+D	output/seng371-out.txt
+
+commit b8bd2f74d0f0a9c85ae908b2381845ffe7d73b4e
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-11 14:06:16 -0700
+
+    Project 2 readme
+
+M	README.md
+A	READMEProject1.md
+
+commit 9fe5bd315eb002f17cfab9fee4fc8af7a8847ee0
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-12 14:36:46 -0700
+
+    Update git ignore
+
+M	.gitignore
+M	parse.py
+
+commit 33a3a8da294073be5fda1aa394950ec95009085e
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-12 15:15:39 -0700
+
+    Added Multi Functions
+
+M	parse.py
+
+commit 310aee66369ae165459e1279fb6c2ddc0c2dd5bb
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-16 15:00:49 -0700
+
+    Linz
+
+A	New Text Document.txt
+D	graph.py
+M	parse.py
+A	test.py
+
+commit 035f735d9228911841334b883c8604f01c5f154e
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-16 17:05:46 -0700
+
+    Fixed lines
+    
+    Output is broken
+
+M	parse.py
+
+commit 2bb1067743576a17711ef7460492f48565a7bf2a
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-16 17:28:29 -0700
+
+    Changed lines to be "Comits" not "files modified"
+
+M	parse.py
+
+commit 854195e25380b89cb80b545795113b7eaf20cc72
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-16 17:29:07 -0700
+
+    Remove tests
+
+D	New Text Document.txt
+D	test.py
+
+commit 64255083ad589a8a710394dd569964a6dd26faf8
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-16 17:45:15 -0700
+
+    Normalizing stuff
+    
+    Changed from average to median to account for outliers
+
+M	parse.py
+
+commit 78ad5d5982b5c00e3cf00ef0369a2e98f8e3fb3e
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-17 15:30:44 -0700
+
+    Options ++ Error handling --
+    
+    added more options. ZERO error handling
+
+M	parse.py
+
+commit 1fa49418ef08bc30dfe906cd36ea7d2d023a22b6
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-17 16:08:18 -0700
+
+    trying to fix time bug
+
+M	parse.py
+
+commit 1e8c29b13cedc86056d858cbc4d8877dfa3d9978
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-18 13:07:46 -0700
+
+    Lines and stuff
+
+M	parse.py
+
+commit 6612cead290e14c1b968522cb39877c2d856668e
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-18 15:18:10 -0700
+
+    Lots of stuff
+
+A	img/bootstrap-1.png
+A	img/bootstrap-30.png
+A	img/bootstrap-365.png
+A	img/bootstrap-7.png
+A	img/ehildebrSWUblog-1.png
+A	img/ehildebrSWUblog-30.png
+A	img/ehildebrSWUblog-365.png
+A	img/ehildebrSWUblog-7.png
+A	img/jquery-1.png
+A	img/jquery-30.png
+A	img/jquery-365.png
+A	img/jquery-7.png
+A	img/jquery-mobile-1.png
+A	img/jquery-mobile-30.png
+A	img/jquery-mobile-365.png
+A	img/jquery-mobile-7.png
+A	img/rails-1.png
+A	img/rails-30.png
+A	img/rails-365.png
+A	img/rails-7.png
+A	img/seng371-1.png
+A	img/seng371-30.png
+A	img/seng371-365.png
+A	img/seng371-7.png
+M	parse.py
+
+commit aa7b547512f0235d285451d2a4e3f379e93e22f8
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-20 12:03:32 -0700
+
+    fixin stuff
+    
+    Changed timespans to go back from last commit rather than start from
+    first to get a more accurate last bucket
+
+A	img/Thumbs.db
+A	img/bootstrap-14.png
+A	img/ehildebrSWUblog-14.png
+A	img/jquery-14.png
+A	img/jquery-mobile-14.png
+A	img/rails-14.png
+A	img/seng371-14.png
+M	parse.py
+
+commit 3d3982a9cddff66562c3da7fc8a1fbf4615546e7
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-20 15:53:32 -0700
+
+    Batch jobs
+
+D	img/Thumbs.db
+D	img/bootstrap-1.png
+D	img/bootstrap-14.png
+D	img/bootstrap-30.png
+D	img/bootstrap-365.png
+D	img/bootstrap-7.png
+D	img/ehildebrSWUblog-1.png
+D	img/ehildebrSWUblog-14.png
+D	img/ehildebrSWUblog-30.png
+D	img/ehildebrSWUblog-365.png
+D	img/ehildebrSWUblog-7.png
+D	img/jquery-1.png
+D	img/jquery-14.png
+D	img/jquery-30.png
+D	img/jquery-365.png
+D	img/jquery-7.png
+D	img/jquery-mobile-1.png
+D	img/jquery-mobile-14.png
+D	img/jquery-mobile-30.png
+D	img/jquery-mobile-365.png
+D	img/jquery-mobile-7.png
+D	img/rails-1.png
+D	img/rails-14.png
+D	img/rails-30.png
+D	img/rails-365.png
+D	img/rails-7.png
+D	img/seng371-1.png
+D	img/seng371-14.png
+D	img/seng371-30.png
+D	img/seng371-365.png
+D	img/seng371-7.png
+M	parse.py
+
+commit 1ee0a55721cc97ec95dcf219a2c56d9684d893b3
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-21 11:52:00 -0700
+
+    Only show author
+
+M	parse.py
+
+commit e28cc525f2c4aca07abb7a9c5c4e32e330075e4a
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-21 12:08:12 -0700
+
+    Only show single commit
+
+M	parse.py
+
+commit da8101cf7da7f3ea29a2565b6d1dc6e1f97f7a8d
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-24 14:45:04 -0700
+
+    Adding heroku
+
+M	.gitignore
+M	parse.py
+A	www
+
+commit b3cf384850bd2f1e3da28035e3cdf66cd967d066
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-24 15:07:40 -0700
+
+    Added heroku web stuff
+
+A	Procfile
+A	index.html
+A	requirements.txt
+A	web.py
+D	www
+
+commit 3ae858775a79dd9c6fae16737c4d7f9002e97933
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-24 15:15:15 -0700
+
+    moved to www
+
+D	Procfile
+D	index.html
+D	requirements.txt
+D	web.py
+A	www/Procfile
+A	www/index.html
+A	www/requirements.txt
+A	www/web.py
+
+commit aa05df1811d4b7043064ae120cb46da5d67ed08a
+Author: KRollans <KRollans@users.noreply.github.com>
+Date:   2015-03-25 12:45:00 -0700
+
+    Update web.py
+    
+    adding clarification for graph link
+
+M	www/web.py
+
+commit 850236e7f9d6ed05a6e2df439ca779a094777da1
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-25 12:58:37 -0700
+
+    bootstrap
+
+A	www/LICENSE
+A	www/README.md
+A	www/css/bootstrap.css
+A	www/css/bootstrap.min.css
+A	www/css/portfolio-item.css
+A	www/display.html
+A	www/fonts/glyphicons-halflings-regular.eot
+A	www/fonts/glyphicons-halflings-regular.svg
+A	www/fonts/glyphicons-halflings-regular.ttf
+A	www/fonts/glyphicons-halflings-regular.woff
+A	www/fonts/glyphicons-halflings-regular.woff2
+M	www/index.html
+A	www/js/bootstrap.js
+A	www/js/bootstrap.min.js
+A	www/js/jquery.js
+A	www/middle.html
+M	www/web.py
+
+commit d0dd226b2767ee464989a65daca94b0ccaa77768
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-25 13:24:13 -0700
+
+    small changes
+
+M	www/display.html
+M	www/index.html
+M	www/web.py
+
+commit ba2b35d295ca80c9df77b96bab127b1ce33c9971
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-25 14:07:29 -0700
+
+    fixes
+
+M	parse.py
