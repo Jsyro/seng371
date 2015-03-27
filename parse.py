@@ -6,7 +6,6 @@ import os.path
 import time
 import datetime
 import dateutil.parser
-import urllib2
 import matplotlib.pyplot as plt
 from numpy.random import rand
 import numpy as np
@@ -126,7 +125,6 @@ def parse():
 						time[author] = date
 					else:
 						time.update({author: date})
-						print date
 
 					diff = abs(added - delete)
 					stats = [added,delete,modify, diff]
@@ -274,7 +272,6 @@ def lines():
 	dosum = raw_input('Percentage? (y/n): ').lower()
 	if (dosum == "y" )or (dosum ==  "yes"):
 		dosum = True
-		justify = False
 	else:
 		justify = raw_input('Justify by average? (y/n): ').lower()
 		if (justify == "y" )or (justify ==  "yes"):
