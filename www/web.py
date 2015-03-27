@@ -145,14 +145,8 @@ def spans():
 @bottle.get("/display/<fileid>")
 def openDisplay(fileid):
 	with open ("display.html", "r") as output:
-<<<<<<< HEAD
-		data=output.read().replace('\n', '')
-		data = data.replace("<<--dir-->>", '/temp/'+fileid)
-		data = data.replace("<<--REPO-->>", logdir)
-=======
 		data	=		output.read().replace('\n', '')
 		data	= 	data.replace("<<--dir-->>", '/temp/'+fileid)
->>>>>>> origin/master
 	return  data
 
 def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
