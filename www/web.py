@@ -185,14 +185,14 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 				position = 0
 		
 	 
-		with plt.style.context('fivethirtyeight'):
+		with plt.style.context('bmh'):
 	
 			plt.plot(time, added)
 			plt.plot(time, delete)
 			plt.plot(time, modify)
 	
 		plt.title(logdir[4:])
-		plt.savefig('./temp/' + fileid+"/-"+str(delta)+'.png')
+		plt.savefig('./temp/' + fileid+"/-"+str(delta)+'.svg')
 			
 		plt.clf()
 
