@@ -10,6 +10,18 @@ import datetime
 import dateutil.parser
 import matplotlib.pyplot as plt
 from numpy.random import rand
+import bottle 
+import os
+from bottle import static_file
+import sys
+import re
+import os.path
+import time
+import shutil
+import datetime
+import dateutil.parser
+import matplotlib.pyplot as plt
+from numpy.random import rand
 import numpy as np
 from random import randint
 
@@ -76,37 +88,28 @@ def clone():
 			gitlog = os.system("git --no-pager log --name-status --author-date-order --reverse --date=iso > ../logs/"+repoDir+".txt")
 			os.chdir("../")
 	with open ("middle.html", "r") as output:
-		data=output.read().replace('\n', '')
+		data=output.read()
 		data = data.replace("<<--REPO-->>", repoDir)
 
 	return  data
 
-@bottle.post('/loading')
-def graph():
-	startDate	=	bottle.request.forms.get("startDate")
-	endDate		=	bottle.request.forms.get("endDate")
-
-	commits		=	(bottle.request.forms.get("commits") == "True")
-	additions	=	(bottle.request.forms.get("additions") == "True")
-	deletions	=	(bottle.request.forms.get("deletions") == "True")
-	modifies	=	(bottle.request.forms.get("modifies") == "True")
-
-	spans = bottle.request.forms.get("spans")
-
 @bottle.get('/options/<logdir>')
 def lines(logdir):
+	
 	filename = "./logs/"+logdir+".txt"
 	inputfile = open(filename, 'r')
 
 	lines = inputfile.readlines()
 
-	fileid = str(randint(1000, 9999))
+	fileid = str(randint(10000, 99999))
 	os.chdir('./temp/')
 	os.mkdir('./'+fileid)
 	os.chdir('../')
+
 	firstDate = ""
 	lastDate = ""
 	first = True
+
 	for line in lines:
 		if line.startswith("Date:"):
 			date = line[8:30] + "\n"
@@ -121,15 +124,36 @@ def lines(logdir):
 				if date > lastDate:
 					lastDate = date
 
-	spans = [1,7,30,180,365]
-	for delta in spans:
-		makeGraph(delta, firstDate, lastDate, lines, logdir, fileid)
+	return {'firstDate' : str(firstDate), 'lastDate' : str(lastDate), 'fileid' : fileid}
 
+@bottle.post('/graph')
+def spans():
+	delta = int(bottle.request.forms.get("delta"))
+	firstDate = dateutil.parser.parse(bottle.request.forms.get("firstDate"))
+	lastDate = dateutil.parser.parse(bottle.request.forms.get("lastDate"))
+	logdir = bottle.request.forms.get("logdir")
+	fileid = bottle.request.forms.get("fileid")
+
+	filename = "./logs/"+logdir+".txt"
+	inputfile = open(filename, 'r')
+
+	lines = inputfile.readlines()
+
+	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid)
+
+
+@bottle.get("/display/<fileid>")
+def openDisplay(fileid):
 	with open ("display.html", "r") as output:
+<<<<<<< HEAD
 		data=output.read().replace('\n', '')
 		data = data.replace("<<--dir-->>", '/temp/'+fileid)
+		data = data.replace("<<--REPO-->>", logdir)
+=======
+		data	=		output.read().replace('\n', '')
+		data	= 	data.replace("<<--dir-->>", '/temp/'+fileid)
+>>>>>>> origin/master
 	return  data
-
 
 def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 		time = np.array([lastDate])
@@ -192,12 +216,17 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 			plt.plot(time, modify)
 	
 		plt.title(logdir[4:])
-		plt.savefig('./temp/' + fileid+"/-"+str(delta)+'.png')
+		filename = './temp/' + fileid+"/-"+str(delta)+'.png'
+		plt.savefig(filename)
 			
 		plt.clf()
+		return filename
 
 if __name__ == '__main__':
 	if 'PORT' in os.environ:
 		bottle.run(host='0.0.0.0', port=os.environ['PORT'])
 	else:
 		bottle.run(host='localhost', port='8080')
+import numpy as np
+from random import randint
+
