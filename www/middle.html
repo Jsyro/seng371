@@ -55,10 +55,10 @@
         <div class="col-md-6">
         <h3>Select a timespan
                     <small>or leave it blank to use the life of the project</small></h3>
-             <form action="/loading" method="post">
+             <form>
              <div class="form-group">
             <label>
-                <input value="True" name="commits" type="checkbox" checked onclick="$('#sd').removeAttr('disabled'); $('#ed').removeAttr('disabled'); $(this).attr('disabled', true);"> Use project lifetime?
+                <input value="True" name="lifetime" id="lifetime" type="checkbox" checked onclick="$('#sd').removeAttr('disabled'); $('#ed').removeAttr('disabled'); $(this).attr('disabled', true);"> Use project lifetime?
             </label>
              <label for="startDate">Start date</label>
              <input name="startDate" id="sd" type="date" class="form-control" disabled>
@@ -86,16 +86,34 @@
 
             <div class="form-group">
             <label for="spans">Date span(s)</label>
-             <input name="spans" type="text" class="form-control" placeholder="days seperated by ',' eg '1, 7, 30'">
+             <input name="spans" id="spans" type="text" class="form-control" placeholder="days seperated by ',' eg '1, 7, 30'">
             </div>
-        <button type="submit" class="form-control">Submit</button>
+        <button type="button" class="form-control" onclick="showModal ()" >Submit</button>
+
         <a href='/options/<<--REPO-->>'>continue</a>
         </div>
   </form>
             </div>
 
         </div>
-        <!-- /.row -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Loading your Graphs</h4>
+      </div>
+      <div class="modal-body">
+        <div class="progress">
+                <div id="progressbar" class="progress-bar progress-bar-striped active" role="progressbar" style="width: 0.01%">
+        </div>
+        </div>
+                <button class="form-control" onclick="startGraphs()">Start</button>
+
+    </div>
+  </div>
+</div>
 
 
         <hr>
@@ -110,6 +128,72 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        function showModal (argument) {
+            
+            var timespan = $("#spans").val()
+            if (timespan == ""){
+                timespan = "1,7,30,180,365";
+            }
+            timespan = timespan.split(",");
+
+            $('#myModal').modal('show');
+        }
+
+        function startGraphs () {
+            var startDate = $("#startDate").val();
+            var endDate = $("#endDate").val();
+
+            $.ajax({
+                type: "get",
+                contentType: "application/json; charset=utf-8",
+                url: "/options/<<--REPO-->>",
+                async:false,
+                data: "",
+                 success: function (result) {
+                    console.log($("#lifetime").val());
+                    console.log(result);
+                    if ($("#lifetime").val() == "True") {
+                        startDate = result.firstDate;
+                        endDate = result.lastDate;
+                        fileid = result.fileid;
+                    };
+                 }
+            });
+
+            var timespan = $("#spans").val()
+            if (timespan == ""){
+                timespan = "1,7,30,180,365";
+            }
+            timespan = timespan.split(",");
+            var timespanlength = timespan.length;
+            console.log(timespanlength);
+            var x = 0;
+            timespan.forEach(function(entry) {
+                $.ajax({
+                type: "post",
+                contentType: "application/json; charset=utf-8",
+                url: "/graph",
+                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid},
+                 success: function (result) {
+                    console.log(result);
+                    x = x + 1;
+                    console.log(timespanlength);
+                    console.log(x);
+                    var newWidth = (x/timespanlength)*100;
+                    console.log(newWidth);
+                    console.log(newWidth + "%");
+                    $('.progress-bar').css("width", newWidth + "%");
+                    if (x == timespanlength) {
+                        window.location.href = "/display/"+ fileid ;
+                    };
+                 }
+            });
+            });
+        }
+
+    </script>
 
 </body>
 
