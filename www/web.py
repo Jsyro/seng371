@@ -157,10 +157,16 @@ def spans():
 @bottle.get("/display/<fileid>/<logdir>")
 def openDisplay(fileid, logdir):
 
+	images = ""
+	for name in os.listdir("./temp/" + fileid):
+		if name.endswith(".svg"):
+			name = name.split('/')[-1]
+			images = images + '\n<div class="col-sm-3 col-xs-6">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" onclick="$(\'#big\').attr(\'src\',$(this).attr(\'src\')); $(\'#figure\').text(\'Weekly blocks\'); window.scrollTo(0,0);"></div>\n'
+
 	with open ("display.html", "r") as output:
 
 		data	=	output.read().replace('\n', '')
-		data	=	data.replace("<<--dir-->>", '/temp/'+fileid)
+		data	=	data.replace("<<--IMG-->>", images)
 		data	=	data.replace("<<--REPO-->>", logdir)
 
 	return  data
