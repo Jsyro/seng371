@@ -139,12 +139,19 @@ def spans():
 	logdir = bottle.request.forms.get("logdir")
 	fileid = bottle.request.forms.get("fileid")
 
+	af = (bottle.request.forms.get("af") == 'true')
+	cf = (bottle.request.forms.get("cf") == 'true')
+	df = (bottle.request.forms.get("df") == 'true')
+	mf = (bottle.request.forms.get("mf") == 'true')
+	uf = (bottle.request.forms.get("uf") == 'true')
+
+
 	filename = "./logs/"+logdir+".txt"
 	inputfile = open(filename, 'r')
 
 	lines = inputfile.readlines()
 
-	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid)
+	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid,  af, cf, df, mf, uf)
 
 
 @bottle.get("/display/<fileid>/<logdir>")
@@ -157,7 +164,7 @@ def openDisplay(fileid, logdir):
 
 	return  data
 
-def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
+def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf, uf):
 
 		time = np.array([lastDate])
 		date = lastDate
@@ -232,12 +239,21 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 				position = 0
 
 		with plt.style.context('fivethirtyeight'):
-	
-			plt.plot(time, added, label="Added")
-			plt.plot(time, delete, label="Deleted")
-			plt.plot(time, modify, label="Modified")
-			plt.plot(time, commits, label="Commits")
-			plt.plot(time, unique, label="Contributors")
+
+			if af:
+				plt.plot(time, added, label="Added")
+
+			if df:
+				plt.plot(time, delete, label="Deleted")
+
+			if mf:
+				plt.plot(time, modify, label="Modified")
+
+			if cf:
+				plt.plot(time, commits, label="Commits")
+
+			if uf:
+				plt.plot(time, unique, label="Contributors")
 		
 		plt.legend(loc=2)
 		plt.title(logdir)
