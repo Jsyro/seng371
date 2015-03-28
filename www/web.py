@@ -25,15 +25,16 @@ from numpy.random import rand
 import numpy as np
 from random import randint
 
+@bottle.get('<imgdir:re:.*>/<filename:re:.*\.svg>')
+def send_image(imgdir, filename):
+		return static_file(filename, root='./' + imgdir, mimetype='image/svg+xml')
+
 @bottle.get('<imgdir:re:.*>/<filename:re:.*\.png>')
 def send_image(imgdir, filename):
-		print os.getcwd()
-		print  "um"  + "imgdir is 	" + imgdir + " filename is 	" + filename 
 		return static_file(filename, root='./' + imgdir, mimetype='image/png')
 
 @bottle.get('<filename:re:.*\.png>')
 def send_image(filename):
-	print "You shouldnt be here"
 	return static_file(filename, root='./', mimetype='image/png')
 
 @bottle.get('<filename>')
@@ -71,11 +72,16 @@ def index():
 def clone():
 	repo = bottle.request.forms.get("repo")
 
-	repoDir = repo.split("/")
-	if len(repoDir) == 2:
+	if '/' in repo:
+		repoDir = repo.split("/")
 		repoDir = repoDir[1]
+	else:
+		repoDir = repo
 
-	repoDir = str(repoDir[0])
+	repoDir = str(repoDir)
+
+	print repoDir
+	print repo
 
 	if os.path.isfile("./logs/"+repoDir+".txt"):
 		pass
@@ -84,9 +90,10 @@ def clone():
 		if checkout != 0:
 			return "<h1>Clone failed	<small>	This could be due to your project being too large. Try running the server locally</small></h1>"
 		else:
-			os.chdir("./"+repoDir)
+			os.chdir("./tmp_"+repoDir)
 			gitlog = os.system("git --no-pager log --name-status --author-date-order --reverse --date=iso > ../logs/"+repoDir+".txt")
 			os.chdir("../")
+
 	with open ("middle.html", "r") as output:
 		data=output.read()
 		data = data.replace("<<--REPO-->>", repoDir)
@@ -128,8 +135,10 @@ def lines(logdir):
 
 @bottle.post('/graph')
 def spans():
+
 	delta = int(bottle.request.forms.get("delta"))
 	firstDate = dateutil.parser.parse(bottle.request.forms.get("firstDate"))
+	print firstDate
 	lastDate = dateutil.parser.parse(bottle.request.forms.get("lastDate"))
 	logdir = bottle.request.forms.get("logdir")
 	fileid = bottle.request.forms.get("fileid")
@@ -142,20 +151,17 @@ def spans():
 	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid)
 
 
-@bottle.get("/display/<fileid>")
-def openDisplay(fileid):
+@bottle.get("/display/<fileid>/<logdir>")
+def openDisplay(fileid, logdir):
 	with open ("display.html", "r") as output:
-<<<<<<< HEAD
 		data=output.read().replace('\n', '')
 		data = data.replace("<<--dir-->>", '/temp/'+fileid)
 		data = data.replace("<<--REPO-->>", logdir)
-=======
-		data	=		output.read().replace('\n', '')
-		data	= 	data.replace("<<--dir-->>", '/temp/'+fileid)
->>>>>>> origin/master
+
 	return  data
 
 def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
+
 		time = np.array([lastDate])
 		date = lastDate
 
@@ -168,10 +174,11 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 		added= np.zeros(length)
 		delete = np.zeros(length)
 		modify = np.zeros(length)
+		commits = np.zeros(length)
 		a = 0
 		d = 0
 		m = 0
-		commits = 0
+		c = 0
 		position = 0
 			
 		commit = ""
@@ -194,30 +201,37 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 			elif line.startswith("Author:"):
 				pass
 			elif line.startswith("Date:"):
-				commits = commits + 1
+				c = c + 1
 				tempdate = date
 				date = line[8:30] + "\n"
 				date = dateutil.parser.parse(date)
 				position = np.searchsorted(time, date)
-				added[position] = added[position] + a
-				delete[position] = delete[position] + d
-				modify[position] = modify[position] + commits
+
+				if position != 0:
+					added[position] = added[position] + a
+					delete[position] = delete[position] + d
+					modify[position] = modify[position] + m
+					commits[position] = commits[position] + c
+
 				a = 0
 				d = 0
 				m = 0
-				commits = 0
+				c = 0
 				position = 0
 		
 	 
 		with plt.style.context('fivethirtyeight'):
 	
-			plt.plot(time, added)
-			plt.plot(time, delete)
-			plt.plot(time, modify)
-	
-		plt.title(logdir[4:])
-		filename = './temp/' + fileid+"/-"+str(delta)+'.png'
-		plt.savefig(filename)
+			plt.plot(time, added, label="Added")
+			plt.plot(time, delete, label="Deleted")
+			plt.plot(time, modify, label="Modified")
+			plt.plot(time, commits, label="Commits")
+		
+		plt.legend(loc=2)
+		plt.title(logdir)
+		plt.xlabel("Time")
+		filename = './temp/' + fileid+"/-"+str(delta)+'.svg'
+		plt.savefig(filename, format="svg")
 			
 		plt.clf()
 		return filename

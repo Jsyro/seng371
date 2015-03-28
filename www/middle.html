@@ -142,8 +142,8 @@
         }
 
         function startGraphs () {
-            var startDate = $("#startDate").val();
-            var endDate = $("#endDate").val();
+            var startDate = $("#sd").val() + " 01:00:00+00:00";
+            var endDate = $("#ed").val() + " 01:00:00+00:00";
 
             $.ajax({
                 type: "get",
@@ -154,10 +154,10 @@
                  success: function (result) {
                     console.log($("#lifetime").val());
                     console.log(result);
-                    if ($("#lifetime").val() == "True") {
+                    fileid = result.fileid;
+                    if ($("#lifetime").prop('checked') == true) {
                         startDate = result.firstDate;
                         endDate = result.lastDate;
-                        fileid = result.fileid;
                     };
                  }
             });
@@ -170,6 +170,8 @@
             var timespanlength = timespan.length;
             console.log(timespanlength);
             var x = 0;
+
+            console.log("start date is " + startDate);
             timespan.forEach(function(entry) {
                 $.ajax({
                 type: "post",
@@ -186,7 +188,7 @@
                     console.log(newWidth + "%");
                     $('.progress-bar').css("width", newWidth + "%");
                     if (x == timespanlength) {
-                        window.location.href = "/display/"+ fileid ;
+                        window.location.href = "/display/"+ fileid  + "/<<--REPO-->>";
                     };
                  }
             });
