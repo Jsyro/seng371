@@ -41,7 +41,6 @@ def send_image(filename):
 def server_static(filename):
     return static_file(filename, root='./')
 
-
 @bottle.get('/css/<filename:re:.*\.css>')
 def stylesheets(filename):
     return static_file(filename, root='./css')
@@ -67,7 +66,6 @@ def index():
 
 	return  data
 
-
 @bottle.post('/repo')
 def clone():
 	repo = bottle.request.forms.get("repo")
@@ -79,9 +77,6 @@ def clone():
 		repoDir = repo
 
 	repoDir = str(repoDir)
-
-	print repoDir
-	print repo
 
 	if os.path.isfile("./logs/"+repoDir+".txt"):
 		pass
@@ -137,9 +132,10 @@ def lines(logdir):
 def spans():
 
 	delta = int(bottle.request.forms.get("delta"))
+
 	firstDate = dateutil.parser.parse(bottle.request.forms.get("firstDate"))
-	print firstDate
 	lastDate = dateutil.parser.parse(bottle.request.forms.get("lastDate"))
+
 	logdir = bottle.request.forms.get("logdir")
 	fileid = bottle.request.forms.get("fileid")
 
@@ -153,10 +149,11 @@ def spans():
 
 @bottle.get("/display/<fileid>/<logdir>")
 def openDisplay(fileid, logdir):
+
 	with open ("display.html", "r") as output:
-		data=output.read().replace('\n', '')
-		data = data.replace("<<--dir-->>", '/temp/'+fileid)
-		data = data.replace("<<--REPO-->>", logdir)
+		data	=	output.read().replace('\n', '')
+		data	=	data.replace("<<--dir-->>", '/temp/'+fileid)
+		data	=	data.replace("<<--REPO-->>", logdir)
 
 	return  data
 
@@ -170,21 +167,25 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 			time = np.append([date], time)
 					
 		length = time.size
-		print length
+
 		added= np.zeros(length)
 		delete = np.zeros(length)
 		modify = np.zeros(length)
 		commits = np.zeros(length)
+		unique = np.zeros(length)
+		authors = [""] * length
+
 		a = 0
 		d = 0
 		m = 0
 		c = 0
 		position = 0
 			
-		commit = ""
-		date = ""
-		comment = ""
-	
+		commit	= ""
+		date	= ""
+		comment	= ""
+		author	= ""
+
 		first = True
 	
 		for line in lines:
@@ -199,7 +200,9 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 			elif line.startswith("commit"):
 				commit = line[7:]
 			elif line.startswith("Author:"):
-				pass
+				author = line[8:]
+				author = author.split("<")[0]
+
 			elif line.startswith("Date:"):
 				c = c + 1
 				tempdate = date
@@ -213,19 +216,28 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 					modify[position] = modify[position] + m
 					commits[position] = commits[position] + c
 
+					if authors[position] == 0:
+						authors[position] = author
+
+					if author in authors[position]:
+						pass
+					else:
+						authors[position] = author + "," + authors[position]
+						unique[position] = unique[position] + 1
+
 				a = 0
 				d = 0
 				m = 0
 				c = 0
 				position = 0
-		
-	 
+
 		with plt.style.context('fivethirtyeight'):
 	
 			plt.plot(time, added, label="Added")
 			plt.plot(time, delete, label="Deleted")
 			plt.plot(time, modify, label="Modified")
 			plt.plot(time, commits, label="Commits")
+			plt.plot(time, unique, label="Contributors")
 		
 		plt.legend(loc=2)
 		plt.title(logdir)
