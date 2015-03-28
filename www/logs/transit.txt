@@ -1,0 +1,1031 @@
+commit de3f35ea475ba7d0fe0a83f967b0e0125331b4bc
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-27 12:01:41 -0800
+
+    Initial commit
+
+A	.gitignore
+A	LICENSE
+A	README.md
+
+commit 9e386d82248c89234edcdf62d3a1704c02fda49f
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-27 12:07:20 -0800
+
+    Update README.md
+
+M	README.md
+
+commit 45439212d6399f8042b66cb8b0ad06a3670c70de
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-27 12:20:22 -0800
+
+    Update README.md
+
+M	README.md
+
+commit 272ef31f5e6d769444c9be6257148130a6b45f63
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-27 22:14:50 -0800
+
+    Update with resources links.
+
+M	README.md
+
+commit 5ecee924536fde79bc58a40cd156cad0726b4f05
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-27 22:43:15 -0800
+
+    Scaffold
+
+M	.gitignore
+A	Cargo.toml
+A	src/main.rs
+
+commit 89888bcbc32596b4034334ad257934cdd96bdde6
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-28 14:34:14 -0800
+
+    Show branches
+
+M	Cargo.toml
+M	src/main.rs
+
+commit 31d1b0060192b117a225ee176b510fc93d47400b
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-28 15:14:44 -0800
+
+    Improve codebase.
+
+M	src/main.rs
+
+commit f5aa9dedbb8d3da5fc508153615be33894d43c88
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-30 09:25:45 -0800
+
+    More links
+
+M	README.md
+
+commit a43764b5771afb2e9028c0216f5cf6ad7ad2d64f
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-30 09:32:30 -0800
+
+    Update README.md
+
+M	README.md
+
+commit 963a0b3c47753fdae221471eb00b8fdac17178af
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-30 10:12:45 -0800
+
+    Get the references.
+
+M	src/main.rs
+
+commit a94a23877a54464f08037528100179d3b49aeef0
+Merge: 963a0b3 a43764b
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-01-30 10:13:30 -0800
+
+    Merge.
+
+commit 865b91ef2d1842f6fa1750562723ab00f71b8a37
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-02 12:23:05 -0800
+
+    Show parents of a commit.
+
+M	src/main.rs
+
+commit d140baa66a1e0439ea6a960abdc7ef6837bc7416
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-02 12:29:59 -0800
+
+    New resource for revwalk
+
+M	README.md
+M	src/main.rs
+
+commit 1a0f9c2f5ed9e73c0396d900a5ecf9fd54bba667
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-02 14:33:34 -0800
+
+    Show revwalk.
+
+M	src/main.rs
+
+commit 3584ceb0236d825c3c9673f64038e943acbba6a9
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-02 21:51:05 -0800
+
+    Got diffing working
+
+M	src/main.rs
+
+commit 259ef9be01512d2f74cbfcb0c23fe461e044bc1a
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-03 12:44:37 -0800
+
+    Updated milestones. updated potential codebases.
+
+M	README.md
+
+commit 0d95f6941fa3c19954f4aa0ec3382c3890ea3250
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-04 12:59:59 -0800
+
+    Handling of null references.
+
+M	src/main.rs
+
+commit c798874db78d959b034d810b533e12afe54cc1cc
+Merge: 0d95f69 259ef9b
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-04 13:01:01 -0800
+
+    Merge.
+
+commit 6c4df9ff4584ed2c620df2f2ca1be5ddbc00efd7
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-06 09:48:29 -0800
+
+    Bump deps and get print starting
+
+M	Cargo.toml
+M	src/main.rs
+
+commit e98e9109da11ffd52ea0de176ee42bc2606c85cf
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-06 18:08:40 +0000
+
+    Bit of documentation
+
+M	src/main.rs
+
+commit e4bdfd62793006b7455a2532665a94109eb659ca
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-09 10:18:04 -0800
+
+    Better API, optional commit specification
+
+M	Cargo.toml
+M	src/main.rs
+
+commit 392d5a98d8b98835d7be712abe5120f69d61db55
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-11 16:00:15 -0800
+
+    Output struct
+
+M	src/main.rs
+
+commit 7fb400c317fb8210f34d8ef3da12daf9ae6bc7d9
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-11 16:27:10 -0800
+
+    added make_output function; fixed find_moves function being declared inside of main();   added derive[Show] for struct Output
+
+M	src/main.rs
+
+commit 05820c3983178e0dcdcdf8695ebe826bd079f9f7
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-11 16:50:47 -0800
+
+    fixed syntax error.
+
+M	src/main.rs
+
+commit 63c7339f92d260d664c6ec8f5abb4d27be4df313
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-14 19:26:48 -0800
+
+    Print components of diff.
+
+M	src/main.rs
+
+commit 36bc8ec9566cc0e6a68baba3bc812327e63f7ee2
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-14 23:08:34 -0800
+
+    Make print_or_none() accept generic Options.
+
+M	src/main.rs
+
+commit 1061fc50d89212dc03b5fcd09be344bffc78395f
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-16 21:12:53 -0800
+
+    Print Option with {:?}.
+
+M	src/main.rs
+
+commit bf6207eb873213f58fa42c23bfab436923372df8
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-16 21:43:35 -0800
+
+    Make diffline printout more compact.
+
+M	src/main.rs
+
+commit 2f53f58eae7fcc0a630f63497e3d22c41b7ccf8a
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-16 21:48:43 -0800
+
+    Make diffdelta printout more compact.
+
+M	src/main.rs
+
+commit 711171fa2697ff897d281f5634477084e7c10122
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 10:06:12 -0800
+
+    Add regex dependencies.
+
+M	Cargo.toml
+
+commit 83485b38e81f21e96f163ff261493341ad2cdd41
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 10:06:42 -0800
+
+    Rough implementation of collecting groupings of additions and deletions.
+
+M	src/main.rs
+
+commit 729d370a9299b90f7aa93cf6596972a7d0247f26
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 10:14:48 -0800
+
+    Remove unused code and comments.
+
+M	src/main.rs
+
+commit aac79e7063db0e5d86401d6f8b7c245189837a23
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 11:11:44 -0800
+
+    Move key formatting into separate function.
+
+M	src/main.rs
+
+commit 886c731b64da31cde2e17cc2bd57ab65930ea481
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 11:14:51 -0800
+
+    Remove commented out code.
+
+M	src/main.rs
+
+commit 286e444ed5b0f8a83bcaf175267156e5978d3cab
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 11:59:52 -0800
+
+    Match '_' case to unit type.
+
+M	src/main.rs
+
+commit 98346ed269595b7aa00d01964c78755585e1d6a0
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-17 12:01:21 -0800
+
+    updated milestones.
+
+M	README.md
+
+commit e3cefb5786c1a6f158fcaeeaa0fbdbfd526997e2
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-17 12:02:49 -0800
+
+    ok.
+
+M	README.md
+
+commit 7791a13ea3abfdf26244e0b452be20302196f101
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 12:03:02 -0800
+
+    Add file names to Output struct.
+
+M	src/main.rs
+
+commit cd9f029fa2afcb47a66bc51f2fd147a963a7dee7
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 12:42:48 -0800
+
+    Add Found struct.
+
+M	src/main.rs
+
+commit 1b514bd2f384b5608671b540437a445aa9a0559b
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 12:45:24 -0800
+
+    Add message to assert!().
+
+M	src/main.rs
+
+commit 1e9402e23aedfd3c005756dcfe0ea0a673d4ee6b
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 13:01:40 -0800
+
+    Create Found vector with additions and deletions that match the test/basic test case.
+
+M	src/main.rs
+
+commit 7b1630ab1cdc4aadde2d3254c83616db12ab3fbd
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 13:06:16 -0800
+
+    Use variables instead of repeating yourself.
+
+M	src/main.rs
+
+commit 542da5c696c9b44b391bdfe8ef540e99be9bf9b3
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 13:10:19 -0800
+
+    Move printing DiffLine to own function.
+
+M	src/main.rs
+
+commit b379095048e9df0f5d00ddea3469cd2cd09bcb42
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 13:11:20 -0800
+
+    Remove unused variable.
+
+M	src/main.rs
+
+commit fe112d5bdf7a495a9fb6937cfeb25388121855bd
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 13:14:33 -0800
+
+    Use snakecase for variable name.
+
+M	src/main.rs
+
+commit 43c1a4c32917fb3a33eee9e66128294015df1098
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-17 13:28:35 -0800
+
+    milestone update. yay progress!
+
+M	README.md
+
+commit 238a0983592b83254826f3957572dc3f514dad6a
+Author: fraserd <fraserd@users.noreply.github.com>
+Date:   2015-02-17 13:29:56 -0800
+
+    Update README.md
+
+M	README.md
+
+commit 71d738debc18a7f37805eb56e7699ce4271ceba7
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-17 14:24:47 -0800
+
+    update to .gitignore
+
+M	.gitignore
+
+commit e8dae077a5e8f2cc93455feab28c783282f00e11
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-17 14:26:23 -0800
+
+    first commit of transit-display express/nodejs application
+
+A	transit-display/app.js
+A	transit-display/bin/www
+A	transit-display/package.json
+A	transit-display/public/dist/bootstrap-3.3.2-dist/css/bootstrap-theme.css
+A	transit-display/public/dist/bootstrap-3.3.2-dist/css/bootstrap-theme.css.map
+A	transit-display/public/dist/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css
+A	transit-display/public/dist/bootstrap-3.3.2-dist/css/bootstrap.css
+A	transit-display/public/dist/bootstrap-3.3.2-dist/css/bootstrap.css.map
+A	transit-display/public/dist/bootstrap-3.3.2-dist/css/bootstrap.min.css
+A	transit-display/public/dist/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.eot
+A	transit-display/public/dist/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.svg
+A	transit-display/public/dist/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.ttf
+A	transit-display/public/dist/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.woff
+A	transit-display/public/dist/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.woff2
+A	transit-display/public/dist/bootstrap-3.3.2-dist/js/bootstrap.js
+A	transit-display/public/dist/bootstrap-3.3.2-dist/js/bootstrap.min.js
+A	transit-display/public/dist/bootstrap-3.3.2-dist/js/npm.js
+A	transit-display/public/dist/jquery-2.1.3.min.js
+A	transit-display/public/stylesheets/style.css
+A	transit-display/routes/index.js
+A	transit-display/routes/transit.js
+A	transit-display/routes/users.js
+A	transit-display/views/error.jade
+A	transit-display/views/index.jade
+A	transit-display/views/layout.jade
+A	transit-display/views/transit.jade
+
+commit 5356b8c94170a72d9e13065f0e7c9a8555a402ed
+Merge: e8dae07 238a098
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-17 14:28:13 -0800
+
+    Merge branch 'master' of https://github.com/Hoverbear/transit
+
+commit 99e79bc8f37bee6a48cdcb0b7130e6b342891973
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 16:55:57 -0800
+
+    Move code to find keys into own function.
+
+M	src/main.rs
+
+commit 9d5832143d8bbc6b138f6f24c7a7dbac1d8f82d1
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 17:16:30 -0800
+
+    Track line count of additions and deletions.
+
+M	src/main.rs
+
+commit f3aa446c0f300990ca28190a8b8b05498191a009
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 17:19:52 -0800
+
+    Rename variable.
+
+M	src/main.rs
+
+commit 09cdc8e385dd4e0e4efc8068d438aabce34f40b1
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 18:12:55 -0800
+
+    Track start position of addition or deletion.
+
+M	src/main.rs
+
+commit c2d5b0930bc97ca49354c4829bdf1a1eed86053c
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 23:31:53 -0800
+
+    Passes basic test case.
+
+M	src/main.rs
+
+commit 6c77518350567df5dc595b76eb0d6929a6fc4382
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 23:34:24 -0800
+
+    Derive PartialEq and Eq rather than manually implementing.
+
+M	src/main.rs
+
+commit 5881629c0dec86a91801ccec39fccbb4575ef332
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 23:35:44 -0800
+
+    Improve assert message.
+
+M	src/main.rs
+
+commit 7dce0979e447b17ca7e5a59007eed884aafa2da8
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-17 23:39:31 -0800
+
+    Fix comment.
+
+M	src/main.rs
+
+commit 6bebb9e335db5924604093db39491bb9b5aac6a0
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-18 10:30:31 -0800
+
+    Refactor storing key,value pairs into map.
+
+M	src/main.rs
+
+commit 3b1605b71830b451e2d68fcfccf6d07bd04df317
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-18 10:36:16 -0800
+
+    Ignore keys that are empty strings.
+
+M	src/main.rs
+
+commit a3e604fd46e2bdcff5e8419065e88b2390b88ac9
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-18 10:39:27 -0800
+
+    Print actual number of files in assert message.
+
+M	src/main.rs
+
+commit 7406181f6d2c406a20efcd21e72cb51ac2325e0c
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-18 13:51:45 -0800
+
+    further work on display module.
+
+M	transit-display/package.json
+M	transit-display/routes/transit.js
+
+commit b9b550e312798e2e5b9710f5e5a7b12194cb3696
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-18 22:12:03 -0800
+
+    Add dump_diffhunk() function.
+
+M	src/main.rs
+
+commit 9300602d1b6a15abb39b992624af1028a81fb0c7
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-18 22:47:45 -0800
+
+    Remove or silence debugging output.
+
+M	src/main.rs
+
+commit 67798c9b04968819d79674ab5f5361096b286121
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-18 22:52:48 -0800
+
+    Print output lenght on same line as function name.
+
+M	src/main.rs
+
+commit d63563b02ad815e6b67c9492fac380c7e184a954
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-18 23:02:36 -0800
+
+    Line count need not match.
+    
+    Moving blocks of code may introduce/remove leading/trailing vertical whitespace.
+
+M	src/main.rs
+
+commit 04ea389f587c9966ff7d45274bc4a8bfc4c1c961
+Merge: d63563b 7406181
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-18 23:04:51 -0800
+
+    Merge branch 'master' of https://github.com/Hoverbear/transit into find_moves
+
+commit d8534ae996251906f9e7d145a5c73bc81d7f772a
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-19 08:59:17 -0800
+
+    Rename find_keys() -> find_additions_and_deletions().
+
+M	src/main.rs
+
+commit d4a63370b1ddff5603842ba422bd4d76fde26715
+Merge: 7406181 d8534ae
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-19 20:08:04 -0800
+
+    Merge pull request #4 from Hoverbear/find_moves
+    
+    Find moves
+
+commit b02dcf7c4be5e3e9858dad3a28f396df9b773013
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-19 20:10:53 -0800
+
+    Use wildcard for dependencies.
+
+M	Cargo.toml
+
+commit 9bc91ef38f3b7d767fdb73376fc2e8075f7412c8
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-19 20:36:21 -0800
+
+    Tabs to spaces
+
+M	src/main.rs
+
+commit 11ed09332d44ce5a6914503b9b9bdfeb3cfa494a
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-19 21:34:01 -0800
+
+    JSON output
+
+M	src/main.rs
+
+commit f5284aab70ab84d4fb3643a32892b3c01f485b46
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-22 12:01:44 -0800
+
+    Handle non Add/Delete states
+
+M	Cargo.toml
+M	src/main.rs
+
+commit d757a011f7dc17566a776ee27f2a9285e2df8743
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-22 12:22:02 -0800
+
+    More graceful error handling.
+
+M	src/main.rs
+
+commit 085b1a9814de7adfa920ebe5b2ce0562f821bcae
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-18 14:02:35 -0800
+
+    fixing  handling of transit failure
+
+M	transit-display/routes/transit.js
+
+commit 4bdbb6b3206cca96bf4583a668ef9b8b60204998
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-18 14:12:32 -0800
+
+    mmhm
+
+M	transit-display/routes/transit.js
+
+commit 7c9e15f19bd2d9beaf872d82138df633cada6e55
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-18 14:15:58 -0800
+
+    attempting to fix  arguments sent to transit.
+
+M	transit-display/routes/transit.js
+
+commit cc5840a7cc6a453b222c9d484d24f919e67da883
+Author: fraserd <fraserd@users.noreply.github.com>
+Date:   2015-02-18 14:21:16 -0800
+
+    still fixing args sent to transit.
+
+M	transit-display/routes/transit.js
+
+commit 7e3e136dcaeb0e1574ac250f7a0a06077efc9e28
+Author: fraserd <fraserd@users.noreply.github.com>
+Date:   2015-02-18 14:51:56 -0800
+
+    still fixing args sent to transit. x2
+
+M	transit-display/routes/transit.js
+
+commit 2c134b5b80eb86eb0371135b05e7137e17d970e1
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-22 14:49:27 -0800
+
+    Fix invocation
+
+M	transit-display/routes/transit.js
+
+commit 076a8375a7cf117bc719f62c9c80054c4c8689c2
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-22 14:59:53 -0800
+
+    Flatten output array for transit-display
+
+M	src/main.rs
+
+commit 61afb1cc453e04fe4682c8d9b27fb3cb9b2c994c
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-22 15:02:35 -0800
+
+    Add installation instructions
+
+M	README.md
+
+commit 81ed31636ed8367691a3d33bd8bdefea6117e23d
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-22 20:50:47 -0800
+
+    clean  up of transit display
+
+M	transit-display/routes/transit.js
+M	transit-display/views/transit.jade
+
+commit 9c2425100df1b6da9efacd01eced5c577eee61d6
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-22 22:18:53 -0800
+
+    Prune empty moves
+
+M	src/main.rs
+
+commit 862f7478765a046ef188b3900b4ab5a2030aed49
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-22 21:19:13 -0800
+
+    less  margins on the container div.
+
+M	transit-display/views/transit.jade
+
+commit 702087bda3fb4a6554e4604ed6b0a66ebf6fc134
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-22 21:19:13 -0800
+
+    less  margins on the container div.
+
+M	transit-display/views/transit.jade
+
+commit de1f4f12d07a11cd599e882c11ba228c01dc2aaf
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-22 21:19:13 -0800
+
+    less  margins on the container div.
+
+M	transit-display/views/transit.jade
+
+commit e56a0bd449ce431f30694879c327f316909849a2
+Merge: 862f747 702087b
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-23 14:52:20 -0800
+
+    Merge branch 'display'
+
+commit 1bc5fb66cf235340aa89880456a4ecf778e9b77b
+Merge: 702087b de1f4f1
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-23 14:54:28 -0800
+
+    Merge remote-tracking branch 'carbon/display' into display
+
+commit f4c33e652510310607032da7b28af0741e739b7f
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-23 15:18:22 -0800
+
+    Add example runs
+
+M	README.md
+A	example_runs/capn-proto.json
+A	example_runs/connect.png
+A	example_runs/git2-rs.png
+A	example_runs/rust-url.png
+
+commit 790f867335362d022d473f396500a263fd35eceb
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-23 19:28:45 -0800
+
+    added a repository selector form to transit-display
+
+M	transit-display/app.js
+A	transit-display/routes/select.js
+A	transit-display/views/select.jade
+
+commit d0bd461d14d18ce826ce6d7f173d034278ddcd01
+Merge: f4c33e6 790f867
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-23 19:31:30 -0800
+
+    Merge branch 'display'
+
+commit 155c2b5a4a36b425afd1215979aa7e87ffc894a1
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-23 19:50:21 -0800
+
+    Improve select
+
+M	transit-display/views/select.jade
+
+commit 4db8f5664113e9b65c1503122d966f99ec10dff9
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-23 19:57:46 -0800
+
+    Actually fix /select, whoops
+
+M	transit-display/views/select.jade
+
+commit d1548ff87359c84865b5ef8de1182ce548661ba6
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-23 20:08:50 -0800
+
+    Improve error handling.
+
+M	transit-display/routes/transit.js
+M	transit-display/views/error.jade
+
+commit 11bf2eacb9cb4ef1db4ef19ee97262dfbf5b89f5
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-23 20:09:23 -0800
+
+    Better readme!
+
+M	README.md
+
+commit 99c3aa73fe25bcbab32fc64a0ef6bf0ca2af5018
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-23 20:16:52 -0800
+
+    more improvements to select
+
+M	transit-display/public/stylesheets/style.css
+M	transit-display/views/select.jade
+
+commit 358f6a816eab0f1adf639737d6884bcc2c0544ea
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-23 20:42:00 -0800
+
+    additional error handling  for  transit-display
+
+M	transit-display/routes/transit.js
+
+commit b47841bd8dddb5acacc52fd7e39579827c47b819
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-23 20:53:46 -0800
+
+    helps if I do it right ;)
+
+M	transit-display/routes/transit.js
+
+commit 3c3e82f2d85d9d2b59f0716a4905d7ef89587a40
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-23 22:37:50 -0800
+
+    Add simple tests (zipped for compat)
+
+A	test.zip
+
+commit 0d4ed93ba51940ca774b43f65cc814affad96e1b
+Merge: 3c3e82f b47841b
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-23 22:38:24 -0800
+
+    Merge
+
+commit 30118e39e6af3c14c2b7dec2b6c01abd1d7efe8a
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-23 22:57:46 -0800
+
+    Added results and analysis.
+
+M	README.md
+
+commit 7d3ca4bae48cf701b32e52fa759a2c85913e78fb
+Merge: 30118e3 0d4ed93
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-23 22:58:32 -0800
+
+    Merge branch 'master' of https://github.com/Hoverbear/transit
+
+commit f271bf5ff223b316bef484218d210613e028c21f
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-23 23:02:49 -0800
+
+    Use correct header size.
+
+M	README.md
+
+commit f91a185114157e08aaf7c5be64b6c1f61b10a697
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-23 23:08:46 -0800
+
+    Add link to work task issue #2.
+
+M	README.md
+
+commit 1e704867e455c4ffd0f3d69160d2d42e6f239607
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-23 23:13:19 -0800
+
+    Remove 'incomplete'.
+
+M	README.md
+
+commit 9404fa44188c68fc933bbc3f8423e7e76268b977
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-23 23:19:38 -0800
+
+    added a 'loading' message to 'select' page.
+
+M	transit-display/app.js
+M	transit-display/public/stylesheets/style.css
+M	transit-display/views/select.jade
+
+commit 0567b27384283d213f02a6da6addaed9244208c4
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-23 23:20:40 -0800
+
+    Reword link to issue#2 work tasks.
+
+M	README.md
+
+commit 7bee9fbbd6482029486f4e58c87ca7fd0a20ca08
+Merge: 0567b27 9404fa4
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-02-23 23:28:10 -0800
+
+    Merge branch 'selectorimprovements'
+
+commit ddf440baa457bd3dfb74891abe32e20522262d81
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-23 23:32:21 -0800
+
+    Add team member names and github accounts.
+
+M	README.md
+
+commit 374ee6e692204e8ae330968e6110ade94db4f0f1
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-23 23:43:41 -0800
+
+    Put the correct handle to the correct person.
+
+M	README.md
+
+commit 67dfb36a6e9b049d407a3804dae8f4fb7bb39a4f
+Author: Brody Holden <brody_r_h@hotmail.com>
+Date:   2015-02-23 23:46:30 -0800
+
+    Correct letter casing on github handle.
+
+M	README.md
+
+commit 5b5004c8fe047acfc8dc47ddf631ff08900aa521
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-02-26 15:03:01 -0800
+
+    Ammend license
+
+M	LICENSE
+
+commit c7515955987d666e61774d7aa7a4ea97ed64faf5
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-03-02 21:23:36 -0800
+
+    Rustup. Using my docopt for now until update.
+
+M	Cargo.toml
+M	src/main.rs
+
+commit 592f446886736e7d6123491799e9227a01aacf7d
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-03-03 11:34:03 -0800
+
+    Use docopt
+
+M	Cargo.toml
+
+commit 1e2dd9d6ed120a0b4ba6a3636173b4b20d922e5f
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-03-03 12:16:43 -0800
+
+    Pretty graphs
+
+M	src/main.rs
+A	transit-display/public/dist/c3.js
+A	transit-display/public/dist/d3.js
+A	transit-display/public/stylesheets/c3.min.css
+M	transit-display/routes/transit.js
+M	transit-display/views/layout.jade
+M	transit-display/views/transit.jade
+
+commit daff7b935d1c32144186700c209c1786f03b79c6
+Author: Fraser DeLisle <illdred@gmail.com>
+Date:   2015-03-03 12:31:25 -0800
+
+    fixed the error page. it'll print the stacktrace if you set NODE_ENV to development or use app.set('env', 'development')
+
+M	transit-display/app.js
+M	transit-display/views/error.jade
+
+commit eb416426bb0d783883ae36c62c1690ea6b5cebf8
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-03-10 21:53:16 -0700
+
+    Remove unused dumps. Use println!("{:?}")
+
+M	src/main.rs
+
+commit 011afc6bf2fc29cc9c7735e48890905f9d8043c1
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-03-10 22:03:17 -0700
+
+    Make output JSON by default.
+
+M	src/main.rs
+
+commit ad354bfa309d993f8dbcb07d4e40a67092a88c23
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-03-10 22:26:27 -0700
+
+    More consistent output.
+
+M	src/main.rs
+
+commit 91e3fefc2fbf17116131576edffa643a05048ab9
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-03-10 22:27:38 -0700
+
+    Update docs.
+
+M	README.md
+M	src/main.rs
+
+commit a1ecbc1470b1f890f7399854a5d59e614d5ece6f
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-03-11 22:06:20 -0700
+
+    Use a default empty string on lines with invalid bytes. Resolves #7 until we get back to it.
+
+M	src/main.rs
+
+commit 028597e64e21a628d372f2ba0a415906b54fe3b4
+Author: Andrew Hobden <andrew@hoverbear.org>
+Date:   2015-03-11 22:16:34 -0700
+
+    Fixes #5. Output is seconds since epoch.
+
+M	src/main.rs

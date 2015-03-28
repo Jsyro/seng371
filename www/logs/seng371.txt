@@ -550,3 +550,108 @@ Date:   2015-03-25 14:07:29 -0700
     fixes
 
 M	parse.py
+
+commit 47a841c2cfe4da6362a092ac3929b87b9cd751fd
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-26 11:01:36 -0700
+
+    Update from heroku
+
+M	www/display.html
+M	www/web.py
+
+commit 73202f53fb87a64648eb08e6000980a80f89ea94
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-27 09:52:08 -0700
+
+    Modifying webhost stuff
+    
+    starting change towards ajax calls for creating graphs. also adding
+    preloaded logs
+
+M	www/display.html
+M	www/index.html
+A	www/loading.html
+A	www/logs/bootstrap.txt
+A	www/logs/django.txt
+A	www/logs/jquery-mobile.txt
+A	www/logs/jquery.txt
+A	www/logs/node.txt
+A	www/logs/seng371.txt
+M	www/middle.html
+M	www/web.py
+
+commit e00809da38d28fdf5960c2aa5deeea85d5aa6690
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-27 09:54:51 -0700
+
+    Unbroke Gource
+
+M	parse.py
+
+commit e3e10968ce76575c2bb20dc2278d38e2ab1a1aba
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-27 10:58:56 -0700
+
+    ggg
+
+M	www/display.html
+M	www/web.py
+
+commit 5ccb49f85fd18fd61edc034e95585bb3ae168e5e
+Author: KRollans <keith_rollans@hotmail.com>
+Date:   2015-03-27 12:51:26 -0700
+
+    Minor QA
+    
+    Yearly wasn't displaying properly
+
+M	www/display.html
+
+commit 3c00f5710aa0eca52fd15a9c4c09542106e47813
+Author: Evan Hildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-27 14:05:55 -0700
+
+    Working AJAX and progress bar
+
+M	www/middle.html
+M	www/web.py
+
+commit aa1148369ad0cbcfcacf80b49c88b5dd73a19440
+Author: KRollans <keith_rollans@hotmail.com>
+Date:   2015-03-27 14:08:14 -0700
+
+    Repo Name in HTML
+    
+    Added repo name to the display page
+
+M	www/display.html
+M	www/web.py
+
+commit 6793267a54f90ef1c5aca68e9b514d83f5507984
+Merge: aa11483 3c00f57
+Author: KRollans <keith_rollans@hotmail.com>
+Date:   2015-03-27 14:15:33 -0700
+
+    Merge remote-tracking branch 'origin/master'
+    
+    Conflicts:
+    	www/web.py
+
+commit d27ada821cd570fa226dcab288307ea03ea6c52f
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-27 14:58:06 -0700
+
+    Revert "ggg"
+    
+    This reverts commit e3e10968ce76575c2bb20dc2278d38e2ab1a1aba.
+
+M	www/display.html
+M	www/web.py
+
+commit 80fc3c7ab69918a94b865705c5b7aef0df2046a1
+Merge: d27ada8 6793267
+Author: EvanHildebrandt <ehildebr@uvic.ca>
+Date:   2015-03-27 14:58:20 -0700
+
+    Merge remote-tracking branch 'origin/master'

@@ -23,7 +23,15 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+    	img:hover {
+    		opacity: 0.4;
+    	}
+    	img {
+    		opacity: 1;
+    	}
 
+    </style>
 </head>
 
 <body>
@@ -68,19 +76,23 @@
              </div>
              <div class="form-group">
              <label>
-                <input value="True" name="commits" type="checkbox" checked> Commits
+                <input value="True" name="commits" id="commits" type="checkbox" checked> Commits
             </label>
 
             <label>
-                <input value="True" name="additions" type="checkbox" checked> Additions
+                <input value="True" name="additions" id="additions" type="checkbox" checked> Additions
             </label>
 
             <label>
-                <input value="True" name="deletions" type="checkbox" checked> Deletions
+                <input value="True" name="deletions" id="deletions" type="checkbox" checked> Deletions
             </label>
 
             <label>
-                <input value="True" name="modifies" type="checkbox"> Modifies
+                <input value="True" name="modifies" id="modifies" type="checkbox"> Modifies
+            </label>
+
+            <label>
+                <input value="True" name="unique" id="unique" type="checkbox"> Unique Contributors
             </label>
             </div>
 
@@ -142,8 +154,14 @@
         }
 
         function startGraphs () {
-            var startDate = $("#startDate").val();
-            var endDate = $("#endDate").val();
+            var startDate = $("#sd").val() + " 01:00:00+00:00";
+            var endDate = $("#ed").val() + " 01:00:00+00:00";
+
+            var af = $("#additions").prop('checked')
+            var df = $("#deletions").prop('checked')
+            var mf = $("#modifies").prop('checked')
+            var cf = $("#commits").prop('checked')
+            var uf = $("#unique").prop('checked')
 
             $.ajax({
                 type: "get",
@@ -154,11 +172,14 @@
                  success: function (result) {
                     console.log($("#lifetime").val());
                     console.log(result);
-                    if ($("#lifetime").val() == "True") {
+                    fileid = result.fileid;
+                    if ($("#lifetime").prop('checked') == true) {
                         startDate = result.firstDate;
                         endDate = result.lastDate;
-                        fileid = result.fileid;
                     };
+                 },
+                 error: function (result) {
+                     alert("There was an error :(");
                  }
             });
 
@@ -170,12 +191,17 @@
             var timespanlength = timespan.length;
             console.log(timespanlength);
             var x = 0;
+
+            console.log("start date is " + startDate);
             timespan.forEach(function(entry) {
+
+
+
                 $.ajax({
                 type: "post",
                 contentType: "application/json; charset=utf-8",
                 url: "/graph",
-                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid},
+                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid, 'af' : af, 'cf' : cf, 'df' : df, 'mf' : mf, 'uf' : uf},
                  success: function (result) {
                     console.log(result);
                     x = x + 1;
@@ -186,11 +212,16 @@
                     console.log(newWidth + "%");
                     $('.progress-bar').css("width", newWidth + "%");
                     if (x == timespanlength) {
-                        window.location.href = "/display/"+ fileid ;
+                        window.location.href = "/display/"+ fileid  + "/<<--REPO-->>";
                     };
-                 }
-            });
-            });
+                 },
+                 error: function (result, textStatus, errorThrown) {
+                    //Ghetto error handling
+                     $.ajax(this);
+                     return;           
+                             }
+                        });
+                        });
         }
 
     </script>
