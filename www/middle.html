@@ -159,6 +159,9 @@
                         startDate = result.firstDate;
                         endDate = result.lastDate;
                     };
+                 },
+                 error: function (result) {
+                     alert("There was an error :(");
                  }
             });
 
@@ -173,6 +176,9 @@
 
             console.log("start date is " + startDate);
             timespan.forEach(function(entry) {
+
+
+
                 $.ajax({
                 type: "post",
                 contentType: "application/json; charset=utf-8",
@@ -190,9 +196,14 @@
                     if (x == timespanlength) {
                         window.location.href = "/display/"+ fileid  + "/<<--REPO-->>";
                     };
-                 }
-            });
-            });
+                 },
+                 error: function (result, textStatus, errorThrown) {
+                    //Ghetto error handling
+                     $.ajax(this);
+                     return;           
+                             }
+                        });
+                        });
         }
 
     </script>
