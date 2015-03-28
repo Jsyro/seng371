@@ -217,7 +217,7 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 				date = dateutil.parser.parse(date)
 				position = np.searchsorted(time, date)
 
-				if position != 0:
+				if (position != 0) and (position != length):
 					added[position] = added[position] + a
 					delete[position] = delete[position] + d
 					modify[position] = modify[position] + m
