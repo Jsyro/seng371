@@ -68,12 +68,23 @@
             <label>
                 <input value="True" name="lifetime" id="lifetime" type="checkbox" checked onclick="$('#sd').removeAttr('disabled'); $('#ed').removeAttr('disabled'); $(this).attr('disabled', true);"> Use project lifetime?
             </label>
+            </div>
+            <div class="form-group">
              <label for="startDate">Start date</label>
              <input name="startDate" id="sd" type="date" class="form-control" disabled>
 
              <label for="endDate">End date</label>
              <input name="endDate" id="ed" type="date" class="form-control" disabled>
              </div>
+
+             <div class="form-group">
+            <label for="spans">Date span(s)</label>
+             <input name="spans" id="spans" type="text" class="form-control" placeholder="days seperated by ',' default '1,7,30,180,365'">
+            </div>
+
+             <h3>Select Lines to show
+                    <small>Default options are checked</small></h3>
+
              <div class="form-group">
              <label>
                 <input value="True" name="commits" id="commits" type="checkbox" checked> Commits
@@ -96,10 +107,18 @@
             </label>
             </div>
 
+            <h3>Select Modifiers
+                    <small>Default is 'Don't Justify</small></h3>
             <div class="form-group">
-            <label for="spans">Date span(s)</label>
-             <input name="spans" id="spans" type="text" class="form-control" placeholder="days seperated by ',' eg '1, 7, 30'">
+                <label for="modifier">Select Modifier</label>
+                <select class="selectpicker form-control" name="modifier" id="modifier" data-live-search="true"> 
+                    <option value="none">Don't Justify</option>
+                    <option value="avg" >Justify by average</option>
+                    <option value="avgp">Justify by percentage of average</option>
+                    <option value="maxp">Justify by percentage of maximum</option>
+                 </select>
             </div>
+
         <button type="button" class="form-control" onclick="showModal ()" >Submit</button>
 
         <a href='/options/<<--REPO-->>'>continue</a>
@@ -157,11 +176,13 @@
             var startDate = $("#sd").val() + " 01:00:00+00:00";
             var endDate = $("#ed").val() + " 01:00:00+00:00";
 
-            var af = $("#additions").prop('checked')
-            var df = $("#deletions").prop('checked')
-            var mf = $("#modifies").prop('checked')
-            var cf = $("#commits").prop('checked')
-            var uf = $("#unique").prop('checked')
+            var af = $("#additions").prop('checked');
+            var df = $("#deletions").prop('checked');
+            var mf = $("#modifies").prop('checked');
+            var cf = $("#commits").prop('checked');
+            var uf = $("#unique").prop('checked');
+
+            var mod = $("#modifier").val();
 
             $.ajax({
                 type: "get",
@@ -201,7 +222,7 @@
                 type: "post",
                 contentType: "application/json; charset=utf-8",
                 url: "/graph",
-                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid, 'af' : af, 'cf' : cf, 'df' : df, 'mf' : mf, 'uf' : uf},
+                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid, 'af' : af, 'cf' : cf, 'df' : df, 'mf' : mf, 'uf' : uf, 'mod' : mod},
                  success: function (result) {
                     console.log(result);
                     x = x + 1;

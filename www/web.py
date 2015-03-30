@@ -86,7 +86,7 @@ def clone():
 			return "<h1>Clone failed	<small>	This could be due to your project being too large. Try running the server locally</small></h1>"
 		else:
 			os.chdir("./tmp_"+repoDir)
-			gitlog = os.system("git --no-pager log --name-status --author-date-order --reverse --date=iso > ../logs/"+repoDir+".txt")
+			gitlog = os.system("git --no-pager log --name-status --no-merges --pretty=format:%h%x09%an%x09%ad%x09%s%x09{LINE} --date=iso > ../logs/"+repoDir+".txt")
 			os.chdir("../")
 
 	with open ("middle.html", "r") as output:
@@ -113,8 +113,11 @@ def lines(logdir):
 	first = True
 
 	for line in lines:
-		if line.startswith("Date:"):
-			date = line[8:30] + "\n"
+		if "{LINE}" in line:
+			date = line.split("\t")[2][:25]
+			if date[22] > 1:
+				date = date[:20] + "+0000"
+
 			date = dateutil.parser.parse(date)
 			if first:
 				firstDate = date
@@ -145,13 +148,15 @@ def spans():
 	mf = (bottle.request.forms.get("mf") == 'true')
 	uf = (bottle.request.forms.get("uf") == 'true')
 
+	mod = bottle.request.forms.get("mod")
+
 
 	filename = "./logs/"+logdir+".txt"
 	inputfile = open(filename, 'r')
 
 	lines = inputfile.readlines()
 
-	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid,  af, cf, df, mf, uf)
+	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid,  af, cf, df, mf, uf, mod)
 
 
 @bottle.get("/display/<fileid>/<logdir>")
@@ -171,7 +176,7 @@ def openDisplay(fileid, logdir):
 
 	return  data
 
-def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf, uf):
+def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf, uf, mod):
 
 		time = np.array([lastDate])
 		date = lastDate
@@ -203,32 +208,32 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 		first = True
 	
 		for line in lines:
-			if line.startswith("A	"):
-				a = a + 1 
+			if line.startswith("M	"):
+				m = m + 1
 			elif line.startswith("D	"):
 				d = d + 1
-			elif line.startswith("M	"):
-				m = m + 1
-			elif line.startswith("    "):
-				comment = line[4:]
-			elif line.startswith("commit"):
-				commit = line[7:]
-			elif line.startswith("Author:"):
-				author = line[8:]
-				author = author.split("<")[0]
+			elif line.startswith("A	"):
+				a = a + 1
+			elif "{LINE}" in line:
+				values = line.split("\t")
+				sha = values[0]
+				author = values[1]
+				date = values[2][:25]
+				if date[22] > 1:
+					date = date[:20] + "+0000"
 
-			elif line.startswith("Date:"):
-				c = c + 1
-				tempdate = date
-				date = line[8:30] + "\n"
+				comment = values[3]
 				date = dateutil.parser.parse(date)
+
+			else:
+
 				position = np.searchsorted(time, date)
 
 				if (position != 0) and (position != length):
 					added[position] = added[position] + a
 					delete[position] = delete[position] + d
 					modify[position] = modify[position] + m
-					commits[position] = commits[position] + c
+					commits[position] = commits[position] + 1
 
 					if authors[position] == 0:
 						authors[position] = author
@@ -245,8 +250,34 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 				c = 0
 				position = 0
 
-		with plt.style.context('fivethirtyeight'):
 
+		if mod == "none":
+			pass
+		elif mod == "avg":
+			added = added - np.average(added)
+			delete = delete - np.average(delete)
+			modify = modify - np.average(modify)
+			commits = commits - np.average(commits)
+			unique = unique - np.average(unique)
+		elif mod == "avgp":
+			added = 100 * added / np.average(added)
+			delete = 100* delete / np.average(delete)
+			modify = 100* modify / np.average(modify)
+			commits = 100* commits / np.average(commits)
+			unique = 100* unique / np.average(unique)
+		elif mod == "maxp":
+			added = 100* added / np.amax(added)
+			delete = 100* delete / np.amax(delete)
+			modify = 100* modify / np.amax(modify)
+			commits = 100* commits / np.amax(commits)
+			unique = 100* unique / np.amax(unique)
+
+
+		with plt.style.context('fivethirtyeight'):
+			if (mod == "maxp") or (mod == "avgp"):
+				plt.ylabel("percentage")
+			else:
+				plt.ylabel("number")
 			if af:
 				plt.plot(time, added, label="Added")
 
@@ -265,10 +296,10 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 		plt.legend(loc=2)
 		plt.title(logdir)
 		plt.xlabel("Time")
-		
+
 		deltaName = '0'*(5 - len(str(delta))) + str(delta)
 
-		filename = './temp/' + fileid+"/-"+deltaName+'.svg'
+		filename = './temp/' + fileid+"/" + logdir + "-"+deltaName+'.svg'
 		plt.savefig(filename, format="svg")
 			
 		plt.clf()
