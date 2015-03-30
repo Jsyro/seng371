@@ -25,9 +25,6 @@ from numpy.random import rand
 import numpy as np
 from random import randint
 
-@bottle.get('<imgdir:re:.*>/<filename:re:.*\.svg>')
-def send_image(imgdir, filename):
-		return static_file(filename, root='./' + imgdir, mimetype='image/svg+xml')
 
 @bottle.get('<imgdir:re:.*>/<filename:re:.*\.png>')
 def send_image(imgdir, filename):
@@ -71,8 +68,7 @@ def clone():
 	repo = bottle.request.forms.get("repo")
 
 	if '/' in repo:
-		repoDir = repo.split("/")
-		repoDir = repoDir[1]
+		repoDir = repo.replace("/", "-")
 	else:
 		repoDir = repo
 
@@ -167,7 +163,7 @@ def openDisplay(fileid, logdir):
 
 	images = ""
 	for name in os.listdir("./temp/" + fileid):
-		if name.endswith(".svg"):
+		if name.endswith(".png"):
 			name = name.split('/')[-1]
 			images = images + '\n<div class="col-sm-3 col-xs-6">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" onclick="$(\'#big\').attr(\'src\',$(this).attr(\'src\')); $(\'#figure\').text(\'Weekly blocks\'); window.scrollTo(0,0);"></div>\n'
 
@@ -307,8 +303,8 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 
 		deltaName = '0'*(5 - len(str(delta))) + str(delta)
 
-		filename = './temp/' + fileid+"/" + logdir + "-"+deltaName+'.svg'
-		plt.savefig(filename, format="svg")
+		filename = './temp/' + fileid+"/" + logdir + "-"+deltaName+'.png'
+		plt.savefig(filename, format="png")
 			
 		plt.clf()
 		return filename

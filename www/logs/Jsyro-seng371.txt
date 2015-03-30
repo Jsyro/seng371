@@ -1,3 +1,20 @@
+aeff4ee	EvanHildebrandt	2015-03-30 14:03:52 -0700	Cleanups and show restructures	{LINE}
+M	www/middle.html
+M	www/web.py
+
+50aef80	EvanHildebrandt	2015-03-30 13:40:51 -0700	Added options, Restructured logs	{LINE}
+D	www/loading.html
+M	www/logs/bootstrap.txt
+M	www/logs/django.txt
+M	www/logs/jquery-mobile.txt
+M	www/logs/jquery.txt
+M	www/logs/node.txt
+A	www/logs/rails.txt
+M	www/logs/seng371.txt
+D	www/logs/transit.txt
+M	www/middle.html
+M	www/web.py
+
 d424539	EvanHildebrandt	2015-03-30 10:24:51 -0700	Fixed files out of order	{LINE}
 M	www/web.py
 

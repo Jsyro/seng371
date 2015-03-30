@@ -227,6 +227,8 @@
                 type: "post",
                 contentType: "application/json; charset=utf-8",
                 url: "/graph",
+                retryLimit : 5,
+                tryCount : 0,
                 data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid, 'af' : af, 'cf' : cf, 'df' : df, 'mf' : mf, 'uf' : uf, 'mod' : mod, 'res' : res},
                  success: function (result) {
                     console.log(result);
@@ -243,8 +245,13 @@
                  },
                  error: function (result, textStatus, errorThrown) {
                     //Ghetto error handling
-                     $.ajax(this);
-                     return;           
+                    this.tryCount ++;
+                    if(this.tryCount <= this.retryLimit){
+                        console.log("timeout"); 
+                        $.ajax(this);
+                        return;
+                    }          
+                    alert("Your spoon is too big");
                              }
                         });
                         });
