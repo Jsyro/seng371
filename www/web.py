@@ -148,6 +148,9 @@ def spans():
 	mf = (bottle.request.forms.get("mf") == 'true')
 	uf = (bottle.request.forms.get("uf") == 'true')
 
+	res = (bottle.request.forms.get("res") == 'true')
+	print res
+
 	mod = bottle.request.forms.get("mod")
 
 
@@ -156,7 +159,7 @@ def spans():
 
 	lines = inputfile.readlines()
 
-	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid,  af, cf, df, mf, uf, mod)
+	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid,  af, cf, df, mf, uf, mod, res)
 
 
 @bottle.get("/display/<fileid>/<logdir>")
@@ -176,7 +179,7 @@ def openDisplay(fileid, logdir):
 
 	return  data
 
-def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf, uf, mod):
+def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf, uf, mod, res):
 
 		time = np.array([lastDate])
 		date = lastDate
@@ -243,6 +246,11 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 					else:
 						authors[position] = author + "," + authors[position]
 						unique[position] = unique[position] + 1
+
+					if res:
+						if (a > 10) and (d > 10):
+							plt.scatter(date, (a+d)/2, c='Black', s=a+d,
+                alpha=1, edgecolors='none')
 
 				a = 0
 				d = 0

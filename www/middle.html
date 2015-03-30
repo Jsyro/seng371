@@ -119,9 +119,13 @@
                  </select>
             </div>
 
+            <div class="form-group">
+                <label>
+                <input value="True" name="res" id="res" type="checkbox"> Show Restructures
+            </label>
+            </div>
         <button type="button" class="form-control" onclick="showModal ()" >Submit</button>
 
-        <a href='/options/<<--REPO-->>'>continue</a>
         </div>
   </form>
             </div>
@@ -181,6 +185,7 @@
             var mf = $("#modifies").prop('checked');
             var cf = $("#commits").prop('checked');
             var uf = $("#unique").prop('checked');
+            var res = $("#res").prop('checked');
 
             var mod = $("#modifier").val();
 
@@ -222,7 +227,7 @@
                 type: "post",
                 contentType: "application/json; charset=utf-8",
                 url: "/graph",
-                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid, 'af' : af, 'cf' : cf, 'df' : df, 'mf' : mf, 'uf' : uf, 'mod' : mod},
+                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid, 'af' : af, 'cf' : cf, 'df' : df, 'mf' : mf, 'uf' : uf, 'mod' : mod, 'res' : res},
                  success: function (result) {
                     console.log(result);
                     x = x + 1;
