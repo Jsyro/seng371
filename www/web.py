@@ -265,7 +265,10 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 		plt.legend(loc=2)
 		plt.title(logdir)
 		plt.xlabel("Time")
-		filename = './temp/' + fileid+"/-"+str(delta)+'.svg'
+		
+		deltaName = '0'*(5 - len(str(delta))) + str(delta)
+
+		filename = './temp/' + fileid+"/-"+deltaName+'.svg'
 		plt.savefig(filename, format="svg")
 			
 		plt.clf()
