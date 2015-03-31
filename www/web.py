@@ -10,21 +10,12 @@ import datetime
 import dateutil.parser
 import matplotlib.pyplot as plt
 from numpy.random import rand
-import bottle 
-import os
-from bottle import static_file
-import sys
-import re
-import os.path
-import time
-import shutil
-import datetime
-import dateutil.parser
-import matplotlib.pyplot as plt
-from numpy.random import rand
 import numpy as np
 from random import randint
-
+import urllib2
+import json
+import base64
+import markdown
 
 @bottle.get('<imgdir:re:.*>/<filename:re:.*\.png>')
 def send_image(imgdir, filename):
@@ -165,13 +156,15 @@ def openDisplay(fileid, logdir):
 	for name in os.listdir("./temp/" + fileid):
 		if name.endswith(".png"):
 			name = name.split('/')[-1]
-			images = images + '\n<div class="col-sm-3 col-xs-6">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" onclick="$(\'#big\').attr(\'src\',$(this).attr(\'src\')); $(\'#figure\').text(\'Weekly blocks\'); window.scrollTo(0,0);"></div>\n'
-
+			images = images + '\n<div class="col-sm-3 col-xs-6 graph-small">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" ></div>\n'
+	repo = logdir.replace("-", "/")
+	readme = markdown.markdown(base64.b64decode(json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/readme").read())["content"]))
 	with open ("display.html", "r") as output:
 
-		data	=	output.read().replace('\n', '')
+		data	=	output.read()
 		data	=	data.replace("<<--IMG-->>", images)
 		data	=	data.replace("<<--REPO-->>", logdir)
+		data	=	data.replace("<<--README-->>", readme)
 
 	return  data
 
@@ -245,8 +238,7 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 
 					if res:
 						if (a > 10) and (d > 10):
-							plt.scatter(date, (a+d)/2, c='Black', s=a+d,
-                alpha=1, edgecolors='none')
+							plt.scatter(date, (a+d)/2, c='Black', s=a+d, alpha=1, edgecolors='none')
 
 				a = 0
 				d = 0
@@ -314,6 +306,5 @@ if __name__ == '__main__':
 		bottle.run(host='0.0.0.0', port=os.environ['PORT'])
 	else:
 		bottle.run(host='localhost', port='8080')
-import numpy as np
-from random import randint
+
 
