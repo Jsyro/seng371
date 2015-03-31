@@ -59,7 +59,7 @@ def clone():
 	repo = bottle.request.forms.get("repo")
 
 	if '/' in repo:
-		repoDir = repo.replace("/", "-")
+		repoDir = repo.replace("/", "_")
 	else:
 		repoDir = repo
 
@@ -159,7 +159,7 @@ def openDisplay(fileid, logdir):
 		if name.endswith(".png"):
 			name = name.split('/')[-1]
 			images = images + '\n<div class="col-sm-3 col-xs-6 graph-small">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" ></div>\n'
-	repo = logdir.replace("-", "/")
+	repo = logdir.replace("_", "/")
 	readme = markdown.markdown(unicode(base64.b64decode(json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/readme").read())["content"]), errors='ignore'))
 	with open ("display.html", "r") as output:
 
@@ -241,7 +241,7 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 
 					if res:
 						if (a > 10) and (d > 10):
-							plt.scatter(date, (a+d)/2, c='Black', s=a+d, alpha=1, edgecolors='none')
+							plt.scatter(date, -20, c='Black', s=a+d, alpha=1, edgecolors='none')
 
 				a = 0
 				d = 0
