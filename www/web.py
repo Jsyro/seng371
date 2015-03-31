@@ -158,7 +158,7 @@ def openDisplay(fileid, logdir):
 			name = name.split('/')[-1]
 			images = images + '\n<div class="col-sm-3 col-xs-6 graph-small">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" ></div>\n'
 	repo = logdir.replace("-", "/")
-	readme = markdown.markdown(base64.b64decode(json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/readme").read())["content"]))
+	readme = markdown.markdown(unicode(base64.b64decode(json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/readme").read())["content"]), errors='ignore'))
 	with open ("display.html", "r") as output:
 
 		data	=	output.read()
