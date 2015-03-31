@@ -44,7 +44,7 @@ def javascript(filename):
 @bottle.get('/')
 def index():
 	options = ""
-	for name in os.listdir("./logs"):
+	for name in sorted(os.listdir("./logs")):
 		if name.endswith(".txt"):
 			options = options + "<option value='"+str(name)[:-4]+"''>" + str(name)[:-4] + "</option>\n"
 
@@ -153,7 +153,9 @@ def spans():
 def openDisplay(fileid, logdir):
 
 	images = ""
-	for name in os.listdir("./temp/" + fileid):
+	temp = sorted(os.listdir("./temp/" + fileid))
+	first = '/temp/'+ fileid + "/" + temp[1]
+	for name in temp:
 		if name.endswith(".png"):
 			name = name.split('/')[-1]
 			images = images + '\n<div class="col-sm-3 col-xs-6 graph-small">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" ></div>\n'
@@ -163,6 +165,7 @@ def openDisplay(fileid, logdir):
 
 		data	=	output.read()
 		data	=	data.replace("<<--IMG-->>", images)
+		data	=	data.replace("<<--FIRST-->>", first)
 		data	=	data.replace("<<--REPO-->>", logdir)
 		data	=	data.replace("<<--README-->>", readme)
 
