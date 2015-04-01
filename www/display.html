@@ -60,7 +60,6 @@
         <div class="row">
         <div class="col-md-8">
              <div class="imageDisplay">
-                <img class='img-responsive' src='<<--FIRST-->>' />
                 <span class="prev">Prev</span>
                 <span class="next">Next</span>
             </div>
@@ -146,6 +145,8 @@ $("body").keydown(function(e) {
     imageClicked.closest('.graph-small').prev().find('img').trigger('click');
   }
 });
+
+$(".one").find('img').trigger('click');
 
     </script>
 </body>

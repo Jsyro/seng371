@@ -154,18 +154,18 @@ def openDisplay(fileid, logdir):
 
 	images = ""
 	temp = sorted(os.listdir("./temp/" + fileid))
-	first = '/temp/'+ fileid + "/" + temp[1]
+	f = "one"
 	for name in temp:
 		if name.endswith(".png"):
 			name = name.split('/')[-1]
-			images = images + '\n<div class="col-sm-3 col-xs-6 graph-small">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" ></div>\n'
+			images = images + '\n<div class="col-sm-3 col-xs-6 graph-small '+ f+'">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" ></div>\n'
+			f = ""
 	repo = logdir.replace("_", "/")
 	readme = markdown.markdown(unicode(base64.b64decode(json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/readme").read())["content"]), errors='ignore'))
 	with open ("display.html", "r") as output:
 
 		data	=	output.read()
 		data	=	data.replace("<<--IMG-->>", images)
-		data	=	data.replace("<<--FIRST-->>", first)
 		data	=	data.replace("<<--REPO-->>", logdir)
 		data	=	data.replace("<<--README-->>", readme)
 
