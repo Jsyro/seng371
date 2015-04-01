@@ -300,7 +300,7 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 				plt.plot(time, unique, label="Contributors")
 		
 		plt.legend(loc=2)
-		plt.title(logdir + "	" + str(delta) + " days")
+		plt.title(logdir + " " + str(delta) + " days")
 		plt.xlabel("Time")
 
 		deltaName = '0'*(5 - len(str(delta))) + str(delta)
