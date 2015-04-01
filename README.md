@@ -6,43 +6,36 @@ Jason Syrotuck, Evan Hildebrandt, Keith Rollans
 How does the file structure of the source code files affect the ability for the software project to evolve. More specifically, do deeper, functionality divided folders create a healthier software project than one where there are folders which contain large numbers of source code file? 
 	
 ##2 The methodology you are using to answer the question
-1) 	First step is measuring the health of the project	
-	i.  Number of commits
-	ii. Unique contributors
+1. 	First step is measuring the health of the project	
+  1.  Number of commits	
+  2. Unique contributors
 				
-2) 	Mark every commit which involves the addition AND deletion of more than 5 files. These commits may be refactors and will be analysed later.
+2. 	Mark every commit which involves the addition AND deletion of more than 5 files. These commits may be refactors and will be analysed later.
 	
-3) 	The application then reads all of the commits and counts the number of files that are updated, added, and deleted and graphs them over time (daily, weekly, monthly, and yearly)
+3. 	The application then reads all of the commits and counts the number of files that are updated, added, and deleted and graphs them over time (daily, weekly, monthly, and yearly)
 	
-4) You will then be provided a list of links to each commit on GitGHub 
+4. You will then be provided a list of links to each commit on GitGHub 
 	
 
 ####2.1 Any tools you are using 
-1) Python
-
-2) Gource
-
-3) Git
-
-4) MatPlotLib
-
-5) Heroku
+1. Python	
+2. Gource	
+3. Git	
+4. MatPlotLib	
+5. Heroku
 		
 ####2.2 How to run
-1) Make sure Git and Gource are installed and avaliable from cmd
-2) Download/Clone this project into the directory with other Git projects 
-4) Open requirements.txt and ensure you have all the libraries listed installed on your local machine
-3) Run web.py	
+1. Make sure Git and Gource are installed and avaliable from cmd	
+2. Download/Clone this project into the directory with other Git projects 	
+4. Open requirements.txt and ensure you have all the libraries listed installed on your local machine	
+3. Run web.py	
 		
 		
 ####2.3 Repositories of Interest
-1) JQuery Mobile
-
-2) JQuery
-
-3) Bootstrap	
-
-4) Rails
+1. JQuery Mobile	
+2. JQuery	
+3. Bootstrap	
+4. Rails
 		
 ##3 The results of your experiment
 Rails was found to have a significant and steady number of restructure, most of which featured a transition from a ring structure to a deeper, more functionality driven tree structure. JQuery Mobile however was found to have a very few restructures during it's elaboration. As JQuery Mobile grew larger though, there was an attempt to restructure the code and filesystem into a more maintainable state, but the frequency of revisions continued to dwindle. 
