@@ -8,12 +8,9 @@ How does the file structure of the source code files affect the ability for the 
 ##2 The methodology you are using to answer the question
 1. 	First step is measuring the health of the project	
   1.  Number of commits	
-  2. Unique contributors
-				
-2. 	Mark every commit which involves the addition AND deletion of more than 5 files. These commits may be refactors and will be analysed later.
-	
-3. 	The application then reads all of the commits and counts the number of files that are updated, added, and deleted and graphs them over time (daily, weekly, monthly, and yearly)
-	
+  2. Unique contributors	
+2. 	Mark every commit which involves the addition AND deletion of more than 5 files. These commits may be refactors and will be analysed later.	
+3. 	The application then reads all of the commits and counts the number of files that are updated, added, and deleted and graphs them over time (daily, weekly, monthly, and yearly)	
 4. You will then be provided a list of links to each commit on GitGHub 
 	
 
