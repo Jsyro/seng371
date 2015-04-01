@@ -25,9 +25,15 @@
     <![endif]-->
     <style type="text/css">
 
-        .next{margin-left:25px; margin-bottom:0px; padding:3px 10px; height:40px; cursor:pointer; background-color:#000000; color:#FFFFFF; display:none;position:absolute; right:0px;}
-        .prev{margin-right:25px; margin-bottom:0px; padding:3px 10px; height:40px; cursor:pointer; background-color:#000000; color:#FFFFFF; display:none; position:absolute; left:0px;}
-        .readme{max-height: 563px; overflow: auto;}
+        .next{margin-left:25px; margin-bottom:0px; padding:3px 10px; /*height:40px; cursor:pointer; background-color:#000000; color:#FFFFFF; display:none;*/position:absolute; right:5px;}
+        .prev{margin-right:25px; margin-bottom:0px; padding:3px 10px; /*height:40px; cursor:pointer; background-color:#000000; color:#FFFFFF; display:none;*/ position:absolute; left:5px;}
+        .readme{max-height: 563px; overflow: auto; border-left: 1px solid black;}
+        .galary img:hover {
+    		opacity: 0.4;
+    		}
+    		.galary img {
+    			opacity: 1;
+    		}
     </style>
 </head>
 
@@ -49,7 +55,7 @@
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Displaying Your Project
+                <h1 class="page-header">Displaying The Project: <<--REPO-->>
                     <small> Commits -- Additions -- Deletions</small>
                 </h1>
             </div>
@@ -60,8 +66,8 @@
         <div class="row">
         <div class="col-md-8">
              <div class="imageDisplay">
-                <span class="prev">Prev</span>
-                <span class="next">Next</span>
+                <span class="prev btn btn-default">&lt; Prev</span>
+                <span class="next btn btn-default">Next &gt;</span>
             </div>
             </div>
             <div class="col-md-4 readme">

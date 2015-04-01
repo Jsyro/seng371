@@ -30,7 +30,9 @@
     	img {
     		opacity: 1;
     	}
-
+    	.content {
+			margin-bottom: 20px;    	
+    	}
     </style>
 </head>
 
@@ -47,7 +49,7 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container content">
 
         <!-- Portfolio Item Heading -->
         <div class="row">
@@ -125,9 +127,9 @@
             </label>
             </div>
         <button type="button" class="form-control" onclick="showModal ()" >Submit</button>
-
+			</form>
         </div>
-  </form>
+  
             </div>
 
         </div>
@@ -137,7 +139,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Loading your Graphs</h4>
+        <h4 class="modal-title" id="myModalLabel">Loading your Graphs <small>Press Start to Begin</small></h4>
       </div>
       <div class="modal-body">
         <div class="progress">
