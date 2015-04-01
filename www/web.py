@@ -162,12 +162,16 @@ def openDisplay(fileid, logdir):
 			f = ""
 	repo = logdir.replace("_", "/")
 	readme = markdown.markdown(unicode(base64.b64decode(json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/readme").read())["content"]), errors='ignore'))
+	with open ('./temp/' + fileid + "/refactors.txt") as output:
+		refactors = output.read()
+
 	with open ("display.html", "r") as output:
 
 		data	=	output.read()
 		data	=	data.replace("<<--IMG-->>", images)
 		data	=	data.replace("<<--REPO-->>", logdir)
 		data	=	data.replace("<<--README-->>", readme)
+		data = data.replace("<<--REFACTORS-->>" , refactors)
 
 	return  data
 
@@ -199,6 +203,7 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 		date	= ""
 		comment	= ""
 		author	= ""
+		refactors = ""
 
 		first = True
 	
@@ -214,6 +219,7 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 				sha = values[0]
 				author = values[1]
 				date = values[2][:25]
+				comment = values[3]
 				if date[22] > 1:
 					date = date[:20] + "+0000"
 
@@ -239,8 +245,9 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 						authors[position] = author + "," + authors[position]
 						unique[position] = unique[position] + 1
 
-					if res:
-						if (a > 10) and (d > 10):
+					if (a > 10) and (d > 10):
+						refactors = refactors + "<p><a href='https://github.com/"+logdir.replace("_", "/")+"/commit/"+sha+"'>" + sha + ":	" + comment + "</a></p>\n"
+						if res:
 							plt.scatter(date, -20, c='Black', s=a+d, alpha=1, edgecolors='none')
 
 				a = 0
@@ -293,7 +300,7 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 				plt.plot(time, unique, label="Contributors")
 		
 		plt.legend(loc=2)
-		plt.title(logdir)
+		plt.title(logdir + "	" + str(delta) + " days")
 		plt.xlabel("Time")
 
 		deltaName = '0'*(5 - len(str(delta))) + str(delta)
@@ -302,6 +309,11 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 		plt.savefig(filename, format="png")
 			
 		plt.clf()
+
+		f = open('./temp/' + fileid+"/refactors.txt" , 'w')
+		f.write(refactors)
+		f.close()
+
 		return filename
 
 if __name__ == '__main__':
