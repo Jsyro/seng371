@@ -134,6 +134,7 @@ def spans():
 	df = (bottle.request.forms.get("df") == 'true')
 	mf = (bottle.request.forms.get("mf") == 'true')
 	uf = (bottle.request.forms.get("uf") == 'true')
+	releases = (bottle.request.forms.get("releases") == 'true')
 
 	res = (bottle.request.forms.get("res") == 'true')
 	print res
@@ -146,7 +147,7 @@ def spans():
 
 	lines = inputfile.readlines()
 
-	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid,  af, cf, df, mf, uf, mod, res)
+	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid,  af, cf, df, mf, uf, mod, res, releases)
 
 
 @bottle.get("/display/<fileid>/<logdir>")
@@ -160,8 +161,15 @@ def openDisplay(fileid, logdir):
 			name = name.split('/')[-1]
 			images = images + '\n<div class="col-sm-3 col-xs-6 graph-small '+ f+'">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" ></div>\n'
 			f = ""
+
 	repo = logdir.replace("_", "/")
-	readme = markdown.markdown(unicode(base64.b64decode(json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/readme").read())["content"]), errors='ignore'))
+
+	rate_limit = json.loads(urllib2.urlopen("https://api.github.com/rate_limit").read())
+	if rate_limit["resources"]["core"]["remaining"] > 1:
+		readme = markdown.markdown(unicode(base64.b64decode(json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/readme").read())["content"]), errors='ignore'))
+	else:
+		readme = "<h1>Rate Limit Exceded</h1>"
+
 	with open ('./temp/' + fileid + "/refactors.txt") as output:
 		refactors = output.read()
 
@@ -175,7 +183,7 @@ def openDisplay(fileid, logdir):
 
 	return  data
 
-def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf, uf, mod, res):
+def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf, uf, mod, res, releases):
 
 		time = np.array([lastDate])
 		date = lastDate
@@ -248,13 +256,22 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 					if (a > 10) and (d > 10):
 						refactors = refactors + "<p><a href='https://github.com/"+logdir.replace("_", "/")+"/commit/"+sha+"'>" + sha + ":	" + comment + "</a></p>\n"
 						if res:
-							plt.scatter(date, -20, c='Black', s=a+d, alpha=1, edgecolors='none')
+							plt.scatter(date, 100, c='Black', s=a+d, alpha=.3, edgecolors='none')
 
 				a = 0
 				d = 0
 				m = 0
 				c = 0
 				position = 0
+
+		if releases:	
+			rate_limit = json.loads(urllib2.urlopen("https://api.github.com/rate_limit").read())
+			if rate_limit["resources"]["core"]["remaining"] > 3:
+				repo = logdir.replace("_", "/")
+				releases = json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/releases").read())
+				for release in releases:
+					date = dateutil.parser.parse(release["created_at"])
+					plt.scatter(date, 0, c='Red', s=200, alpha=.3, edgecolors='none')
 
 
 		if mod == "none":
@@ -300,7 +317,7 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 				plt.plot(time, unique, label="Contributors")
 		
 		plt.legend(loc=2)
-		plt.title(logdir + " " + str(delta) + " days")
+		plt.title(logdir + "     :" + str(delta) + " days")
 		plt.xlabel("Time")
 
 		deltaName = '0'*(5 - len(str(delta))) + str(delta)

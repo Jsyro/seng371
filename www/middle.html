@@ -128,6 +128,10 @@
                 <label>
                 <input value="True" name="res" id="res" type="checkbox"> Show Restructures?
             </label>
+            <label>
+                <input value="True" name="releases" id="releases" type="checkbox"> Show Releases
+            </label>
+
             </div>
         <button type="button" class="form-control" onclick="showModal ()" >Submit</button>
 			</form>
@@ -191,6 +195,7 @@
             var cf = $("#commits").prop('checked');
             var uf = $("#unique").prop('checked');
             var res = $("#res").prop('checked');
+            var releases = $("#releases").prop('checked');
 
             var mod = $("#modifier").val();
 
@@ -234,7 +239,7 @@
                 url: "/graph",
                 retryLimit : 5,
                 tryCount : 0,
-                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid, 'af' : af, 'cf' : cf, 'df' : df, 'mf' : mf, 'uf' : uf, 'mod' : mod, 'res' : res},
+                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid, 'af' : af, 'cf' : cf, 'df' : df, 'mf' : mf, 'uf' : uf, 'mod' : mod, 'res' : res, 'releases' : releases},
                  success: function (result) {
                     console.log(result);
                     x = x + 1;
