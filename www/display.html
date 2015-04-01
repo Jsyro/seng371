@@ -28,12 +28,21 @@
         .next{margin-left:25px; margin-bottom:0px; padding:3px 10px; /*height:40px; cursor:pointer; background-color:#000000; color:#FFFFFF; display:none;*/position:absolute; right:5px;}
         .prev{margin-right:25px; margin-bottom:0px; padding:3px 10px; /*height:40px; cursor:pointer; background-color:#000000; color:#FFFFFF; display:none;*/ position:absolute; left:5px;}
         .readme{max-height: 563px; overflow: auto; border-left: 1px solid #EEEEEE;}
+        .portfolio-item{
+				margin: auto;
+				padding-top: 15px;
+				padding-bottom: 15px;        
+        }
         .galary img:hover {
     		opacity: 0.4;
     		}
     		.galary img {
     			opacity: 1;
     		}
+    		.main-img {
+    			background-color: #EEEEEE;
+    		}
+    	
     </style>
 </head>
 
@@ -131,6 +140,8 @@ $('.portfolio-item').click(function(){
 
 $(".portfolio-item").click(function(){
       imageClicked = $(this);
+      $(".graph-small").removeClass("main-img");
+      $(this).closest('.graph-small').addClass("main-img");
     $(".imageDisplay").find('img').remove();
     $(".imageDisplay").append("<img class='img-responsive' src='"+imageClicked.attr('src')+"' />")
 });

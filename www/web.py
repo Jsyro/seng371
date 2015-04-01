@@ -159,7 +159,7 @@ def openDisplay(fileid, logdir):
 	for name in temp:
 		if name.endswith(".png"):
 			name = name.split('/')[-1]
-			images = images + '\n<div class="col-sm-3 col-xs-6 graph-small '+ f+'">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" ></div>\n'
+			images = images + '\n<div class="col-sm-3 graph-small '+ f+'">\n <img class="img-responsive portfolio-item" src="/temp/'+ fileid + "/" + name + '" ></div>\n'
 			f = ""
 
 	repo = logdir.replace("_", "/")
