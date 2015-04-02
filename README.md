@@ -9,9 +9,9 @@ How does the file structure of the source code files affect the ability for the 
 1. 	First step is measuring the health of the project	
   1.  Number of commits	
   2. Unique contributors	
-2. 	Mark every commit which involves the addition AND deletion of more than 5 files. These commits may be refactors and will be analysed later.	
+2. 	Mark every commit which involves the addition AND deletion of more than 10 files. These commits may be restructures and will be analysed later.	
 3. 	The application then reads all of the commits and counts the number of files that are updated, added, and deleted and graphs them over time (daily, weekly, monthly, and yearly)	
-4. You will then be provided a list of links to each commit on GitHub 
+4. You will then be provided a list of links to each "restructure" commit on GitHub 
 	
 
 ####2.1 Any tools you are using 
@@ -25,7 +25,12 @@ How does the file structure of the source code files affect the ability for the 
 1. Make sure Git and Gource are installed and avaliable from cmd	
 2. Download/Clone this project into the directory with other Git projects 	
 4. Open requirements.txt and ensure you have all the libraries listed installed on your local machine	
-3. Run web.py	
+3. Run web.py
+4. Open a web browser and navigate to localhost:8080
+5. Enter the user/project for your github repo
+6. Select your options for creating the graph
+7. Click "submit" then "start"
+8. Analize the results
 		
 		
 ####2.3 Repositories of Interest
