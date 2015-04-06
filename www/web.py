@@ -21,6 +21,10 @@ import markdown
 def send_image(imgdir, filename):
 		return static_file(filename, root='./' + imgdir, mimetype='image/png')
 
+@bottle.get('<imgdir:re:.*>/<filename:re:.*\.csv>')
+def send_image(imgdir, filename):
+		return static_file(filename, root='./' + imgdir)
+
 @bottle.get('<filename:re:.*\.png>')
 def send_image(filename):
 	return static_file(filename, root='./', mimetype='image/png')
@@ -178,8 +182,9 @@ def openDisplay(fileid, logdir):
 		data	=	output.read()
 		data	=	data.replace("<<--IMG-->>", images)
 		data	=	data.replace("<<--REPO-->>", logdir)
+		data	=	data.replace("<<--ID-->>", fileid)
 		data	=	data.replace("<<--README-->>", readme)
-		data = data.replace("<<--REFACTORS-->>" , refactors)
+		data	=	data.replace("<<--REFACTORS-->>" , refactors)
 
 	return  data
 
@@ -331,6 +336,12 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 		f.write(refactors)
 		f.close()
 
+		f = open('./temp/' + fileid+"/data" + str(delta) + ".csv" , 'w')
+		data = "date,added,delete,modify,commits,unique\n"
+		for x in xrange(0, length):
+			data = data + str(time[x]) + "," + str(added[x]) + "," + str(delete[x]) + "," + str(modify[x]) + "," + str(commits[x]) + "," + str(unique[x]) + "\n"
+		f.write(data)
+		f.close()
 		return filename
 
 if __name__ == '__main__':
