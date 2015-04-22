@@ -91,7 +91,27 @@
         <div class="row">
         <div class="col-md-8">
             <div class="options">
-              
+              <div class="form-group">
+             <label class="graph-opt">
+                <input class="checkbox" value="True" name="commits" id="commits" type="checkbox" checked> Commits
+            </label>
+
+            <label class="graph-opt">
+                <input class="checkbox" value="True" name="added" id="additions" type="checkbox" checked> Additions
+            </label>
+
+            <label class="graph-opt">
+                <input class="checkbox" value="True" name="delete" id="deletions" type="checkbox" checked> Deletions
+            </label>
+
+            <label class="graph-opt">
+                <input class="checkbox" value="True" name="modify" id="modifies" type="checkbox" checked> Modifies
+            </label>
+
+            <label class="graph-opt">
+                <input class="checkbox" value="True" name="unique" id="unique" type="checkbox" checked> Unique Contributors
+            </label>
+            </div>
             </div>
              <div class="imageDisplay" id="imageDisplay">
                 <span class="prev btn btn-default">&lt; Prev</span>
@@ -179,6 +199,8 @@ $(".one").find('img').trigger('click');
 var current = 1;
 
 var spans = [1,7,30, 180,365];
+
+var ignore = ["baseline", "date"]
 
 var lastpath = "M0, 430";
 
@@ -343,7 +365,7 @@ function updateChart (daySpan) {
 
   d3.selectAll(".line")
   	.data(lines)
-    .transition()
+     .transition()
       .duration(1000)
       .attr("d", lastpath)
     .transition()
@@ -354,8 +376,6 @@ function updateChart (daySpan) {
         for (var j = 0; j < temp.values.length; j++) {
           temp.values[j].yval = 0;
         };
-        console.log(temp)
-        console.log(line(temp.values))
         return line(temp.values)
       })
     .transition()
@@ -385,8 +405,27 @@ function updateChart (daySpan) {
 
 
 });
-
 }
+
+$(".checkbox").change(function(){
+ var index = $.inArray(this.name, ignore)
+ if (index > -1){
+  ignore.splice(index,1)
+ }else{
+  ignore[ignore.length] = this.name;
+ }
+ d3.selectAll(".line")
+ .style("opacity", function(d){
+      console.log(d.name)
+      if (ignore.indexOf(d.name) > -1){
+        return 0;
+        console.log("in ignore")
+      } else {
+        return 100;
+      }
+    })
+ console.log(ignore)
+});
 
 drawChart(1);
 

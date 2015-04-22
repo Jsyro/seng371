@@ -1,3 +1,113 @@
+9953674	EvanHildebrandt	2015-04-21 18:35:28 -0700	D3 doneish	{LINE}
+M	www/display.html
+M	www/web.py
+
+b91b4a6	EvanHildebrandt	2015-04-05 23:05:53 -0700	Initial move to D3	{LINE}
+M	www/display.html
+M	www/web.py
+
+2d23a01	Evan Hildebrandt	2015-04-02 12:12:45 -0700	Update README.md	{LINE}
+M	README.md
+
+54cbf00	KRollans	2015-04-01 14:13:08 -0700	Added Footer	{LINE}
+M	www/index.html
+
+19184bb	KRollans	2015-04-01 13:49:59 -0700	Display Selected Graph	{LINE}
+M	www/display.html
+M	www/web.py
+
+d30bb8a	Evan Hildebrandt	2015-04-01 13:21:44 -0700	Show releases + API error checking	{LINE}
+M	www/middle.html
+M	www/web.py
+
+2ae7a42	Jsyro	2015-04-01 13:20:44 -0700	spelling mistake	{LINE}
+M	README.md
+
+2f64665	Jsyro	2015-04-01 13:20:18 -0700	changed spacing in methodology	{LINE}
+M	README.md
+
+e0db8ec	Jsyro	2015-04-01 13:07:17 -0700	fixed some errors in readme	{LINE}
+M	README.md
+
+500deb9	KRollans	2015-04-01 13:04:40 -0700	HTML QA: Headers	{LINE}
+M	www/display.html
+M	www/index.html
+M	www/middle.html
+
+ba835af	Jsyro	2015-04-01 13:01:28 -0700	updated readme	{LINE}
+M	README.md
+
+47fa866	KRollans	2015-04-01 12:31:48 -0700	Fixed Pre-Loaded Log Form	{LINE}
+M	www/index.html
+
+85c411d	Evan Hildebrandt	2015-04-01 12:30:08 -0700	Small bug	{LINE}
+M	www/web.py
+
+7cc962d	KRollans	2015-04-01 12:02:36 -0700	Minor Changes to HTML	{LINE}
+M	www/display.html
+M	www/index.html
+M	www/middle.html
+
+f5f70ee	Evan Hildebrandt	2015-04-01 10:27:34 -0700	Added links to found refactors	{LINE}
+M	www/display.html
+M	www/web.py
+
+fb768f4	Evan Hildebrandt	2015-04-01 09:57:50 -0700	Auto click on first image	{LINE}
+M	www/display.html
+M	www/web.py
+
+e08eb98	Evan Hildebrandt	2015-03-31 22:57:31 -0700	Delete README.md	{LINE}
+D	www/README.md
+
+d6de6d4	Evan Hildebrandt	2015-03-31 16:33:12 -0700	Last Rename	{LINE}
+D	www/logs/Jsyro-seng371.txt
+A	www/logs/Jsyro_seng371.txt
+D	www/logs/django-django.txt
+A	www/logs/django_django.txt
+D	www/logs/joyent-node.txt
+A	www/logs/joyent_node.txt
+D	www/logs/jquery-jquery-mobile.txt
+D	www/logs/jquery-jquery.txt
+A	www/logs/jquery_jquery-mobile.txt
+A	www/logs/jquery_jquery.txt
+D	www/logs/rails-rails.txt
+A	www/logs/rails_rails.txt
+D	www/logs/twbs-bootstrap.txt
+A	www/logs/twbs_bootstrap.txt
+M	www/web.py
+
+b0df174	EvanHildebrandt	2015-03-31 13:13:03 -0700	Sort pictures and add starting picture	{LINE}
+M	www/display.html
+M	www/web.py
+
+2e2b6d5	EvanHildebrandt	2015-03-30 20:07:34 -0700	Fixed readme for ascii	{LINE}
+A	www/logs/twbs-bootstrap.txt
+D	www/logs/twps-bootstrap.txt
+M	www/requirements.txt
+M	www/web.py
+
+c7802ba	EvanHildebrandt	2015-03-30 19:40:50 -0700	Next/Prev and README	{LINE}
+M	www/display.html
+M	www/web.py
+
+25b4034	Evan Hildebrandt	2015-03-30 15:18:01 -0700	Changed name structure	{LINE}
+A	www/logs/Jsyro-seng371.txt
+D	www/logs/bootstrap.txt
+A	www/logs/django-django.txt
+D	www/logs/django.txt
+A	www/logs/joyent-node.txt
+A	www/logs/jquery-jquery-mobile.txt
+A	www/logs/jquery-jquery.txt
+D	www/logs/jquery-mobile.txt
+D	www/logs/jquery.txt
+D	www/logs/node.txt
+A	www/logs/rails-rails.txt
+D	www/logs/rails.txt
+D	www/logs/seng371.txt
+A	www/logs/twps-bootstrap.txt
+M	www/middle.html
+M	www/web.py
+
 aeff4ee	EvanHildebrandt	2015-03-30 14:03:52 -0700	Cleanups and show restructures	{LINE}
 M	www/middle.html
 M	www/web.py
