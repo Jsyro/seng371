@@ -1,3 +1,15 @@
+56ecec9	Evan Hildebrandt	2015-04-21 20:52:39 -0700	Update README.md	{LINE}
+M	README.md
+
+53df52e	EvanHildebrandt	2015-04-21 20:25:26 -0700	Cleanup to get away from Matplotlib	{LINE}
+M	www/display.html
+M	www/middle.html
+M	www/web.py
+
+3debd19	EvanHildebrandt	2015-04-21 19:30:54 -0700	Hiding options for D3	{LINE}
+M	www/display.html
+M	www/logs/Jsyro_seng371.txt
+
 9953674	EvanHildebrandt	2015-04-21 18:35:28 -0700	D3 doneish	{LINE}
 M	www/display.html
 M	www/web.py
