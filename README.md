@@ -3,7 +3,7 @@ Jason Syrotuck, Evan Hildebrandt, Keith Rollans
 # SENG 371 Group Project 2 
 
 ##1 The question you are setting out to answer
-How does the file structure of the source code files affect the ability for the software project to evolve. More specifically, do deeper, functionality divided folders create a healthier software project than one where there are folders which contain large numbers of source code file? 
+How does the file structure of the source code files affect the ability for the software project to evolve. More specifically, do large rearangements of the code affect the health of the project? 
 	
 ##2 The methodology you are using to answer the question
 1. 	First step is measuring the health of the project	
@@ -20,6 +20,7 @@ How does the file structure of the source code files affect the ability for the 
 3. Git	
 4. MatPlotLib	
 5. Heroku
+6. D3.js
 		
 ####2.2 How to run
 1. Make sure Git and Gource are installed and avaliable from cmd	
@@ -28,8 +29,7 @@ How does the file structure of the source code files affect the ability for the 
 3. Run web.py
 4. Open a web browser and navigate to localhost:8080
 5. Enter the user/project for your github repo
-6. Select your options for creating the graph
-7. Click "submit" then "start"
+7. Click "ok" then "start"
 8. Analize the results
 		
 		
@@ -40,7 +40,7 @@ How does the file structure of the source code files affect the ability for the 
 4. Rails
 		
 ##3 The results of your experiment
-Rails was found to have a significant and steady number of restructure, most of which featured a transition from a ring structure to a deeper, more functionality driven tree structure. JQuery Mobile however was found to have a very few restructures during it's elaboration. As JQuery Mobile grew larger though, there was an attempt to restructure the code and filesystem into a more maintainable state, but the frequency of revisions continued to dwindle. 
+Rails was found to have a significant and steady number of restructure, most of which featured a transition from a ring structure to a deeper, more functionality driven tree structure. JQuery Mobile however was found to have a very few restructures during it's beginning. As JQuery Mobile grew larger though, there was an attempt to restructure the code and filesystem into a more maintainable state, but the frequency of revisions continued to dwindle. 
 
 
 ##4 An analysis of these results
@@ -55,6 +55,7 @@ Source code files which tree-like are more conducive to a healthy software proje
 
 ####4.3 Future work
  - Recently found that git can show us the file structure, so integrate a visual representation
+ - Extend D3 to be "zoomable" and show releases
 
 	
 ##5 Project management information
