@@ -2,6 +2,11 @@ Jason Syrotuck, Evan Hildebrandt, Keith Rollans
 
 # SENG 371 Group Project 2 
 
+
+## Demo Video
+http://youtu.be/vCbAlOqhh8M
+## Heroku Deployment
+https://seng371.herokuapp.com/
 ##1 The question you are setting out to answer
 How does the file structure of the source code files affect the ability for the software project to evolve. More specifically, do large rearangements of the code affect the health of the project? 
 	
