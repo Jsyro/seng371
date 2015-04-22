@@ -57,7 +57,7 @@
             .line {
               fill: none;
               stroke: steelblue;
-              stroke-width: 1.5px;
+              stroke-width: 3px;
             }
     </style>
 </head>
@@ -90,7 +90,10 @@
         <!-- Portfolio Item Row -->
         <div class="row">
         <div class="col-md-8">
-             <div class="imageDisplay">
+            <div class="options">
+              
+            </div>
+             <div class="imageDisplay" id="imageDisplay">
                 <span class="prev btn btn-default">&lt; Prev</span>
                 <span class="next btn btn-default">Next &gt;</span>
             </div>
@@ -108,7 +111,6 @@
                 <h3 class="page-header">Other Figures</h3>
             </div>
 
-            <<--IMG-->>
 
         </div>
         <!-- /.row -->
@@ -136,57 +138,53 @@
 
     <script type="text/javascript">
 
-var numImgs = $('div.row .portfolio-item').length;
-var prevImages = $('.portfolio-item').prevAll().length;
-var imageClicked;
-
-$('.portfolio-item').click(function(){
-    var prevImages = $(this.parentNode).prevAll().find('.portfolio-item').length;
-    if(prevImages > 0){
-        $('.prev').show();
-    }else{
-        $('.prev').hide();
-    }
-    if(prevImages == (numImgs - 1)){
-        $('.next').hide();
-    }else{
-        $('.next').show();
-    }
-});
-
-$(".portfolio-item").click(function(){
-      imageClicked = $(this);
-      $(".graph-small").removeClass("main-img");
-      $(this).closest('.graph-small').addClass("main-img");
-    $(".imageDisplay").find('img').remove();
-    $(".imageDisplay").append("<img class='img-responsive' src='"+imageClicked.attr('src')+"' />")
-});
-
 $('.next').click(function(){
-    imageClicked.closest('.graph-small').next().find('img').trigger('click');
+    current = current + 1;
+    if (current > 4) {
+      current = 0;
+    };
+    updateChart(spans[current])
 });
 
 $('.prev').click(function(){
-    imageClicked.closest('.graph-small').prev().find('img').trigger('click');
+    current = current - 1;
+    if (current < 0) {
+      current = 4;
+    };
+    updateChart(spans[current])
 });
 
 $("body").keydown(function(e) {
   if(e.keyCode == 39) { 
-    imageClicked.closest('.graph-small').next().find('img').trigger('click');
+    current = current + 1;
+    if (current > 4) {
+      current = 0;
+    };
+    updateChart(spans[current])
   }
   else if(e.keyCode == 37) { 
-    imageClicked.closest('.graph-small').prev().find('img').trigger('click');
+    current = current - 1;
+    if (current < 0) {
+      current = 4;
+    };
+    updateChart(spans[current])
   }
 });
 
 $(".one").find('img').trigger('click');
 
     </script>
+
     <script>
+var current = 1;
+
+var spans = [1,7,30, 180,365];
+
+var lastpath = "M0, 430";
 
 var margin = {top: 20, right: 80, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 800 - margin.left - margin.right,
+    height = 480 - margin.top - margin.bottom;
 
 var parseDate = d3.time.format.iso.parse;
 
@@ -209,35 +207,50 @@ var yAxis = d3.svg.axis()
 var line = d3.svg.line()
     .interpolate("basis")
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.temperature); });
+    .y(function(d) { return y(d.yval); });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select(".imageDisplay").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .attr("class", "chart")
+    .attr("viewBox", "0 0 800 480")
+    .attr("preserveAspectRatio", "xMidYMid")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("/temp/<<--ID-->>/data1.csv", function(error, data) {
-  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
+function drawChart (daySpan) {
+	// body...
+	
+d3.csv("/temp/<<--ID-->>/data"+daySpan + ".csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return (key !== "date") && (key != "baseline"); }));
 
   data.forEach(function(d) {
     d.date = parseDate(d.date);
   });
 
-  var cities = color.domain().map(function(name) {
+  var lines = color.domain().map(function(name) {
     return {
       name: name,
       values: data.map(function(d) {
-        return {date: d.date, temperature: +d[name]};
+        return {date: d.date, yval: +d[name]};
       })
     };
   });
 
+    for (var i = 0; i < lines.length; i++) {
+
+    maxval = d3.max(lines[i].values, function(c){return c.yval; });
+    
+    for (var j = 0; j < lines[i].values.length; j++) {
+      lines[i].values[j].yval = 100 * (lines[i].values[j].yval / maxval);
+    };
+  };
+
   x.domain(d3.extent(data, function(d) { return d.date; }));
 
   y.domain([
-    d3.min(cities, function(c) { return d3.min(c.values, function(v) { return v.temperature; }); }),
-    d3.max(cities, function(c) { return d3.max(c.values, function(v) { return v.temperature; }); })
+    d3.min(lines, function(c) { return d3.min(c.values, function(v) { return v.yval; }); }),
+    d3.max(lines, function(c) { return d3.max(c.values, function(v) { return v.yval; }); })
   ]);
 
   svg.append("g")
@@ -253,26 +266,137 @@ d3.csv("/temp/<<--ID-->>/data1.csv", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Temperature (F)");
+      .text("");
 
-  var lines = svg.selectAll(".lines")
-      .data(cities)
+
+  var curves = svg.selectAll(".lines")
+      .data(lines)
     .enter().append("g")
       .attr("class", "lines");
 
-  lines.append("path")
+  curves.append("path")
       .attr("class", "line")
       .attr("d", function(d) { return line(d.values); })
       .style("stroke", function(d) { return color(d.name); });
 
-  lines.append("text")
+  var i = 1;
+  curves.append("text")
       .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")"; })
+      .attr("transform", function(d) { i++; return "translate(" + 25 + ", " + (i * 25) + ")"; })
       .attr("x", 3)
       .attr("dy", ".35em")
-      .text(function(d) { return d.name; });
+      .text(function(d) { return d.name; })
+   
+  var i = .5   
+  curves.append('rect')
+        .attr("transform", function(d) { i++; return "translate(" + 5 + ", " + (i * 25) + ")"; })
+        .attr('width', 20)
+        .attr('height', 20)
+        .style('fill', function(d) { return color(d.name);})
+        .style('stroke', function(d) { return color(d.name);})
+
+for (var i = 0; i < lines.length; i++) {
+    
+    for (var j = 0; j < lines[i].values.length; j++) {
+      lines[i].values[j].yval = 0;
+  };
+};
+  lastpath = line(lines[0].values);
+});
+}
+
+
+function updateChart (daySpan) {
+ 
+	d3.csv("/temp/<<--ID-->>/data"+daySpan + ".csv", function(error, data) {
+
+  color.domain(d3.keys(data[0]).filter(function(key) { return (key !== "date"); }));
+
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+  });
+  var lines = color.domain().map(function(name) {
+    return {
+      name: name,
+      values: data.map(function(d) {
+        return {date: d.date, yval: +d[name]};
+      })
+    };
+  });
+
+  for (var i = 0; i < lines.length; i++) {
+
+    maxval = d3.max(lines[i].values, function(c){return c.yval; });
+    
+    for (var j = 0; j < lines[i].values.length; j++) {
+      lines[i].values[j].yval = 100*(lines[i].values[j].yval / maxval);
+    };
+  };
+
+ x.domain(d3.extent(data, function(d) { return d.date; }));
+
+ y.domain([
+  d3.min(lines, function(c) { return d3.min(c.values, function(v) { return v.yval; }); }),
+  d3.max(lines, function(c) { return d3.max(c.values, function(v) { return v.yval; }); })
+ ]);
+
+
+  d3.selectAll(".line")
+  	.data(lines)
+    .transition()
+      .duration(1000)
+      .attr("d", lastpath)
+    .transition()
+      .duration(1)
+      .attr("d", function(d) {
+
+        var temp = jQuery.extend(true, {}, lines[5]);
+        for (var j = 0; j < temp.values.length; j++) {
+          temp.values[j].yval = 0;
+        };
+        console.log(temp)
+        console.log(line(temp.values))
+        return line(temp.values)
+      })
+    .transition()
+  		.duration(1000)
+      .delay(1500)
+      .attr("d", function(d) {
+        return line(d.values);
+      })
+  
+    $(".y.axis").remove();
+   svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("");
+
+
+    for (var j = 0; j < lines[0].values.length; j++) {
+      lines[0].values[j].yval = 0;
+  };
+  lastpath = line(lines[0].values);
+
+
+
 });
 
+}
+
+drawChart(1);
+
+var aspect = 800 / 480,
+    chart = $(".chart");
+$(window).on("resize", function() {
+    var targetWidth = chart.parent().width();
+    chart.attr("width", targetWidth);
+    chart.attr("height", targetWidth / aspect);
+});
 </script>
 </body>
 

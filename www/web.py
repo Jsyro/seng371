@@ -337,9 +337,9 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 		f.close()
 
 		f = open('./temp/' + fileid+"/data" + str(delta) + ".csv" , 'w')
-		data = "date,added,delete,modify,commits,unique\n"
+		data = "date,added,delete,modify,commits,unique,baseline\n"
 		for x in xrange(0, length):
-			data = data + str(time[x]) + "," + str(added[x]) + "," + str(delete[x]) + "," + str(modify[x]) + "," + str(commits[x]) + "," + str(unique[x]) + "\n"
+			data = data + str(time[x]) + "," + str(added[x]) + "," + str(delete[x]) + "," + str(modify[x]) + "," + str(commits[x]) + "," + str(unique[x]) + ", 0\n"
 		f.write(data)
 		f.close()
 		return filename
