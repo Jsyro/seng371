@@ -66,74 +66,7 @@
         <!-- Portfolio Item Row -->
         <div class="row">
         <div class="col-md-6">
-        <h3>Select a Timespan
-                    <small>leave blank for the full life of the project</small></h3>
-             <form>
-             <div class="form-group">
-            <label>
-                <input value="True" name="lifetime" id="lifetime" type="checkbox" checked onclick="$('#sd').removeAttr('disabled'); $('#ed').removeAttr('disabled'); $(this).attr('disabled', true);"> Use Project Lifetime?
-            </label>
-            </div>
-            <div class="form-group">
-             <label for="startDate">Start Date</label>
-             <input name="startDate" id="sd" type="date" class="form-control" disabled>
-
-             <label for="endDate">End Date</label>
-             <input name="endDate" id="ed" type="date" class="form-control" disabled>
-             </div>
-
-             <div class="form-group">
-            <label for="spans">Date Span(s)</label>
-             <input name="spans" id="spans" type="text" class="form-control" placeholder="days seperated by ',' default '1,7,30,180,365'">
-            </div>
-
-             <h3>Select Lines to Show
-                    <small>default options are selected</small></h3>
-
-             <div class="form-group">
-             <label class="graph-opt">
-                <input value="True" name="commits" id="commits" type="checkbox" checked> Commits
-            </label>
-
-            <label class="graph-opt">
-                <input value="True" name="additions" id="additions" type="checkbox" checked> Additions
-            </label>
-
-            <label class="graph-opt">
-                <input value="True" name="deletions" id="deletions" type="checkbox" checked> Deletions
-            </label>
-
-            <label class="graph-opt">
-                <input value="True" name="modifies" id="modifies" type="checkbox"> Modifies
-            </label>
-
-            <label class="graph-opt">
-                <input value="True" name="unique" id="unique" type="checkbox"> Unique Contributors
-            </label>
-            </div>
-
-            <h3>Select Modifiers
-                    <small>default is 'Don't Justify'</small></h3>
-            <div class="form-group">
-                <label for="modifier">Select Modifier</label>
-                <select class="selectpicker form-control" name="modifier" id="modifier" data-live-search="true"> 
-                    <option value="none">Don't Justify</option>
-                    <option value="avg" >Justify by average</option>
-                    <option value="avgp">Justify by percentage of average</option>
-                    <option value="maxp">Justify by percentage of maximum</option>
-                 </select>
-            </div>
-
-            <div class="form-group">
-                <label>
-                <input value="True" name="res" id="res" type="checkbox"> Show Restructures?
-            </label>
-            <label>
-                <input value="True" name="releases" id="releases" type="checkbox"> Show Releases
-            </label>
-
-            </div>
-        <button type="button" class="form-control" onclick="showModal ()" >Submit</button>
+         <button type="button" class="form-control" onclick="showModal ()" >Submit</button>
 			</form>
         </div>
   
@@ -176,11 +109,7 @@
     <script type="text/javascript">
         function showModal (argument) {
             
-            var timespan = $("#spans").val()
-            if (timespan == ""){
-                timespan = "1,7,30,180,365";
-            }
-            timespan = timespan.split(",");
+            var timespan = "1"
 
             $('#myModal').modal('show');
         }
@@ -189,16 +118,6 @@
             var startDate = $("#sd").val() + " 01:00:00+00:00";
             var endDate = $("#ed").val() + " 01:00:00+00:00";
 
-            var af = $("#additions").prop('checked');
-            var df = $("#deletions").prop('checked');
-            var mf = $("#modifies").prop('checked');
-            var cf = $("#commits").prop('checked');
-            var uf = $("#unique").prop('checked');
-            var res = $("#res").prop('checked');
-            var releases = $("#releases").prop('checked');
-
-            var mod = $("#modifier").val();
-
             $.ajax({
                 type: "get",
                 contentType: "application/json; charset=utf-8",
@@ -206,31 +125,19 @@
                 async:false,
                 data: "",
                  success: function (result) {
-                    console.log($("#lifetime").val());
-                    console.log(result);
                     fileid = result.fileid;
-                    if ($("#lifetime").prop('checked') == true) {
-                        startDate = result.firstDate;
-                        endDate = result.lastDate;
-                    };
+                    startDate = result.firstDate;
+                    endDate = result.lastDate;
+                    
                  },
                  error: function (result) {
                      alert("There was an error :(");
                  }
             });
 
-            var timespan = $("#spans").val()
-            if (timespan == ""){
-                timespan = "1,7,30,180,365";
-            }
-            timespan = timespan.split(",");
-            var timespanlength = timespan.length;
-            console.log(timespanlength);
-            var x = 0;
-
+            var timespan = "1"
+            var x = 0
             console.log("start date is " + startDate);
-            timespan.forEach(function(entry) {
-
 
 
                 $.ajax({
@@ -239,17 +146,16 @@
                 url: "/graph",
                 retryLimit : 5,
                 tryCount : 0,
-                data: {'delta' : entry, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid, 'af' : af, 'cf' : cf, 'df' : df, 'mf' : mf, 'uf' : uf, 'mod' : mod, 'res' : res, 'releases' : releases},
+                data: {'delta' : 1, 'firstDate' : startDate, 'lastDate' : endDate, 'logdir' : '<<--REPO-->>', 'fileid' : fileid},
                  success: function (result) {
                     console.log(result);
                     x = x + 1;
-                    console.log(timespanlength);
                     console.log(x);
-                    var newWidth = (x/timespanlength)*100;
+                    var newWidth = (x/1)*100;
                     console.log(newWidth);
                     console.log(newWidth + "%");
                     $('.progress-bar').css("width", newWidth + "%");
-                    if (x == timespanlength) {
+                    if (x == 1) {
                         window.location.href = "/display/"+ fileid  + "/<<--REPO-->>";
                     };
                  },
@@ -263,7 +169,6 @@
                     }          
                     alert("Your spoon is too big");
                              }
-                        });
                         });
         }
 

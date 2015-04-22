@@ -125,7 +125,7 @@ def lines(logdir):
 @bottle.post('/graph')
 def spans():
 
-	delta = int(bottle.request.forms.get("delta"))
+	delta = 1
 
 	firstDate = dateutil.parser.parse(bottle.request.forms.get("firstDate"))
 	lastDate = dateutil.parser.parse(bottle.request.forms.get("lastDate"))
@@ -133,25 +133,12 @@ def spans():
 	logdir = bottle.request.forms.get("logdir")
 	fileid = bottle.request.forms.get("fileid")
 
-	af = (bottle.request.forms.get("af") == 'true')
-	cf = (bottle.request.forms.get("cf") == 'true')
-	df = (bottle.request.forms.get("df") == 'true')
-	mf = (bottle.request.forms.get("mf") == 'true')
-	uf = (bottle.request.forms.get("uf") == 'true')
-	releases = (bottle.request.forms.get("releases") == 'true')
-
-	res = (bottle.request.forms.get("res") == 'true')
-	print res
-
-	mod = bottle.request.forms.get("mod")
-
-
 	filename = "./logs/"+logdir+".txt"
 	inputfile = open(filename, 'r')
 
 	lines = inputfile.readlines()
 
-	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid,  af, cf, df, mf, uf, mod, res, releases)
+	return makeGraph(delta, firstDate, lastDate, lines, logdir, fileid)
 
 
 @bottle.get("/display/<fileid>/<logdir>")
@@ -188,7 +175,7 @@ def openDisplay(fileid, logdir):
 
 	return  data
 
-def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf, uf, mod, res, releases):
+def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid):
 
 		time = np.array([lastDate])
 		date = lastDate
@@ -260,89 +247,61 @@ def makeGraph(delta, firstDate, lastDate, lines, logdir, fileid, af, cf, df, mf,
 
 					if (a > 10) and (d > 10):
 						refactors = refactors + "<p><a href='https://github.com/"+logdir.replace("_", "/")+"/commit/"+sha+"'>" + sha + ":	" + comment + "</a></p>\n"
-						if res:
-							plt.scatter(date, 100, c='Black', s=a+d, alpha=.3, edgecolors='none')
-
 				a = 0
 				d = 0
 				m = 0
 				c = 0
 				position = 0
 
-		if releases:	
-			rate_limit = json.loads(urllib2.urlopen("https://api.github.com/rate_limit").read())
-			if rate_limit["resources"]["core"]["remaining"] > 3:
-				repo = logdir.replace("_", "/")
-				releases = json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/releases").read())
-				for release in releases:
-					date = dateutil.parser.parse(release["created_at"])
-					plt.scatter(date, 0, c='Red', s=200, alpha=.3, edgecolors='none')
 
+		rate_limit = json.loads(urllib2.urlopen("https://api.github.com/rate_limit").read())
+		if rate_limit["resources"]["core"]["remaining"] > 3:
+			repo = logdir.replace("_", "/")
+			releases = json.loads(urllib2.urlopen("https://api.github.com/repos/" + repo + "/releases").read())
+			for release in releases:
+				date = dateutil.parser.parse(release["created_at"])
 
-		if mod == "none":
-			pass
-		elif mod == "avg":
-			added = added - np.average(added)
-			delete = delete - np.average(delete)
-			modify = modify - np.average(modify)
-			commits = commits - np.average(commits)
-			unique = unique - np.average(unique)
-		elif mod == "avgp":
-			added = 100 * added / np.average(added)
-			delete = 100* delete / np.average(delete)
-			modify = 100* modify / np.average(modify)
-			commits = 100* commits / np.average(commits)
-			unique = 100* unique / np.average(unique)
-		elif mod == "maxp":
-			added = 100* added / np.amax(added)
-			delete = 100* delete / np.amax(delete)
-			modify = 100* modify / np.amax(modify)
-			commits = 100* commits / np.amax(commits)
-			unique = 100* unique / np.amax(unique)
-
-
-		with plt.style.context('fivethirtyeight'):
-			if (mod == "maxp") or (mod == "avgp"):
-				plt.ylabel("percentage")
-			else:
-				plt.ylabel("number")
-			if af:
-				plt.plot(time, added, label="Added")
-
-			if df:
-				plt.plot(time, delete, label="Deleted")
-
-			if mf:
-				plt.plot(time, modify, label="Modified")
-
-			if cf:
-				plt.plot(time, commits, label="Commits")
-
-			if uf:
-				plt.plot(time, unique, label="Contributors")
-		
-		plt.legend(loc=2)
-		plt.title(logdir + "     :" + str(delta) + " days")
-		plt.xlabel("Time")
 
 		deltaName = '0'*(5 - len(str(delta))) + str(delta)
-
-		filename = './temp/' + fileid+"/" + logdir + "-"+deltaName+'.png'
-		plt.savefig(filename, format="png")
-			
-		plt.clf()
 
 		f = open('./temp/' + fileid+"/refactors.txt" , 'w')
 		f.write(refactors)
 		f.close()
 
-		f = open('./temp/' + fileid+"/data" + str(delta) + ".csv" , 'w')
+		f = open('./temp/' + fileid+"/data1.csv" , 'w')
 		data = "date,added,delete,modify,commits,unique,baseline\n"
 		for x in xrange(0, length):
 			data = data + str(time[x]) + "," + str(added[x]) + "," + str(delete[x]) + "," + str(modify[x]) + "," + str(commits[x]) + "," + str(unique[x]) + ", 0\n"
 		f.write(data)
 		f.close()
-		return filename
+
+		span = [7,30,180,365]
+		for delta in span:
+			f = open('./temp/' + fileid+"/data" + str(delta) + ".csv" , 'w')
+			data = "date,added,delete,modify,commits,unique,baseline\n"
+			Sadded = 0
+			Sdelete = 0
+			Smodify = 0
+			Scommits = 0
+			Sunique = 0
+			for x in xrange(0, length):
+				if x == length -1:
+					data = data + str(time[x]) + "," + str(Sadded) + "," + str(Sdelete) + "," + str(Smodify) + "," + str(Scommits) + "," + str(Sunique) + ", 0\n"
+				if x % delta == 0:
+					data = data + str(time[x]) + "," + str(Sadded) + "," + str(Sdelete) + "," + str(Smodify) + "," + str(Scommits) + "," + str(Sunique) + ", 0\n"
+					Sadded = 0
+					Sdelete = 0
+					Smodify = 0
+					Scommits = 0
+					Sunique = 0
+				else:
+					Sadded = Sadded + added[x]
+					Sdelete = Sdelete + delete[x]
+					Smodify = Smodify + modify[x]
+					Scommits = Scommits + commits[x]
+					Sunique = Sunique + unique[x]
+			f.write(data)
+			f.close()
 
 if __name__ == '__main__':
 	if 'PORT' in os.environ:

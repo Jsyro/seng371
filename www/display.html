@@ -196,7 +196,7 @@ $(".one").find('img').trigger('click');
     </script>
 
     <script>
-var current = 1;
+var current = 0;
 
 var spans = [1,7,30, 180,365];
 
@@ -415,6 +415,8 @@ $(".checkbox").change(function(){
   ignore[ignore.length] = this.name;
  }
  d3.selectAll(".line")
+ .transition()
+ .duration(1000)
  .style("opacity", function(d){
       console.log(d.name)
       if (ignore.indexOf(d.name) > -1){
